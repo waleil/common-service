@@ -2,14 +2,10 @@ package cn.net.yzl.common.util;
 
 import cn.hutool.core.bean.copier.BeanCopier;
 import cn.hutool.core.bean.copier.CopyOptions;
-import cn.hutool.core.util.ReflectUtil;
-
-import java.util.Map;
 
 /**
  *  bean的操作
  */
-
 public class BeanUtil {
 
 
