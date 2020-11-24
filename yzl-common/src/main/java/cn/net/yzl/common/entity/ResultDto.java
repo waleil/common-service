@@ -1,4 +1,4 @@
-package cn.net.yzl.common;
+package cn.net.yzl.common.entity;
 
 import cn.net.yzl.common.enums.ResultCodeEnums;
 import io.swagger.annotations.ApiModel;

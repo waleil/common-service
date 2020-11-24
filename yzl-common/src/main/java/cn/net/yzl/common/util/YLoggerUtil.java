@@ -1,6 +1,6 @@
 package cn.net.yzl.common.util;
 
-
+import cn.net.yzl.common.entity.LogModel;
 import com.google.common.base.Splitter;
 import lombok.extern.slf4j.Slf4j;
 

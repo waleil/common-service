@@ -1,4 +1,4 @@
-package cn.net.yzl.common.util;
+package cn.net.yzl.common.entity;
 
 import lombok.Data;
 import org.slf4j.MDC;
