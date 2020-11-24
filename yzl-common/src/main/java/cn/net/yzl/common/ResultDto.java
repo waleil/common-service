@@ -1,5 +1,6 @@
 package cn.net.yzl.common;
 
+import cn.net.yzl.common.enums.ResultCodeEnums;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -34,7 +35,7 @@ public class ResultDto<T> implements Serializable {
 
 	public ResultDto(String code) {
 		this.code = code;
-		this.info = EnumResultCode.getValueOf(this.code).getDesc();
+		this.info = ResultCodeEnums.getValueOf(this.code).getDesc();
 	}
 
 	public ResultDto(String code, T data) {
@@ -48,7 +49,7 @@ public class ResultDto<T> implements Serializable {
 
 	public void setCode(String code) {
 		this.code = code;
-		this.info = EnumResultCode.getValueOf(this.code).getDesc();
+		this.info = ResultCodeEnums.getValueOf(this.code).getDesc();
 	}
 
 	public String getInfo() {

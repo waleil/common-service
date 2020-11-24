@@ -1,11 +1,11 @@
-package cn.net.yzl.common;
+package cn.net.yzl.common.enums;
 
 /**
  *
  *  响应码 对应的 信息
  *
  */
-public enum EnumResultCode {
+public enum ResultCodeEnums {
 
 	SUCCESS("200", "成功"), 
 	SUCCESS_NODATA("201", "成功，无数据")
@@ -15,7 +15,7 @@ public enum EnumResultCode {
     private String code;
 	private String desc;
 
-	private EnumResultCode(String code, String desc) {
+	private ResultCodeEnums(String code, String desc) {
 		this.code = code;
 		this.desc = desc;
 	}
@@ -36,12 +36,12 @@ public enum EnumResultCode {
 		this.desc = desc;
 	}
 
-	public static EnumResultCode getValueOf(String code) {
+	public static ResultCodeEnums getValueOf(String code) {
 		if (null == code || "".equals(code)) {
 			return null;
 		}
-		EnumResultCode[] codes = EnumResultCode.values();
-		for (EnumResultCode type : codes) {
+		ResultCodeEnums[] codes = ResultCodeEnums.values();
+		for (ResultCodeEnums type : codes) {
 			if (type != null && type.getCode().equals(code)) {
 				return type;
 			}
