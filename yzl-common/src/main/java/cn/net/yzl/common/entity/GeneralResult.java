@@ -1,18 +1,25 @@
 package cn.net.yzl.common.entity;
 
 import cn.net.yzl.common.enums.ResponseCodeEnums;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import org.springframework.util.StringUtils;
+
+import java.io.Serializable;
 
 /**
  *
  * 内部方法调用的返回实体
  *
  **/
-public class GeneralResult<T> {
-
+@ApiModel(value="ResultDto",description="响应结果实体")
+public class GeneralResult<T> implements Serializable {
+    @ApiModelProperty(value="响应码,200表示成功；其他表示失败",name="code")
     private Integer code;
     private T data;
+    @ApiModelProperty(value="响应信息",name="info")
     private String message;
+    @ApiModelProperty(value="url的跳转路径",name="url")
     private String url;
 
     public static <T> GeneralResult<T> of(Integer code) {

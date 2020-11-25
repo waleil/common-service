@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Import;
 import java.lang.annotation.*;
 
 /**
- * 启用 redis
+ * 启用
  */
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)

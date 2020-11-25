@@ -11,12 +11,16 @@
     <artifactId>common-service</artifactId>
     <name>common-service</name>
     <description>御芝林公共jar包</description>
-
+    <version>${project.verson}</version>
 
     <modules>
         <module>yzl-common</module>
     </modules>
 
+    <properties>
+        <project.verson>1.0-SNAPSHOT</project.verson>
+       <!-- <project.verson>1.0-RELEASE</project.verson>-->
+    </properties>
 
     <build>
         <resources>

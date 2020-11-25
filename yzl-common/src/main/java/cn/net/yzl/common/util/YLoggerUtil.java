@@ -29,7 +29,8 @@ public class YLoggerUtil {
         logModel.setType("info");
         logModel.setParam(content);
         logModel.setApiName(functionName);
-        log.info(JacksonUtil.toJsonString(logModel));
+//        log.info(JsonUtil.toJsonStr(logModel));
+        log.info(JsonUtil.toJsonStr(logModel));
     }
 
     public static void accessLog(String status, String code, String message, String type, String apiName,
@@ -49,7 +50,7 @@ public class YLoggerUtil {
         logModel.setHeader(header);
         logModel.setRequest("'" + request + "'");
         logModel.setResponse("'" + response + "'");
-        log.info(JacksonUtil.toJsonString(logModel));
+        log.info(JsonUtil.toJsonStr(logModel));
     }
 
     public static void accessLog(String type, String apiName, String url, Long mills, String request, String response) {
@@ -89,7 +90,7 @@ public class YLoggerUtil {
         logModel.setStackTrace(toStackTrace(e, null));
         logModel.setApiName(apiName);
         logModel.setParam("'" + param + "'");
-        log.error(JacksonUtil.toJsonString(logModel), e);
+        log.error(JsonUtil.toJsonStr(logModel), e);
     }
 
     /**
@@ -112,18 +113,18 @@ public class YLoggerUtil {
         logModel.setApiUrl(apiUrl);
         logModel.setApiName(name);
         logModel.setParam("'" + param + "'");
-        log.error(JacksonUtil.toJsonString(logModel), e);
+        log.error(JsonUtil.toJsonStr(logModel), e);
     }
 
 
-    public static boolean isJson(String param) {
-        try {
-            JacksonUtil.parse(param);
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
-    }
+//    public static boolean isJson(String param) {
+//        try {
+//            JacksonUtil.parse(param);
+//            return true;
+//        } catch (Exception e) {
+//            return false;
+//        }
+//    }
 
     public static boolean isNumeric(String str) {
         String bigStr;
