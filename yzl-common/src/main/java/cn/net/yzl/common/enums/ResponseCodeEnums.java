@@ -10,7 +10,7 @@ import lombok.Getter;
 @Getter
 public enum ResponseCodeEnums {
 	SUCCESS_CODE(200, "成功","成功"),
-	SUCCESS_NODATA_CODE(201, "返回数据为空","成功，无数据"),
+	NO_DATA_CODE(201, "返回数据为空","成功，无数据"),
 	// 用5位标识错误代码 12100 1:服务(例如:1所在位置表示crm,ehr,dmc,bi等项目,1现在表示公共响应码)
 	// 						 12:表示模块
 	//						 100:表示code
