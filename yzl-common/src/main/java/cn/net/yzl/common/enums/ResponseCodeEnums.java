@@ -31,6 +31,8 @@ public enum ResponseCodeEnums {
 	REPEAT_ERROR_CODE(10011, "请勿重复提交", "重复提交"),
 	BIZ_ERROR_CODE(10012, "业务异常", "业务逻辑错误"),
 	SIGN_ERROR_CODE(10013, "签名错误", "签名错误"),
+	LOGIN_ERROR_CODE(11000,"用户名或密码错误","用户名或密码错误"),
+
 	// 2开头表示 crm, 3:开头表示 ehr 4:开头表示dmc 5:开头:bi
 	// 211 开头表示 员工服务
 	// 212 开头表示 顾客服务
