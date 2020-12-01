@@ -8,7 +8,7 @@ import lombok.Getter;
  *
  */
 @Getter
-public enum ResponseCodeEnums {
+public enum ResultCodeEnums {
 	SUCCESS_CODE(200, "成功","成功"),
 	NO_DATA_CODE(201, "返回数据为空","成功，无数据"),
 	// 用5位标识错误代码 12100 1:服务(例如:1所在位置表示crm,ehr,dmc,bi等项目,1现在表示公共响应码)
@@ -72,14 +72,14 @@ public enum ResponseCodeEnums {
 	private String message;
 	private String desc;
 
-	ResponseCodeEnums(Integer code, String message, String desc) {
+	ResultCodeEnums(Integer code, String message, String desc) {
 		this.code = code;
 		this.message = message;
 		this.desc = desc;
 	}
 
-	public static ResponseCodeEnums codeOf(Integer code) {
-		for (ResponseCodeEnums transferStatusEnums : values()) {
+	public static ResultCodeEnums codeOf(Integer code) {
+		for (ResultCodeEnums transferStatusEnums : values()) {
 			if (transferStatusEnums.getCode().equals(code)) {
 				return transferStatusEnums;
 			}

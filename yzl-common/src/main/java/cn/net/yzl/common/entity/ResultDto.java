@@ -1,7 +1,6 @@
 package cn.net.yzl.common.entity;
 
-import cn.net.yzl.common.enums.ResponseCodeEnums;
-import com.fasterxml.jackson.annotation.JsonInclude;
+import cn.net.yzl.common.enums.ResultCodeEnums;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -34,11 +33,11 @@ public class ResultDto<T> implements Serializable {
 
 
     public static <T> ResultDto<T> success() {
-        return success(ResponseCodeEnums.SUCCESS_CODE.getCode(),SUCCESS_STATUS,null,null);
+        return success(ResultCodeEnums.SUCCESS_CODE.getCode(),SUCCESS_STATUS,null,null);
     }
 
     public static <T> ResultDto<T> success(T data) {
-        return success(ResponseCodeEnums.SUCCESS_CODE.getCode(),SUCCESS_STATUS,null,data);
+        return success(ResultCodeEnums.SUCCESS_CODE.getCode(),SUCCESS_STATUS,null,data);
     }
 
     public static <T> ResultDto<T> success(Integer code, Integer status, String message, T data){
@@ -46,11 +45,11 @@ public class ResultDto<T> implements Serializable {
     }
 
     public static <T> ResultDto<T> nodata() {
-        return nodata(ResponseCodeEnums.NO_DATA_CODE.getCode(),SUCCESS_STATUS,ResponseCodeEnums.NO_DATA_CODE.getMessage());
+        return nodata(ResultCodeEnums.NO_DATA_CODE.getCode(),SUCCESS_STATUS, ResultCodeEnums.NO_DATA_CODE.getMessage());
     }
 
     public static <T> ResultDto<T> nodata(String message) {
-        return nodata(ResponseCodeEnums.NO_DATA_CODE.getCode(),SUCCESS_STATUS,message);
+        return nodata(ResultCodeEnums.NO_DATA_CODE.getCode(),SUCCESS_STATUS,message);
     }
     public static <T> ResultDto<T> nodata(Integer code, Integer status, String message) {
         return new ResultDto<T>().setStatus(status).setCode(code).setMessage(message);
