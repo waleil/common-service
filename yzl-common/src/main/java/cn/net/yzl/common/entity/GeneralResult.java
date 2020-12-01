@@ -12,14 +12,11 @@ import java.io.Serializable;
  * 内部方法调用的返回实体
  *
  **/
-@ApiModel(value="ResultDto",description="响应结果实体")
+
 public class GeneralResult<T> implements Serializable {
-    @ApiModelProperty(value="响应码,200表示成功；其他表示失败",name="code")
     private Integer code;
     private T data;
-    @ApiModelProperty(value="响应信息",name="info")
     private String message;
-    @ApiModelProperty(value="url的跳转路径",name="url")
     private String url;
 
     public static <T> GeneralResult<T> of(Integer code) {
