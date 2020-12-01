@@ -11,6 +11,10 @@ import lombok.Getter;
 public enum ResultCodeEnums {
 	SUCCESS_CODE(200, "成功","成功"),
 	NO_DATA_CODE(201, "返回数据为空","成功，无数据"),
+	ERROR(5000, "系统内部错误","系统内部错误"),
+	LOG_ERROR(5001, "日志记录错误", "日志记录错误"),
+	ASPECT_ERROR(5002, "切面运行错误", "日志记录错误"),
+	BEAN_OPT_ERROR(5003, "java bean 操作错误","java bean 操作错误"),
 	// 用5位标识错误代码 12100 1:服务(例如:1所在位置表示crm,ehr,dmc,bi等项目,1现在表示公共响应码)
 	// 						 12:表示模块
 	//						 100:表示code
