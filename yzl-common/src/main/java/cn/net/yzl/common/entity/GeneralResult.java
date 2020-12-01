@@ -1,6 +1,6 @@
 package cn.net.yzl.common.entity;
 
-import cn.net.yzl.common.enums.ResultCodeEnums;
+import cn.net.yzl.common.enums.ResponseCodeEnums;
 import org.springframework.util.StringUtils;
 
 import java.io.Serializable;
@@ -26,11 +26,11 @@ public class GeneralResult<T> implements Serializable {
     }
 
     public static <T> GeneralResult<T> success(T data) {
-        return of(ResultCodeEnums.SUCCESS_CODE.getCode(), data);
+        return of(ResponseCodeEnums.SUCCESS_CODE.getCode(), data);
     }
 
     public static <T> GeneralResult<T> success() {
-        return of(ResultCodeEnums.SUCCESS_CODE.getCode());
+        return of(ResponseCodeEnums.SUCCESS_CODE.getCode());
     }
 
     public static <T> GeneralResult<T> errorWithMessage(Integer code, String message) {
@@ -80,11 +80,11 @@ public class GeneralResult<T> implements Serializable {
         return this;
     }
     public static <T> GeneralResult<T> invalidParam(String message) {
-        return new GeneralResult<T>().setCode(ResultCodeEnums.PARAMS_ERROR_CODE.getCode()).setMessage(message);
+        return new GeneralResult<T>().setCode(ResponseCodeEnums.PARAMS_ERROR_CODE.getCode()).setMessage(message);
     }
 
     public boolean isSuccess() {
-        return code.equals(ResultCodeEnums.SUCCESS_CODE.getCode());
+        return code.equals(ResponseCodeEnums.SUCCESS_CODE.getCode());
     }
 
     @Override

@@ -8,7 +8,7 @@ import lombok.Getter;
  *
  */
 @Getter
-public enum ResultCodeEnums {
+public enum ResponseCodeEnums {
 	SUCCESS_CODE(200, "成功","成功"),
 	NO_DATA_CODE(201, "返回数据为空","成功，无数据"),
 	ERROR(5000, "系统内部错误","系统内部错误"),
@@ -76,14 +76,14 @@ public enum ResultCodeEnums {
 	private String message;
 	private String desc;
 
-	ResultCodeEnums(Integer code, String message, String desc) {
+	ResponseCodeEnums(Integer code, String message, String desc) {
 		this.code = code;
 		this.message = message;
 		this.desc = desc;
 	}
 
-	public static ResultCodeEnums codeOf(Integer code) {
-		for (ResultCodeEnums transferStatusEnums : values()) {
+	public static ResponseCodeEnums codeOf(Integer code) {
+		for (ResponseCodeEnums transferStatusEnums : values()) {
 			if (transferStatusEnums.getCode().equals(code)) {
 				return transferStatusEnums;
 			}
