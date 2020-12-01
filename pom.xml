@@ -15,6 +15,7 @@
 
     <modules>
         <module>yzl-common</module>
+        <module>yzl-logger</module>
     </modules>
 
     <properties>
