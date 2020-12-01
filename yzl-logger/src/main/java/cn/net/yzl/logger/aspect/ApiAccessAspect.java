@@ -1,6 +1,6 @@
 package cn.net.yzl.logger.aspect;
 
-import cn.net.yzl.common.entity.ComResponse;
+import cn.net.yzl.common.entity.GeneralResult;
 import cn.net.yzl.common.enums.ResponseCodeEnums;
 import cn.net.yzl.logger.Log;
 import cn.net.yzl.logger.common.XBasicUtil;
@@ -97,9 +97,9 @@ public class ApiAccessAspect {
             Boolean isSuccess = true;
             Integer code = 0;
             String message = "";
-            if (returnValue != null && returnValue.getClass().equals(ComResponse.class)){
-                message = ((ComResponse)returnValue).getMessage();
-                code = ((ComResponse)returnValue).getCode();
+            if (returnValue != null && returnValue.getClass().equals(GeneralResult.class)){
+                message = ((GeneralResult)returnValue).getMessage();
+                code = ((GeneralResult)returnValue).getCode();
 
             }
 

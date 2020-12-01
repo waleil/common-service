@@ -15,13 +15,19 @@
 
     <modules>
         <module>yzl-common</module>
+        <module>yzl-logger</module>
     </modules>
 
     <properties>
       <!--  <project.verson>1.0-SNAPSHOT</project.verson>-->
         <project.verson>1.0-RELEASE</project.verson>
     </properties>
-
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+    </dependencies>
     <build>
         <resources>
             <resource>
