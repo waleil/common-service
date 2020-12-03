@@ -1,41 +1,29 @@
 package cn.net.yzl.common.entity;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.AllArgsConstructor;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 /**
  * 统一的分页实体
  **/
-@JsonInclude(JsonInclude.Include.NON_NULL)
-@AllArgsConstructor
-@NoArgsConstructor
 @Data
+@ApiModel(value="PageParam",description="响应结果实体")
 public class PageParam {
-	/**
-	 * 每页多少条
-	 */
-	@JsonProperty("pageSize")
-	private Integer pageSize = 10;
 
-	/**
-	 * 当前页码
-	 */
-	@JsonProperty("pageNo")
-	private Integer pageNo = 1;
 
-	/**
-	 * 总页数
-	 */
-	@JsonProperty("pageTotal")
-	private Integer pageTotal;
 
-	/**
-	 * 总条数
-	 */
-	@JsonProperty("totalCount")
-	private Integer totalCount;
+	@ApiModelProperty(value="下一页",name="nextPage",hidden = true)
+	private int nextPage;
+	@ApiModelProperty(value="上一页",name="previousPage",hidden = true)
+	private int previousPage;
+	@ApiModelProperty(value="每页的数量",name="pageSize",hidden = true)
+	private int pageSize = 10;
+	@ApiModelProperty(value="当前页",name="pageNo",hidden = true)
+	private int pageNo = 1;
+	@ApiModelProperty(value="总页数",name="pageTotal",hidden = true)
+	private int pageTotal;
+	@ApiModelProperty(value="总条数",name="totalCount",hidden = true)
+	private int totalCount;
 
 }

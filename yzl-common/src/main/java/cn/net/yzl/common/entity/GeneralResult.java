@@ -1,8 +1,6 @@
 package cn.net.yzl.common.entity;
 
 import cn.net.yzl.common.enums.ResponseCodeEnums;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import org.springframework.util.StringUtils;
 
 import java.io.Serializable;
