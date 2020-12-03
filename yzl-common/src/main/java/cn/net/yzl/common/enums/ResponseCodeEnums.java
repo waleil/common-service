@@ -54,6 +54,10 @@ public enum ResponseCodeEnums {
 
 	// 3:开头表示 ehr
 	// 311  ......
+	// 311 钉钉错误 代码
+	DING_CONNECTION_ERROR_CODE(31100,"钉钉连接异常","钉钉连接异常"),
+	DING_ERROR_CODE(31101,"钉钉的错误代码信息","钉钉错误代码"),
+
 
 	// 4开头表示 dmc
 	// 411  ......
