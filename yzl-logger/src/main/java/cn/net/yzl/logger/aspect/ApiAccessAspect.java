@@ -97,19 +97,17 @@ public class ApiAccessAspect {
             Boolean isSuccess = true;
             Integer code = 0;
             String message = "";
+            DefaultDataEnums.Level level = DefaultDataEnums.Level.INFO;
             if (returnValue != null && returnValue.getClass().equals(GeneralResult.class)){
                 message = ((GeneralResult)returnValue).getMessage();
                 code = ((GeneralResult)returnValue).getCode();
-
-            }
-
-            if (monitorSwitch.equals(1)){
-                DefaultDataEnums.Level level = DefaultDataEnums.Level.INFO;
-
                 if ( !Objects.equals(code ,  ResponseCodeEnums.SUCCESS_CODE.getCode())){
                     level = DefaultDataEnums.Level.ERROR;
                     isSuccess=false;
                 }
+            }
+
+            if (monitorSwitch.equals(1)){
                 Log.monitorLogger(requestURI,DefaultDataEnums.Source.OUT_API.getStatus(),null,String.valueOf(time),domain,
                         startDate,endDate,requestParams.get("appId"), clientIp, code, message, level, requestMethod);
             }
