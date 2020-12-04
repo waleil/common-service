@@ -1,6 +1,6 @@
 package cn.net.yzl.logger.aspect;
 
-import cn.net.yzl.common.entity.ComResponse;
+import cn.net.yzl.common.entity.GeneralResult;
 import cn.net.yzl.common.enums.ResponseCodeEnums;
 import cn.net.yzl.logger.Log;
 import cn.net.yzl.logger.common.XBasicUtil;
@@ -97,19 +97,17 @@ public class ApiAccessAspect {
             Boolean isSuccess = true;
             Integer code = 0;
             String message = "";
-            if (returnValue != null && returnValue.getClass().equals(ComResponse.class)){
-                message = ((ComResponse)returnValue).getMessage();
-                code = ((ComResponse)returnValue).getCode();
-
-            }
-
-            if (monitorSwitch.equals(1)){
-                DefaultDataEnums.Level level = DefaultDataEnums.Level.INFO;
-
+            DefaultDataEnums.Level level = DefaultDataEnums.Level.INFO;
+            if (returnValue != null && returnValue.getClass().equals(GeneralResult.class)){
+                message = ((GeneralResult)returnValue).getMessage();
+                code = ((GeneralResult)returnValue).getCode();
                 if ( !Objects.equals(code ,  ResponseCodeEnums.SUCCESS_CODE.getCode())){
                     level = DefaultDataEnums.Level.ERROR;
                     isSuccess=false;
                 }
+            }
+
+            if (monitorSwitch.equals(1)){
                 Log.monitorLogger(requestURI,DefaultDataEnums.Source.OUT_API.getStatus(),null,String.valueOf(time),domain,
                         startDate,endDate,requestParams.get("appId"), clientIp, code, message, level, requestMethod);
             }

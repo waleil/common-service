@@ -11,7 +11,7 @@
     <artifactId>common-service</artifactId>
     <name>common-service</name>
     <description>御芝林公共jar包</description>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0-RELEASE</version>
 
     <modules>
         <module>yzl-common</module>
@@ -22,7 +22,12 @@
       <!--  <project.verson>1.0-SNAPSHOT</project.verson>-->
         <project.verson>1.0-RELEASE</project.verson>
     </properties>
-
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+    </dependencies>
     <build>
         <resources>
             <resource>
