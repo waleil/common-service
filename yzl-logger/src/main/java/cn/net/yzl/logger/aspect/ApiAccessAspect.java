@@ -59,9 +59,16 @@ public class ApiAccessAspect {
             RequestAttributes requestAttributes = RequestContextHolder.getRequestAttributes();
             HttpServletRequest request = ((ServletRequestAttributes)requestAttributes).getRequest();
             Map<String, String> requestParams = getRequestParameters(request);
-
             Long startEpochMilli = XDateUtil.getCurrentEpochMilli();
             String startDate = XDateUtil.getCurrentUtcStringSDate(true);
+            /*
+             *1、从请求中获取traceId,
+             *2、如果存在就更改traceId
+             */
+            String traceId = request.getHeader("traceId");
+            if(StringUtils.isNotEmpty(traceId)){
+                MDC.put("traceId",traceId);
+            }
 
             try {
                 returnValue = joinPoint.proceed();
