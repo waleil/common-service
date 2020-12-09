@@ -140,9 +140,7 @@ public class Log {
 
 
     public static void traceIdOf(DefaultDataEnums.Source source){
-        if (source != null &&
-                (source.equals(DefaultDataEnums.Source.SCHEDULER) ||
-                        source.equals(DefaultDataEnums.Source.OUT_API))){
+        if (source != null){
             XContextUtil.init();
             String traceId;
             //mdc中的traceId为准
@@ -154,18 +152,16 @@ public class Log {
             }
             XContextUtil.setValue(DefaultDataEnums.ThreadLocalKeys.LOG_DEFAULT_TRACE_ID.getKey(), traceId);
 
-            String spanId = RandomStringUtils.random(12, true, true);
+            String spanId = MDC.get("spanId");
+            if(StringUtils.isEmpty(spanId)){
+                spanId=  RandomStringUtils.random(12, true, true);
+            }
             //mdc中的spanId为准
 //      String mdcSpanId = MDC.get("spanId");
 //      if (!StringUtils.isEmpty(mdcSpanId)){
 //        spanId = mdcSpanId;
 //      }
             XContextUtil.setValue(DefaultDataEnums.ThreadLocalKeys.LOG_SPAN_ID.getKey(), spanId);
-        }
-
-        if (source != null && source.equals(DefaultDataEnums.Source.THIRD_API)){
-            XContextUtil.setValue(DefaultDataEnums.ThreadLocalKeys.LOG_CHILD_SPAN_ID.getKey(),
-                    RandomStringUtils.random(12, true, true));
         }
     }
 
