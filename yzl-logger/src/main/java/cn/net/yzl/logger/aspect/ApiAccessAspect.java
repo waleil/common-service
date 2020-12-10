@@ -178,6 +178,7 @@ public class ApiAccessAspect {
     public void doAfter(JoinPoint joinPoint) throws Throwable{
         Arrays.asList(DefaultDataEnums.ThreadLocalKeys.values())
                 .forEach(threadLocalKeys -> XContextUtil.clear(threadLocalKeys.getKey()));
+        MDC.clear();
 
     }
 

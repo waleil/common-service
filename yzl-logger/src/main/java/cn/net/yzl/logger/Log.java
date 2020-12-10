@@ -7,9 +7,9 @@ import cn.net.yzl.logger.common.XMapUtil;
 import cn.net.yzl.logger.enums.DefaultDataEnums;
 import cn.net.yzl.logger.json.JacksonUtil;
 import cn.net.yzl.logger.model.LogModel;
+import cn.net.yzl.logger.utils.SnowFlake;
 import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.RandomStringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
@@ -74,7 +74,7 @@ public class Log {
                 if (!StringUtils.isEmpty(traceId)){
                     traceId = mdcTraceId;
                 }else {
-                    traceId = XBasicUtil.uuid();
+                    traceId = SnowFlake.getId();
                 }
                 XContextUtil.setValue(DefaultDataEnums.ThreadLocalKeys.LOG_DEFAULT_TRACE_ID.getKey(), traceId);
             }
@@ -93,14 +93,7 @@ public class Log {
         try {
             String spanId = XContextUtil.getValue(DefaultDataEnums.ThreadLocalKeys.LOG_SPAN_ID.getKey(),"");
             if(StringUtils.isEmpty(spanId)){
-                //mdc中的spanId为准
-//        String mdcSpanId = MDC.get("spanId");
-//        if (!StringUtils.isEmpty(mdcSpanId)){
-//          spanId = mdcSpanId;
-//        }else {
-//          spanId = RandomStringUtils.random(12, true, true);
-//        }
-                spanId = RandomStringUtils.random(12, true, true);
+                spanId = SnowFlake.getId();
                 XContextUtil.setValue(DefaultDataEnums.ThreadLocalKeys.LOG_SPAN_ID.getKey(),spanId);
             }
             return spanId;
@@ -140,7 +133,9 @@ public class Log {
 
 
     public static void traceIdOf(DefaultDataEnums.Source source){
-        if (source != null){
+        if (source != null &&
+                (source.equals(DefaultDataEnums.Source.SCHEDULER) ||
+                        source.equals(DefaultDataEnums.Source.OUT_API))){
             XContextUtil.init();
             String traceId;
             //mdc中的traceId为准
@@ -148,20 +143,17 @@ public class Log {
             if (!StringUtils.isEmpty(mdcTraceId)){
                 traceId = mdcTraceId;
             }else {
-                traceId = XBasicUtil.uuid();
+                traceId = SnowFlake.getId();
             }
             XContextUtil.setValue(DefaultDataEnums.ThreadLocalKeys.LOG_DEFAULT_TRACE_ID.getKey(), traceId);
 
-            String spanId = MDC.get("spanId");
-            if(StringUtils.isEmpty(spanId)){
-                spanId=  RandomStringUtils.random(12, true, true);
-            }
-            //mdc中的spanId为准
-//      String mdcSpanId = MDC.get("spanId");
-//      if (!StringUtils.isEmpty(mdcSpanId)){
-//        spanId = mdcSpanId;
-//      }
+            String spanId = SnowFlake.getId();
             XContextUtil.setValue(DefaultDataEnums.ThreadLocalKeys.LOG_SPAN_ID.getKey(), spanId);
+        }
+
+        if (source != null && source.equals(DefaultDataEnums.Source.THIRD_API)){
+            XContextUtil.setValue(DefaultDataEnums.ThreadLocalKeys.LOG_CHILD_SPAN_ID.getKey(),
+                    SnowFlake.getId());
         }
     }
 
