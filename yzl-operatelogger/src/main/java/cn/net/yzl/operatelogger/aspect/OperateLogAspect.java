@@ -137,7 +137,6 @@ public class OperateLogAspect
             biOperationLog.setOperTime(new Date());
 
             // 设置返回值
-            System.out.println(StringUtils.substring(new ObjectMapper().writeValueAsString(jsonResult), 0, jsonResultLength).length());
             biOperationLog.setJsonResult(StringUtils.substring(new ObjectMapper().writeValueAsString(jsonResult), 0, jsonResultLength));
 
             // 各业务系统转换行为日志（存库或者其他实现）,实现logService接口
