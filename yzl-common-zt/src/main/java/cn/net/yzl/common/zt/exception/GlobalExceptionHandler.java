@@ -1,6 +1,5 @@
 package cn.net.yzl.common.zt.exception;
 
-import cn.net.yzl.common.zt.exception.user.UserHasNoPermissonException;
 import cn.net.yzl.common.entity.ComResponse;
 import cn.net.yzl.common.enums.ResponseCodeEnums;
 import org.slf4j.Logger;
@@ -60,20 +59,6 @@ public class GlobalExceptionHandler  {
         errorMsg.delete(errorMsg.length() - 1, errorMsg.length());
         return ComResponse.fail(ResponseCodeEnums.PARAMS_TYPE_ERROR_CODE.getCode(),errorMsg.toString());
     }
-
-
-    /**
-     * 用户没有权限异常处理
-     * @param UserHasNoPermissonException
-     * @return
-     */
-    @ExceptionHandler(value = UserHasNoPermissonException.class)
-    @ResponseBody
-    public Object userHasNoPermissonHandler(UserHasNoPermissonException e) {
-        logger.error("用户没有权限异常,原因是:{}"+e.getMessage());
-        return ComResponse.fail(ResponseCodeEnums.AUTHOR_ERROR_CODE.getCode(),ResponseCodeEnums.AUTHOR_ERROR_CODE.getMessage());
-    }
-
 
     @ExceptionHandler(value = Exception.class)
     @ResponseBody
