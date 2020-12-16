@@ -14,6 +14,9 @@
     <version>1.0-RELEASE</version>
 
     <modules>
+        <module>yzl-common-zt</module>
+        <module>yzl-common-service</module>
+        <module>yzl-common-dao</module>
         <module>yzl-common</module>
         <module>yzl-logger</module>
         <module>yzl-operatelogger</module>

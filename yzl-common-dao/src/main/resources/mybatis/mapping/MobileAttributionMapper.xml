@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.net.yzl.common.dao.mapper.MobileAttributionMapper">
+  <resultMap id="BaseResultMap" type="cn.net.yzl.common.dao.entity.MobileAttribution">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="start_number" jdbcType="INTEGER" property="startNumber" />
+    <result column="end_number" jdbcType="INTEGER" property="endNumber" />
+    <result column="pvc_id" jdbcType="SMALLINT" property="pvcId" />
+    <result column="attribution_id" jdbcType="INTEGER" property="attributionId" />
+    <result column="attribution_name" jdbcType="VARCHAR" property="attributionName" />
+    <result column="code" jdbcType="SMALLINT" property="code" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, start_number, end_number, pvc_id, attribution_id, attribution_name, code, create_time, 
+    update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from mobile_attribution
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from mobile_attribution
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.net.yzl.common.dao.entity.MobileAttribution">
+    insert into mobile_attribution (id, start_number, end_number, 
+      pvc_id, attribution_id, attribution_name, 
+      code, create_time, update_time
+      )
+    values (#{id,jdbcType=INTEGER}, #{startNumber,jdbcType=INTEGER}, #{endNumber,jdbcType=INTEGER}, 
+      #{pvcId,jdbcType=SMALLINT}, #{attributionId,jdbcType=INTEGER}, #{attributionName,jdbcType=VARCHAR}, 
+      #{code,jdbcType=SMALLINT}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.net.yzl.common.dao.entity.MobileAttribution">
+    insert into mobile_attribution
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="startNumber != null">
+        start_number,
+      </if>
+      <if test="endNumber != null">
+        end_number,
+      </if>
+      <if test="pvcId != null">
+        pvc_id,
+      </if>
+      <if test="attributionId != null">
+        attribution_id,
+      </if>
+      <if test="attributionName != null">
+        attribution_name,
+      </if>
+      <if test="code != null">
+        code,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="startNumber != null">
+        #{startNumber,jdbcType=INTEGER},
+      </if>
+      <if test="endNumber != null">
+        #{endNumber,jdbcType=INTEGER},
+      </if>
+      <if test="pvcId != null">
+        #{pvcId,jdbcType=SMALLINT},
+      </if>
+      <if test="attributionId != null">
+        #{attributionId,jdbcType=INTEGER},
+      </if>
+      <if test="attributionName != null">
+        #{attributionName,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=SMALLINT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.net.yzl.common.dao.entity.MobileAttribution">
+    update mobile_attribution
+    <set>
+      <if test="startNumber != null">
+        start_number = #{startNumber,jdbcType=INTEGER},
+      </if>
+      <if test="endNumber != null">
+        end_number = #{endNumber,jdbcType=INTEGER},
+      </if>
+      <if test="pvcId != null">
+        pvc_id = #{pvcId,jdbcType=SMALLINT},
+      </if>
+      <if test="attributionId != null">
+        attribution_id = #{attributionId,jdbcType=INTEGER},
+      </if>
+      <if test="attributionName != null">
+        attribution_name = #{attributionName,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        code = #{code,jdbcType=SMALLINT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.net.yzl.common.dao.entity.MobileAttribution">
+    update mobile_attribution
+    set start_number = #{startNumber,jdbcType=INTEGER},
+      end_number = #{endNumber,jdbcType=INTEGER},
+      pvc_id = #{pvcId,jdbcType=SMALLINT},
+      attribution_id = #{attributionId,jdbcType=INTEGER},
+      attribution_name = #{attributionName,jdbcType=VARCHAR},
+      code = #{code,jdbcType=SMALLINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <cache />
+</mapper>

@@ -1,0 +1,54 @@
+server:
+  port: 8077
+spring:
+  application:
+    name: yzl-common-zt
+  profiles:
+    active: dev
+  main:
+    allow-bean-definition-overriding: true
+  cloud:
+    nacos:
+      server-addr: 192.168.32.33:8848,192.168.32.34:8848,192.168.32.35:8848
+      discovery:
+        username: servergateway
+        password: servergateway
+        service: ${spring.application.name}
+        enabled: true
+        namespace: 71088b30-7c81-48cd-9f1e-481977d6157d
+      config:
+        username: zt
+        password: zt
+        encode: UTF-8
+        enabled: true
+        file-extension: yaml
+        namespace: fe8d4572-a72d-4a8d-9fcb-c6a031240087
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
