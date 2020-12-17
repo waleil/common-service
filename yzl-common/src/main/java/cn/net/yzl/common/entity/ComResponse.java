@@ -67,6 +67,22 @@ public class ComResponse<T> implements Serializable {
         return new ComResponse<T>().setStatus(status).setCode(code).setMessage(message).setData(data);
     }
 
+    public static <T> ComResponse<T> fail(ResponseCodeEnums responseCodeEnums) {
+        return new ComResponse<T>().setStatus(ERROR_STATUS).setCode(responseCodeEnums.getCode()).setMessage(responseCodeEnums.getMessage());
+    }
+
+    public static <T> ComResponse<T> fail(ResponseCodeEnums responseCodeEnums, T data) {
+        return new ComResponse<T>().setStatus(ERROR_STATUS).setCode(responseCodeEnums.getCode()).setMessage(responseCodeEnums.getMessage()).setData(data);
+    }
+
+    public static <T> ComResponse<T> fail(ResponseCodeEnums responseCodeEnums, String message) {
+        return new ComResponse<T>().setStatus(ERROR_STATUS).setCode(responseCodeEnums.getCode()).setMessage(message);
+    }
+
+    public static <T> ComResponse<T> fail(ResponseCodeEnums responseCodeEnums, String message, T data) {
+        return new ComResponse<T>().setStatus(ERROR_STATUS).setCode(responseCodeEnums.getCode()).setMessage(message).setData(data);
+    }
+
     public ComResponse<T> setCode(Integer code) {
         this.code = code;
         return this;

@@ -27,7 +27,7 @@ public enum ResponseCodeEnums {
 	PARAMS_EMPTY_ERROR_CODE(10003, "参数为空","参数为空"),
 	PARAMS_ERROR_CODE(10004, "参数验证错误", "参数验证错误"),
 	SERVICE_ERROR_CODE(10005, "服务异常","服务异常"),
-	TOKEN_INVALID_ERROR_CODE(10006, "token值无效","token值无效"),
+	TOKEN_INVALID_ERROR_CODE(10006, "请登录","token值无效"),
 	TIMESTAMP_ERROR_CODE(10007, "时间戳错误","时间戳错误"),
 	JSON_PARAM_ERROR_CODE(10008,"参数JSON解析错误","参数JSON解析错误"),
 	AUTHOR_ERROR_CODE(10009, "无访问权限", "无访问权限"),
