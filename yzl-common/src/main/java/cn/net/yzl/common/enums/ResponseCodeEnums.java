@@ -42,7 +42,8 @@ public enum ResponseCodeEnums {
 
 	// 2开头表示 crm, 3:开头表示 ehr 4:开头表示dmc 5:开头:bi
 	// 211 开头表示 员工服务
-	EXIT_CHILD_ERROR_CODE(21101,"部门下存在子部门不可删除!","部门下存在子部门不可删除"),
+	depart_CHILD_ERROR_CODE(21101,"部门下存在子部门不可删除!","部门下存在子部门不可删除"),
+	DEPART_ROOT_ERROR_CODE(21102,"集团不可删除!","集团不可删除"),
 	// 212 开头表示 顾客服务
 	// 213 开头表示 商品服务
 	// 214 开头表示 媒介服务
