@@ -17,9 +17,4 @@ public class Page<T>  {
     private PageParam pageParam;
     private List<T> items;
 
-
-
-
-
-
 }

@@ -38,7 +38,7 @@ public enum ResponseCodeEnums {
 	SAVE_DATA_ERROR_CODE(10014,"数据添加异常","数据库添加异常"),
 	UPDATE_DATA_ERROR_CODE(10015,"数据更新异常","数据更新异常"),
 	MISS_REQUEST_PARAMS_CODE(10016,"用户名或密码错误","用户名或密码错误"),
-	NO_MATCHING_RESULT_DATA(10017,"无符合的结果数据","无符合的结果数据"),
+	NO_MATCHING_RESULT_CODE(10017,"无符合的结果数据","无符合的结果数据"),
 	LOGIN_ERROR_CODE(11000,"访问接口参数不全","访问接口参数不全"),
 
 
