@@ -39,7 +39,7 @@ public enum ResponseCodeEnums {
 	UPDATE_DATA_ERROR_CODE(10015,"数据更新异常","数据更新异常"),
 	MISS_REQUEST_PARAMS_CODE(10016,"用户名或密码错误","用户名或密码错误"),
 	LOGIN_ERROR_CODE(11000,"访问接口参数不全","访问接口参数不全"),
-
+	APPID_CHECK_ERROR_CODE(11001,"appid 认证错误!","appid 认证错误!"),
 	// 2开头表示 crm, 3:开头表示 ehr 4:开头表示dmc 5:开头:bi
 	// 211 开头表示 员工服务
 	DEPART_CHILD_ERROR_CODE(21101,"部门下存在子部门不可删除!","部门下存在子部门不可删除"),
