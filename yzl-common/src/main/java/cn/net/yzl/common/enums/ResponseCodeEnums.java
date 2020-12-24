@@ -41,13 +41,13 @@ public enum ResponseCodeEnums {
 	NO_MATCHING_RESULT_CODE(10017,"无符合的结果数据","无符合的结果数据"),
 	LOGIN_ERROR_CODE(11000,"访问接口参数不全","访问接口参数不全"),
 	APPID_CHECK_ERROR_CODE(11001,"appid 认证错误!","appid 认证错误!"),
-
+	APPID_NO_WRITE_ERROR_CODE(11001,"appid没有可写权限!","appid没有可写权限!"),
 
 	// 2开头表示 crm, 3:开头表示 ehr 4:开头表示dmc 5:开头:bi
 	// 211 开头表示 员工服务
 	DEPART_CHILD_ERROR_CODE(21101,"部门下存在子部门不可删除!","部门下存在子部门不可删除"),
 	DEPART_ROOT_ERROR_CODE(21102,"集团不可删除!","集团不可删除"),
-
+	DEPART_NOEXIT_ERROR_CODE(21103,"部门不存在!","部门不存在"),
 
 	// 212 开头表示 顾客服务
 	// 213 开头表示 商品服务
