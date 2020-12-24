@@ -38,7 +38,7 @@ public enum ResponseCodeEnums {
 	SAVE_DATA_ERROR_CODE(10014,"数据添加异常","数据库添加异常"),
 	UPDATE_DATA_ERROR_CODE(10015,"数据更新异常","数据更新异常"),
 	MISS_REQUEST_PARAMS_CODE(10016,"用户名或密码错误","用户名或密码错误"),
-	NO_MATCHING_RESULT_CODE(10017,"无符合的结果数据","无符合的结果数据"),
+	NO_MATCHING_RESULT_CODE(10017,"无相应的数据","无相应的数据"),
 	LOGIN_ERROR_CODE(11000,"访问接口参数不全","访问接口参数不全"),
 	APPID_CHECK_ERROR_CODE(11001,"appid 认证错误!","appid 认证错误!"),
 
@@ -47,7 +47,8 @@ public enum ResponseCodeEnums {
 	// 211 开头表示 员工服务
 	DEPART_CHILD_ERROR_CODE(21101,"部门下存在子部门不可删除!","部门下存在子部门不可删除"),
 	DEPART_ROOT_ERROR_CODE(21102,"集团不可删除!","集团不可删除"),
-	POST_LEVEL_HAS_STAFF_ERROR_CODE(21103,"存在对应岗位级别的员工，不可删除该岗位等级!","存在对应岗位级别的员工，不可删除该岗位等级!"),
+	POST_HAS_STAFF_ERROR_CODE(21103,"存在对应岗位的员工，不可删除该岗位!","存在对应岗位的员工，不可删除该岗位!"),
+	POST_LEVEL_HAS_STAFF_ERROR_CODE(21104,"存在对应岗位级别的员工，不可删除该岗位等级!","存在对应岗位级别的员工，不可删除该岗位等级!"),
 
 	// 212 开头表示 顾客服务
 	// 213 开头表示 商品服务
