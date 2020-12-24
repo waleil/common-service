@@ -41,7 +41,7 @@ public enum ResponseCodeEnums {
 	NO_MATCHING_RESULT_CODE(10017,"无符合的结果数据","无符合的结果数据"),
 	LOGIN_ERROR_CODE(11000,"访问接口参数不全","访问接口参数不全"),
 	APPID_CHECK_ERROR_CODE(11001,"appid 认证错误!","appid 认证错误!"),
-
+	APPID_NO_WRITE_ERROR_CODE(11002,"appid 没有可写权限!","appid 没有可写权限!"),
 
 	// 2开头表示 crm, 3:开头表示 ehr 4:开头表示dmc 5:开头:bi
 	// 211 开头表示 员工服务
