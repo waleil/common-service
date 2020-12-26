@@ -18,6 +18,12 @@ public class DateFormatUtil {
      * 数据库日期格式，yyyy-MM
      */
     public static String MONTH_FORMAT = "yyyy-MM";
+
+    /**
+     *
+     */
+    public static String CHINA_FORMAT = "yyyy日MM月dd日";
+
     /**
      * 数据库日期格式，yyyy-MM-dd
      */

@@ -76,6 +76,22 @@ public class AssemblerResultUtil {
      * @param <T>
      * @return
      */
+    public static <T,N> Page<N> resultAssemblerListPage(List<T> list, List<N> voList) {
+        PageInfo<T> page = new PageInfo<>(list);
+        PageParam pageParam = new PageParam();
+        pageParam.setNextPage(page.getNextPage());
+        pageParam.setPreviousPage(page.getPrePage());
+        pageParam.setPageNo(page.getPageNum());
+        pageParam.setPageSize(page.getPageSize());
+        pageParam.setPageTotal(page.getPages());
+        pageParam.setTotalCount((int) page.getTotal());
+        Page<N> commonPageVO = new Page<>();
+        commonPageVO.setPageParam(pageParam);
+        commonPageVO.setItems(voList);
+
+        return commonPageVO;
+    }
+
     public static <T> Page<T> resultAssemblerList(List<T> list, List<T> voList) {
         PageInfo<T> page = new PageInfo<>(list);
         PageParam pageParam = new PageParam();

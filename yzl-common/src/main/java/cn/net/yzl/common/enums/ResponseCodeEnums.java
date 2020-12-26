@@ -38,6 +38,8 @@ public enum ResponseCodeEnums {
     MISS_REQUEST_PARAMS_CODE(10016, "用户名或密码错误", "用户名或密码错误"),
     NO_MATCHING_RESULT_CODE(10017, "无符合的结果数据", "无符合的结果数据"),
     UPLOAD_FAIL(10018, "上传失败!", "文件上传失败!"),
+    UPLOAD_FORMAT_NOT_ALLOW(10019, "上传格式不支持!", "上传格式不支持!"),
+    SAVE_FAIL(10020, "保存失败!", "保存失败!"),
     LOGIN_ERROR_CODE(11000, "访问接口参数不全", "访问接口参数不全"),
     APPID_CHECK_ERROR_CODE(11001, "appid 认证错误!", "appid 认证错误!"),
     APPID_NO_WRITE_ERROR_CODE(11002, "appid 没有可写权限!", "appid 没有可写权限!"),
