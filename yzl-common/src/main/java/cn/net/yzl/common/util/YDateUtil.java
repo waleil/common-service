@@ -508,6 +508,32 @@ public class YDateUtil {
         return list;
     }
 
+    /**
+     * 获取两个日期之间的天数
+     *
+     * @param startTime
+     * @param endTime
+     * @return
+     */
+    public static long getBetweenDateDay(String startTime, String endTime) {
+        //设置转换的日期格式
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        long betweenDateDay = 0;
+        try{
+            //开始时间
+            Date startDate = sdf.parse(startTime);
+            //结束时间
+            Date endDate = sdf.parse(endTime);
+
+            //得到相差的天数 betweenDate
+            betweenDateDay = (endDate.getTime() - startDate.getTime()) / (60 * 60 * 24 * 1000);
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return betweenDateDay;
+    }
+
     public static Integer getMinBetweenDate(Date startTime, Date endTime) {
         return getMinBetweenDate(commonFormat(startTime), commonFormat(endTime));
     }
