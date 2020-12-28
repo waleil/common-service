@@ -15,6 +15,7 @@ import java.util.List;
 public class Page<T>  {
     @ApiModelProperty(value="分页参数",name="pageParam")
     private PageParam pageParam;
+    @ApiModelProperty(value="数据items",name="items")
     private List<T> items;
 
 }
