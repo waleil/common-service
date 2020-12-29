@@ -51,7 +51,8 @@ public enum ResponseCodeEnums {
     DEPART_CHILD_ERROR_CODE(21101, "部门下存在子部门不可删除!", "部门下存在子部门不可删除"),
     DEPART_ROOT_ERROR_CODE(21102, "集团不可删除!", "集团不可删除"),
     DEPART_NOEXIT_ERROR_CODE(21103, "部门不存在!", "部门不存在"),
-    POST_HAS_STAFF_ERROR_CODE(21103, "存在对应岗位的员工，不可删除该岗位!", "存在对应岗位的员工，不可删除该岗位!"),
+    POST_HAS_STAFF_ERROR_CODE(21104, "存在对应岗位的员工，不可删除该岗位!", "存在对应岗位的员工，不可删除该岗位!"),
+	RESUME_EXIST_ERROR_CODE(21105, "此岗位已存在面试流程!", "此岗位面试流程已存在"),
     POST_LEVEL_HAS_STAFF_ERROR_CODE(21104, "存在对应岗位级别的员工，不可删除该岗位等级!", "存在对应岗位级别的员工，不可删除该岗位等级!"),
 
     // 212 开头表示 顾客服务
@@ -72,6 +73,7 @@ public enum ResponseCodeEnums {
     // 311 钉钉错误 代码
     DING_CONNECTION_ERROR_CODE(31100, "钉钉连接异常", "钉钉连接异常"),
     DING_ERROR_CODE(31101, "钉钉的错误代码信息", "钉钉错误代码"),
+    STAFF_SOCIAL_ERROR_CODE(31102, "该薪酬范围已关联员工,不能删除!", "该薪酬范围已关联员工,不能删除!"),
 
 
     // 4开头表示 dmc
