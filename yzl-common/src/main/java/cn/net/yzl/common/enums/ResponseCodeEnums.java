@@ -71,6 +71,7 @@ public enum ResponseCodeEnums {
     // 311 钉钉错误 代码
     DING_CONNECTION_ERROR_CODE(31100, "钉钉连接异常", "钉钉连接异常"),
     DING_ERROR_CODE(31101, "钉钉的错误代码信息", "钉钉错误代码"),
+    STAFF_SOCIAL_ERROR_CODE(31102, "该薪酬范围已关联员工,不能删除!", "该薪酬范围已关联员工,不能删除!"),
 
 
     // 4开头表示 dmc
