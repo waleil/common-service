@@ -27,7 +27,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @Profile({"dev","test"})
 public class Swagger2 {
 
-    private String packageName="cn.net.yzl.*.controller.*"; // 被扫描的包路径
+    private String packageName="cn.net.yzl.*.controller"; // 被扫描的包路径.controller.*
 
    @Bean
     public Docket createRestApi() {
@@ -35,7 +35,8 @@ public class Swagger2 {
                 .apiInfo(apiInfo())
                 .select()
 //                .apis(RequestHandlerSelectors.basePackage(packageName))
-                .apis(basePackage("^"+packageName+"$"))
+//                .apis(basePackage("^"+packageName+"$"))
+                .apis(RequestHandlerSelectors.any())
                 .paths(PathSelectors.any())
                 .build();
 
