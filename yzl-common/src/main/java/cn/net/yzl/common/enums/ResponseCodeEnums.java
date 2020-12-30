@@ -54,7 +54,7 @@ public enum ResponseCodeEnums {
     POST_HAS_STAFF_ERROR_CODE(21104, "存在对应岗位的员工，不可删除该岗位!", "存在对应岗位的员工，不可删除该岗位!"),
 	RESUME_EXIST_ERROR_CODE(21105, "此岗位已存在面试流程!", "此岗位面试流程已存在"),
     POST_LEVEL_HAS_STAFF_ERROR_CODE(21104, "存在对应岗位级别的员工，不可删除该岗位等级!", "存在对应岗位级别的员工，不可删除该岗位等级!"),
-
+    DEPART_EXIT_STAFF_CODE(21105, "部门下存在员工!", "部门下存在员工"),
     // 212 开头表示 顾客服务
     // 213 开头表示 商品服务
     // 214 开头表示 媒介服务
