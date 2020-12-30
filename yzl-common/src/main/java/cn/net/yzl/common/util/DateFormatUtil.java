@@ -23,6 +23,7 @@ public class DateFormatUtil {
      *
      */
     public static String CHINA_FORMAT = "yyyy日MM月dd日";
+    public static String CHINA_FORMAT_MINUTE = "yyyy日MM月dd日HH:mm";
 
     /**
      * 数据库日期格式，yyyy-MM-dd
