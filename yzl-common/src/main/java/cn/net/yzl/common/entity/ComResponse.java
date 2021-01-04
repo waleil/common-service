@@ -14,7 +14,7 @@ import java.io.Serializable;
 @ApiModel(value="ComResponse",description="响应结果实体")
 public class ComResponse<T> implements Serializable {
 
-    @ApiModelProperty(value="响应状态(1:成功,2:失败)",name="status")
+    @ApiModelProperty(value="响应状态(1:成功,2:失败)",name="status",hidden = true)
     private Integer status;
     @ApiModelProperty(value="响应码,200表示成功；其他表示失败",name="code")
     private Integer code;
