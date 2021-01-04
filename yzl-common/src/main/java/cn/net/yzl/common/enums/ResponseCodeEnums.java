@@ -57,6 +57,8 @@ public enum ResponseCodeEnums {
     DEPART_EXIT_STAFF_CODE(21107, "部门下存在员工!", "部门下存在员工"),
     STAFF_NOT_EXIT_CODE(21108, "员工不存在!", "员工不存在"),
     DEPART_ATTEND_RPITEM_EXIT_CODE(21109, "部门考勤奖惩项几日后生效数据存在!", "部门考勤奖惩项几日后生效数据存在"),
+    POST_NOT_EXIT_ERROR_CODE(21110,"岗位不存在!","岗位不存在!"),
+    POST_LEVEL_NOT_EXIT_ERROR_CODE( 21111,"岗位等级不存在!","岗位等级不存在!"),
     // 212 开头表示 顾客服务
     // 213 开头表示 商品服务
     // 214 开头表示 媒介服务
