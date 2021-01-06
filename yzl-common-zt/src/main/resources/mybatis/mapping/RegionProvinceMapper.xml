@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.net.yzl.common.zt.mapper.regionProvinceMapper">
-  <resultMap id="BaseResultMap" type="cn.net.yzl.common.zt.entity.regionProvince">
+<mapper namespace="cn.net.yzl.common.zt.mapper.RegionProvinceMapper">
+  <resultMap id="BaseResultMap" type="cn.net.yzl.common.zt.entity.RegionProvince">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="region_name" jdbcType="VARCHAR" property="regionName" />
     <result column="region_code" jdbcType="VARCHAR" property="regionCode" />
@@ -23,7 +23,7 @@
     delete from region_province
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="cn.net.yzl.common.zt.entity.regionProvince">
+  <insert id="insert" parameterType="cn.net.yzl.common.zt.entity.RegionProvince">
     insert into region_province (id, region_name, region_code, 
       province_id, province_code, create_time, 
       update_time)
@@ -31,7 +31,7 @@
       #{provinceId,jdbcType=INTEGER}, #{provinceCode,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
       #{updateTime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="cn.net.yzl.common.zt.entity.regionProvince">
+  <insert id="insertSelective" parameterType="cn.net.yzl.common.zt.entity.RegionProvince">
     insert into region_province
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -80,7 +80,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="cn.net.yzl.common.zt.entity.regionProvince">
+  <update id="updateByPrimaryKeySelective" parameterType="cn.net.yzl.common.zt.entity.RegionProvince">
     update region_province
     <set>
       <if test="regionName != null">
@@ -104,7 +104,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="cn.net.yzl.common.zt.entity.regionProvince">
+  <update id="updateByPrimaryKey" parameterType="cn.net.yzl.common.zt.entity.RegionProvince">
     update region_province
     set region_name = #{regionName,jdbcType=VARCHAR},
       region_code = #{regionCode,jdbcType=VARCHAR},

@@ -3,7 +3,7 @@ package cn.net.yzl.common.zt.entity;
 import java.io.Serializable;
 import java.util.Date;
 
-public class regionProvince implements Serializable {
+public class RegionProvince implements Serializable {
     private Integer id;
 
     private String regionName;
