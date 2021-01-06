@@ -10,7 +10,7 @@ public class MyStringSerializer extends StringRedisSerializer {
     private static Logger log = LoggerFactory.getLogger(MyStringSerializer.class);
 
 
-    private  final String   keyPrefix = "bi:";
+    private  final String   keyPrefix = "zt:";
 
 
     @Override
