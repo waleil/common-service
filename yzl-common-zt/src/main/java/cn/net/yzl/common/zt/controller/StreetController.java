@@ -25,20 +25,15 @@ public class StreetController {
 
     /**
      * 查询街道列表
-     * @param pageNum
-     * @param pageSize
      * @return
      */
     //@OperateLog(operModule = "街道:查询街道列表", businessType = BusinessType.SELECT)
     @GetMapping("/getStreetList")
-    public ComResponse getStreetList(@RequestParam(required = false, defaultValue = "1") Integer pageNum,
-                                     @RequestParam(required = false, defaultValue = "10") Integer pageSize,
-                                     @RequestParam(required = false) Integer areaId){
+    public ComResponse getStreetList(@RequestParam Integer areaId){
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("areaId", areaId);// 地区id
-        PageHelper.startPage(pageNum, pageSize);
         List<Street> streetList = streetService.getStreetList(map);
-        Page<Street> commonPageVO = AssemblerResultUtil.resultAssembler(streetList);
+        Page<Street> commonPageVO = AssemblerResultUtil.resultAssemblerSingleList(streetList);
         return ComResponse.success(commonPageVO);
     }
 

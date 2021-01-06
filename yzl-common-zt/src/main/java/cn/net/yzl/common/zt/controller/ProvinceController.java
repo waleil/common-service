@@ -3,6 +3,7 @@ package cn.net.yzl.common.zt.controller;
 import cn.net.yzl.common.entity.ComResponse;
 import cn.net.yzl.common.entity.Page;
 import cn.net.yzl.common.util.AssemblerResultUtil;
+import cn.net.yzl.common.zt.entity.MobileAttribution;
 import cn.net.yzl.common.zt.entity.Province;
 import cn.net.yzl.common.zt.service.ProvinceService;
 import com.github.pagehelper.PageHelper;
@@ -22,20 +23,16 @@ public class ProvinceController {
 
     /**
      * 查询省份列表
-     * @param pageNum
-     * @param pageSize
+     * @param regionCode
      * @return
      */
     @RequestMapping(value = "/getProvinceList", method = RequestMethod.GET)
-    public ComResponse getProvinceList(@RequestParam(required = false, defaultValue = "1") Integer pageNum,
-                                       @RequestParam(required = false, defaultValue = "10") Integer pageSize,
-                                       @RequestParam(required = false) String regionCode){
+    public ComResponse getProvinceList(@RequestParam(required = false) String regionCode){
 
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("regionCode", regionCode);// 大区编号
-        PageHelper.startPage(pageNum, pageSize);
         List<Province> provinceList = provinceService.getProvinceList(map);
-        Page<Province> commonPageVO = AssemblerResultUtil.resultAssembler(provinceList);
+        Page<Province> commonPageVO = AssemblerResultUtil.resultAssemblerSingleList(provinceList);
         return ComResponse.success(commonPageVO);
     }
 

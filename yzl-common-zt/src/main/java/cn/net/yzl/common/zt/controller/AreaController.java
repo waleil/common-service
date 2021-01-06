@@ -5,7 +5,6 @@ import cn.net.yzl.common.entity.Page;
 import cn.net.yzl.common.util.AssemblerResultUtil;
 import cn.net.yzl.common.zt.entity.Area;
 import cn.net.yzl.common.zt.service.AreaService;
-import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,30 +24,19 @@ public class AreaController {
 
     /**
      * 查询地区列表
-     * @param pageNum
-     * @param pageSize
+     * @param cityId
      * @return
      */
     //@OperateLog(operModule = "地区:查询地区列表", businessType = BusinessType.SELECT)
     @GetMapping("/getAreaList")
-    public ComResponse getAreaList(@RequestParam(required = false, defaultValue = "1") Integer pageNum,
-                                   @RequestParam(required = false, defaultValue = "10") Integer pageSize,
-                                   @RequestParam(required = false) Integer cityId){
+    public ComResponse getAreaList(@RequestParam Integer cityId){
 
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("cityId", cityId);// 城市id
-        PageHelper.startPage(pageNum, pageSize);
         List<Area> areaList = areaService.getAreaList(map);
-        Page<Area> commonPageVO = AssemblerResultUtil.resultAssembler(areaList);
+        Page<Area> commonPageVO = AssemblerResultUtil.resultAssemblerSingleList(areaList);
         return ComResponse.success(commonPageVO);
     }
-
-
-
-
-
-
-
 
 
 
