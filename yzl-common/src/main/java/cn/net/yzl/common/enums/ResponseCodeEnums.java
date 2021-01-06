@@ -53,10 +53,16 @@ public enum ResponseCodeEnums {
     DEPART_NOEXIT_ERROR_CODE(21103, "部门不存在!", "部门不存在"),
     POST_HAS_STAFF_ERROR_CODE(21104, "存在对应岗位的员工，不可删除该岗位!", "存在对应岗位的员工，不可删除该岗位!"),
 	RESUME_EXIST_ERROR_CODE(21105, "此岗位已存在面试流程!", "此岗位面试流程已存在"),
-    POST_LEVEL_HAS_STAFF_ERROR_CODE(21104, "存在对应岗位级别的员工，不可删除该岗位等级!", "存在对应岗位级别的员工，不可删除该岗位等级!"),
-    DEPART_EXIT_STAFF_CODE(21105, "部门下存在员工!", "部门下存在员工"),
-    STAFF_NOT_EXIT_CODE(21106, "员工不存在!", "员工不存在"),
-    DEPART_ATTEND_RPITEM_EXIT_CODE(21107, "部门考勤奖惩项几日后生效数据存在!", "部门考勤奖惩项几日后生效数据存在"),
+    POST_LEVEL_HAS_STAFF_ERROR_CODE(21106, "存在对应岗位级别的员工，不可删除该岗位等级!", "存在对应岗位级别的员工，不可删除该岗位等级!"),
+    DEPART_EXIT_STAFF_CODE(21107, "部门下存在员工!", "部门下存在员工"),
+    STAFF_NOT_EXIT_CODE(21108, "员工不存在!", "员工不存在"),
+    DEPART_ATTEND_RPITEM_EXIT_CODE(21109, "部门考勤奖惩项几日后生效数据存在!", "部门考勤奖惩项几日后生效数据存在"),
+    POST_NOT_EXIT_ERROR_CODE(21110,"岗位不存在!","岗位不存在!"),
+    POST_LEVEL_NOT_EXIT_ERROR_CODE( 21111,"岗位等级不存在!","岗位等级不存在!"),
+    RESUME_CONF_NOT_EXIT_ERROR_CODE( 21112,"面试流程配置不存在!","面试流程配置不存在!"),
+    RESUME_CONF_HAS_EXIT_ERROR_CODE( 21113,"部门下此岗位的面试流程已存在，不可重复添加!","面试流程已存在!"),
+
+
     // 212 开头表示 顾客服务
     // 213 开头表示 商品服务
     // 214 开头表示 媒介服务
