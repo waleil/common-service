@@ -4,6 +4,7 @@ package cn.net.yzl.common.zt.mapper;
 import cn.net.yzl.common.zt.entity.City;
 
 import java.util.List;
+import java.util.Map;
 
 public interface CityMapper {
 
@@ -23,5 +24,5 @@ public interface CityMapper {
      * 获取城市列表
      * @return
      */
-    List<City> getCityList();
+    List<City> getCityList(Map<String,Object> map);
 }

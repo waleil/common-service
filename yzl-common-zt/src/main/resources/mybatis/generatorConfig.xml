@@ -57,7 +57,7 @@
 
         <!--调用需要改动的 2-->
         <!-- 配置表信息 -->
-        <table tableName="region_province" domainObjectName="RegionProvince" enableCountByExample="false" enableUpdateByExample="false"
+        <table tableName="region_province" domainObjectName="RegionsProvince" enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" />
 
     </context>

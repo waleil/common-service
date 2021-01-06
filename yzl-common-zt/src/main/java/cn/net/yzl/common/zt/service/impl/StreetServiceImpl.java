@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
 
 @Service("streetService")
 public class StreetServiceImpl implements StreetService {
@@ -19,7 +20,7 @@ public class StreetServiceImpl implements StreetService {
      * @return
      */
     @Override
-    public List<Street> getStreetList() {
-        return streetMapper.getStreetList();
+    public List<Street> getStreetList(Map<String, Object> map) {
+        return streetMapper.getStreetList(map);
     }
 }

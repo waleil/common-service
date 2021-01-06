@@ -3,8 +3,8 @@ package cn.net.yzl.common.zt.controller;
 import cn.net.yzl.common.entity.ComResponse;
 import cn.net.yzl.common.entity.Page;
 import cn.net.yzl.common.util.AssemblerResultUtil;
-import cn.net.yzl.common.zt.entity.Street;
-import cn.net.yzl.common.zt.service.StreetService;
+import cn.net.yzl.common.zt.entity.Area;
+import cn.net.yzl.common.zt.service.AreaService;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,28 +17,29 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/street")
-public class StreetController {
+@RequestMapping("/area")
+public class AreaController {
 
     @Autowired
-    private StreetService streetService;
+    private AreaService areaService;
 
     /**
-     * 查询街道列表
+     * 查询地区列表
      * @param pageNum
      * @param pageSize
      * @return
      */
-    //@OperateLog(operModule = "街道:查询街道列表", businessType = BusinessType.SELECT)
-    @GetMapping("/getStreetList")
-    public ComResponse getStreetList(@RequestParam(required = false, defaultValue = "1") Integer pageNum,
-                                     @RequestParam(required = false, defaultValue = "10") Integer pageSize,
-                                     @RequestParam(required = false) Integer areaId){
+    //@OperateLog(operModule = "地区:查询地区列表", businessType = BusinessType.SELECT)
+    @GetMapping("/getAreaList")
+    public ComResponse getAreaList(@RequestParam(required = false, defaultValue = "1") Integer pageNum,
+                                   @RequestParam(required = false, defaultValue = "10") Integer pageSize,
+                                   @RequestParam(required = false) Integer cityId){
+
         Map<String, Object> map = new HashMap<String, Object>();
-        map.put("areaId", areaId);// 地区id
+        map.put("cityId", cityId);// 城市id
         PageHelper.startPage(pageNum, pageSize);
-        List<Street> streetList = streetService.getStreetList(map);
-        Page<Street> commonPageVO = AssemblerResultUtil.resultAssembler(streetList);
+        List<Area> areaList = areaService.getAreaList(map);
+        Page<Area> commonPageVO = AssemblerResultUtil.resultAssembler(areaList);
         return ComResponse.success(commonPageVO);
     }
 

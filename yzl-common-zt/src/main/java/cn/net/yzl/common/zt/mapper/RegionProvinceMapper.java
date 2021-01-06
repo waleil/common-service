@@ -1,6 +1,7 @@
 package cn.net.yzl.common.zt.mapper;
 
 import cn.net.yzl.common.zt.entity.RegionProvince;
+import java.util.List;
 
 public interface RegionProvinceMapper {
     int deleteByPrimaryKey(Integer id);
@@ -14,4 +15,10 @@ public interface RegionProvinceMapper {
     int updateByPrimaryKeySelective(RegionProvince record);
 
     int updateByPrimaryKey(RegionProvince record);
+
+    /**
+     * 查询大区省列表
+     * @return
+     */
+    List<RegionProvince> getRegionProvinceList();
 }

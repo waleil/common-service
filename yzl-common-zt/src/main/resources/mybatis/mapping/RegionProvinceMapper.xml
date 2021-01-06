@@ -114,5 +114,13 @@
       update_time = #{updateTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <!--查询大区省列表-->
+  <select id="getRegionProvinceList" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM region_province
+  </select>
+
   <cache />
 </mapper>

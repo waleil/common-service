@@ -4,6 +4,7 @@ package cn.net.yzl.common.zt.mapper;
 import cn.net.yzl.common.zt.entity.Province;
 
 import java.util.List;
+import java.util.Map;
 
 public interface ProvinceMapper {
     int deleteByPrimaryKey(Integer id);
@@ -22,6 +23,6 @@ public interface ProvinceMapper {
      * 查询省份信息列表
      * @return
      */
-    List<Province> getProvinceList();
+    List<Province> getProvinceList(Map<String,Object> map);
 
 }

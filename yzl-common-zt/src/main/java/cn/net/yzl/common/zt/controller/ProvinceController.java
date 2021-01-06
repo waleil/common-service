@@ -9,7 +9,9 @@ import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/province")
@@ -26,9 +28,13 @@ public class ProvinceController {
      */
     @RequestMapping(value = "/getProvinceList", method = RequestMethod.GET)
     public ComResponse getProvinceList(@RequestParam(required = false, defaultValue = "1") Integer pageNum,
-                                       @RequestParam(required = false, defaultValue = "10") Integer pageSize){
+                                       @RequestParam(required = false, defaultValue = "10") Integer pageSize,
+                                       @RequestParam(required = false) String regionCode){
+
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("regionCode", regionCode);// 大区编号
         PageHelper.startPage(pageNum, pageSize);
-        List<Province> provinceList = provinceService.getProvinceList();
+        List<Province> provinceList = provinceService.getProvinceList(map);
         Page<Province> commonPageVO = AssemblerResultUtil.resultAssembler(provinceList);
         return ComResponse.success(commonPageVO);
     }
