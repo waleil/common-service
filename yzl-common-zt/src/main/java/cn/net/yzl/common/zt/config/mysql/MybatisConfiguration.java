@@ -31,7 +31,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 @Configuration
 @AutoConfigureAfter(DataSourceConfiguration.class)
-@MapperScan(basePackages="cn.net.yzl.common.dao.mapper")
+@MapperScan(basePackages="cn.net.yzl.common.zt.mapper")
 public class MybatisConfiguration {
 
     private static Logger log = LoggerFactory.getLogger(MybatisConfiguration.class);
@@ -62,7 +62,7 @@ public class MybatisConfiguration {
             sessionFactoryBean.setDataSource(roundRobinDataSouceProxy());
 
             // 读取配置 
-            sessionFactoryBean.setTypeAliasesPackage("cn.net.yzl.common.dao.entity");
+            sessionFactoryBean.setTypeAliasesPackage("cn.net.yzl.common.zt.entity");
 
             //设置mapper.xml文件所在位置 
             Resource[] resources = new PathMatchingResourcePatternResolver().getResources(mapperLocations);

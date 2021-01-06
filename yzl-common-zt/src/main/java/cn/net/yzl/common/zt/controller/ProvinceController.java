@@ -1,10 +1,10 @@
 package cn.net.yzl.common.zt.controller;
 
-import cn.net.yzl.common.dao.entity.Province;
 import cn.net.yzl.common.entity.ComResponse;
 import cn.net.yzl.common.entity.Page;
-import cn.net.yzl.common.service.ProvinceService;
 import cn.net.yzl.common.util.AssemblerResultUtil;
+import cn.net.yzl.common.zt.entity.Province;
+import cn.net.yzl.common.zt.service.ProvinceService;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -19,7 +19,7 @@ public class ProvinceController {
     private ProvinceService provinceService;
 
     /**
-     * 获取省份信息列表
+     * 查询省份列表
      * @param pageNum
      * @param pageSize
      * @return

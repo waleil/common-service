@@ -47,10 +47,10 @@ public class DataSourceAopInService implements PriorityOrdered{
 
 	//	@Before("execution(* cn.net.yzl.bi.service..*.get*(..)) "
 //			+ " and @annotation(cn.net.yzl.bi.config.annotation.ReadDataSource) ")
-	@Before("execution(* cn.net.yzl.common.service..*.find*(..)) "
-			+ " or execution(* cn.net.yzl.common.service..*.get*(..)) "
-			+ " or execution(* cn.net.yzl.common.service..*.query*(..))"
-			+ " or execution(* cn.net.yzl.common.service..*.select*(..))")
+	@Before("execution(* cn.net.yzl.common.zt.service..*.find*(..)) "
+			+ " or execution(* cn.net.yzl.common.zt.service..*.get*(..)) "
+			+ " or execution(* cn.net.yzl.common.zt.service..*.query*(..))"
+			+ " or execution(* cn.net.yzl.common.zt.service..*.select*(..))")
 	public void setReadDataSourceType() {
 		//如果已经开启写事务了，那之后的所有读都从写库读
 		if(!DataSourceType.write.getType().equals(DataSourceContextHolder.getReadOrWrite())){
@@ -61,12 +61,12 @@ public class DataSourceAopInService implements PriorityOrdered{
 
 	//	@Before("execution(* cn.net.yzl.bi.service..*.*(..)) "
 //			+ " and @annotation(cn.net.yzl.bi.config.annotation.WriteDataSource) ")
-	@Before("execution(* cn.net.yzl.common.service..*.insert*(..)) "
-			+ " or execution(* cn.net.yzl.common.service..*.update*(..))"
-			+ " or execution(* cn.net.yzl.common.service..*.add*(..))"
-			+ " or execution(* cn.net.yzl.common.service..*.create*(..))"
-			+ " or execution(* cn.net.yzl.common.service..*.save*(..))"
-			+ " or execution(* cn.net.yzl.common.service..*.delete*(..))")
+	@Before("execution(* cn.net.yzl.common.zt.service..*.insert*(..)) "
+			+ " or execution(* cn.net.yzl.common.zt.service..*.update*(..))"
+			+ " or execution(* cn.net.yzl.common.zt.service..*.add*(..))"
+			+ " or execution(* cn.net.yzl.common.zt.service..*.create*(..))"
+			+ " or execution(* cn.net.yzl.common.zt.service..*.save*(..))"
+			+ " or execution(* cn.net.yzl.common.zt.service..*.delete*(..))")
 	public void setWriteDataSourceType() {
 		DataSourceContextHolder.setWrite();
 	}
