@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.net.yzl.pm.mapper.UserRoleMapper">
+  <resultMap id="BaseResultMap" type="cn.net.yzl.pm.entity.UserRole">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="user_code" jdbcType="VARCHAR" property="userCode" />
+    <result column="role_id" jdbcType="INTEGER" property="roleId" />
+    <result column="is_del" jdbcType="INTEGER" property="isDel" />
+    <result column="del_source" jdbcType="INTEGER" property="delSource" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="create_code" jdbcType="VARCHAR" property="createCode" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="update_code" jdbcType="VARCHAR" property="updateCode" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, user_code, role_id, is_del, del_source, create_time, create_code, update_time, 
+    update_code
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user_role
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from user_role
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <!--删除用户关联角色信息-->
+  <delete id="deleteUserRoleInfoByUserCode">
+    DELETE FROM user_role
+    WHERE user_code = #{userCode,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.net.yzl.pm.entity.UserRole">
+    insert into user_role (id, user_code, role_id, 
+      is_del, del_source, create_time, 
+      create_code, update_time, update_code
+      )
+    values (#{id,jdbcType=BIGINT}, #{userCode,jdbcType=VARCHAR}, #{roleId,jdbcType=INTEGER},
+      #{isDel,jdbcType=INTEGER}, #{delSource,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{createCode,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, #{updateCode,jdbcType=VARCHAR}
+      )
+  </insert>
+
+  <!--批量创建用户和角色关联信息绑定-->
+  <insert id="createUserRoleInfoList" parameterType="java.util.List">
+    INSERT INTO user_role
+    (user_code, role_id,create_code)
+    VALUES
+    <foreach collection="list" item="item" separator=",">
+      (#{item.userCode,jdbcType=VARCHAR}, #{item.roleId,jdbcType=INTEGER},
+       #{item.createCode,jdbcType=VARCHAR}
+      )
+    </foreach>
+  </insert>
+
+  <insert id="insertSelective" parameterType="cn.net.yzl.pm.entity.UserRole">
+    insert into user_role
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="userCode != null">
+        user_code,
+      </if>
+      <if test="roleId != null">
+        role_id,
+      </if>
+      <if test="isDel != null">
+        is_del,
+      </if>
+      <if test="delSource != null">
+        del_source,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="createCode != null">
+        create_code,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="updateCode != null">
+        update_code,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="userCode != null">
+        #{userCode,jdbcType=VARCHAR},
+      </if>
+      <if test="roleId != null">
+        #{roleId,jdbcType=INTEGER},
+      </if>
+      <if test="isDel != null">
+        #{isDel,jdbcType=INTEGER},
+      </if>
+      <if test="delSource != null">
+        #{delSource,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createCode != null">
+        #{createCode,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateCode != null">
+        #{updateCode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.net.yzl.pm.entity.UserRole">
+    update user_role
+    <set>
+      <if test="userCode != null">
+        user_code = #{userCode,jdbcType=VARCHAR},
+      </if>
+      <if test="roleId != null">
+        role_id = #{roleId,jdbcType=INTEGER},
+      </if>
+      <if test="isDel != null">
+        is_del = #{isDel,jdbcType=INTEGER},
+      </if>
+      <if test="delSource != null">
+        del_source = #{delSource,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createCode != null">
+        create_code = #{createCode,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateCode != null">
+        update_code = #{updateCode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.net.yzl.pm.entity.UserRole">
+    update user_role
+    set user_code = #{userCode,jdbcType=VARCHAR},
+      role_id = #{roleId,jdbcType=INTEGER},
+      is_del = #{isDel,jdbcType=INTEGER},
+      del_source = #{delSource,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      create_code = #{createCode,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      update_code = #{updateCode,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+  <!--根据主键id删除用户信息-->
+  <update id="deleteBiUserRoleInfo">
+    UPDATE user_role
+    SET
+      <if test="updateCode != null and updateCode != ''">
+        update_code = #{updateCode,jdbcType=VARCHAR},
+      </if>
+       is_del = 1,del_source = 1
+    WHERE id IN
+    <foreach collection="userRoleIds" item="userRoleId" index="index" open="(" close=")" separator=",">
+       #{userRoleId,jdbcType=BIGINT}
+    </foreach>
+
+  </update>
+
+  <!--根据角色ID查询用户信息列表-->
+  <select id="getBiUserRoleList" resultType="java.util.Map">
+    SELECT
+    bur.id AS userRoleId,
+    bur.user_code AS userCode,
+    bu.user_name AS userName,
+    bur.role_id AS roleId,
+    bu.dept_id AS deptId,
+    bu.dept_name AS deptName,
+    bur.is_del AS isDel,
+    bur.del_source AS delSource,
+    bur.create_time AS createTime
+    FROM user_role bur LEFT JOIN user bu
+    ON bur.user_code = bu.user_code
+    WHERE bur.is_del = 0
+    <if test="roleId != null">
+      AND bur.role_id = #{roleId,jdbcType=INTEGER}
+    </if>
+    ORDER BY bur.create_time DESC
+  </select>
+
+  <!--查询用户信息是否存在-->
+  <select id="getUserRoleInfo" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM user_role
+    WHERE is_del = 0
+      AND user_code = #{userCode,jdbcType=VARCHAR}
+      AND role_id = #{roleId,jdbcType=INTEGER}
+  </select>
+
+  <!--根据用户编号查询对应的角色信息-->
+  <select id="getUserRoleListByUserCode" parameterType="java.lang.String" resultType="java.lang.Integer">
+    SELECT
+     ur.role_id AS roleIds
+    FROM user_role ur
+    WHERE ur.is_del = 0
+      AND ur.user_code = #{userCode,jdbcType=VARCHAR}
+  </select>
+
+  <!--根据用户编号查询绑定的角色信息-->
+  <select id="getUserRoleInfoByUserCodes" parameterType="java.lang.String" resultType="cn.net.yzl.pm.model.vo.UserRoleVO">
+    SELECT
+     ur.user_code AS userCode,
+     r.id AS roleId,
+     r.role_name AS roleName,
+     r.role_desc AS roleDesc,
+     r.role_sort AS roleSort
+    FROM role r
+    LEFT JOIN user_role ur ON ur.role_id = r.id
+    WHERE r.is_enable =1 AND r.is_del = 0 AND ur.is_del = 0
+    AND ur.user_code IN
+    <foreach collection="userCodes" item="userCode" index="index" open="(" close=")" separator=",">
+      #{userCode,jdbcType=VARCHAR}
+    </foreach>
+  </select>
+
+  <cache />
+</mapper>
