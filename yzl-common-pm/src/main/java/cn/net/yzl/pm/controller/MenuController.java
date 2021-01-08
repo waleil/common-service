@@ -18,8 +18,7 @@ import java.util.*;
 @RequestMapping("/menu")
 public class MenuController {
 
-    @Autowired
-    private OperateLogService operateLogService;
+
     @Autowired
     private MenuService menuService;
 

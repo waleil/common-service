@@ -67,13 +67,6 @@
             </exclusions>
         </dependency>
 
-        <!--行为日志-->
-        <dependency>
-            <groupId>cn.net.yzl</groupId>
-            <artifactId>yzl-operatelogger</artifactId>
-            <version>1.0-RELEASE</version>
-        </dependency>
-
         <!--logger-->
         <dependency>
             <groupId>cn.net.yzl</groupId>
