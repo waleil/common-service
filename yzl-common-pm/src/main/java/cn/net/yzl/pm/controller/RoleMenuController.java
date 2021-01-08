@@ -6,8 +6,6 @@ import cn.net.yzl.pm.service.RoleService;
 import cn.net.yzl.pm.model.dto.RoleDTO;
 import cn.net.yzl.pm.model.vo.RoleMenuVO;
 import cn.net.yzl.common.entity.ComResponse;
-import cn.net.yzl.operatelogger.annotate.OperateLog;
-import cn.net.yzl.operatelogger.enums.BusinessType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,7 +25,6 @@ public class RoleMenuController {
      * Param biRole
      * @return
      */
-    @OperateLog(operModule = "角色菜单模块:创建/修改方法", businessType = BusinessType.INSERT)
     @PostMapping("/createOrUpdateRoleMenuInfoList")
     public ComResponse createOrUpdateRoleMenuInfoList(@RequestBody RoleDTO roleDTO) {
         String operationName = "";
@@ -63,7 +60,6 @@ public class RoleMenuController {
      * @param roleId
      * @return
      */
-    @OperateLog(operModule = "角色菜单模块:根据角色id查询对应的菜单信息", businessType = BusinessType.SELECT)
     @RequestMapping(value = "/getRoleMenuListByRoleId", method = RequestMethod.GET)
     public ComResponse getRoleMenuListByRoleId(@RequestParam Integer roleId) {
         RoleMenuVO roleMenuVO = roleMenuService.getRoleMenuListByRoleId(roleId);

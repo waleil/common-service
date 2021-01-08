@@ -6,9 +6,6 @@ import cn.net.yzl.pm.service.MenuService;
 import cn.net.yzl.common.entity.ComResponse;
 import cn.net.yzl.common.entity.Page;
 import cn.net.yzl.common.util.AssemblerResultUtil;
-import cn.net.yzl.operatelogger.annotate.OperateLog;
-import cn.net.yzl.operatelogger.enums.BusinessType;
-import cn.net.yzl.operatelogger.service.OperateLogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,7 +23,6 @@ public class MenuController {
      * 查询菜单列表
      * @return
      */
-    @OperateLog(operModule = "查询菜单列表:查询方法", businessType = BusinessType.SELECT)
     @RequestMapping(value = "/getMenuList", method = RequestMethod.GET)
     public ComResponse getMenuList() {
 
@@ -41,7 +37,6 @@ public class MenuController {
      * @param userCode
      * @return
      */
-    @OperateLog(operModule = "查询菜单信息:查询方法", businessType = BusinessType.SELECT)
     @RequestMapping(value = "/getMenuListByUserCode", method = RequestMethod.GET)
     public ComResponse getMenuListByUserCode(@RequestParam String userCode) {
 

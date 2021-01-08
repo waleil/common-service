@@ -5,8 +5,6 @@ import cn.net.yzl.pm.service.RoleService;
 import cn.net.yzl.common.entity.ComResponse;
 import cn.net.yzl.common.entity.Page;
 import cn.net.yzl.common.util.AssemblerResultUtil;
-import cn.net.yzl.operatelogger.annotate.OperateLog;
-import cn.net.yzl.operatelogger.enums.BusinessType;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -26,7 +24,6 @@ public class RoleController {
      * @param pageSize
      * @return
      */
-    @OperateLog(operModule = "角色模块:查询方法", businessType = BusinessType.SELECT)
     @GetMapping("/getRoleList")
     public ComResponse getRoleList(@RequestParam(required = false, defaultValue = "1") Integer pageNum,
                                    @RequestParam(required = false, defaultValue = "10") Integer pageSize) {
@@ -42,7 +39,6 @@ public class RoleController {
      * Param biRole
      * @return
      */
-    @OperateLog(operModule = "角色模块:创建方法", businessType = BusinessType.INSERT)
     @PostMapping("/createRoleInfo")
     public ComResponse createRoleInfo(@RequestBody Role role) {
         int i = roleService.createRoleInfo(role);
