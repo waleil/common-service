@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.net.yzl.pm.mapper.MenuMapper">
+  <resultMap id="BaseResultMap" type="cn.net.yzl.pm.entity.Menu">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="menu_name" jdbcType="VARCHAR" property="menuName" />
+    <result column="parent_id" jdbcType="INTEGER" property="parentId" />
+    <result column="order_num" jdbcType="INTEGER" property="orderNum" />
+    <result column="permission_type" jdbcType="INTEGER" property="permissionType" />
+    <result column="menu_path" jdbcType="VARCHAR" property="menuPath" />
+    <result column="component" jdbcType="VARCHAR" property="component" />
+    <result column="is_frame" jdbcType="INTEGER" property="isFrame" />
+    <result column="menu_type" jdbcType="VARCHAR" property="menuType" />
+    <result column="is_enable" jdbcType="INTEGER" property="isEnable" />
+    <result column="is_del" jdbcType="INTEGER" property="isDel" />
+    <result column="perms" jdbcType="VARCHAR" property="perms" />
+    <result column="icon" jdbcType="VARCHAR" property="icon" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="create_code" jdbcType="VARCHAR" property="createCode" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="update_code" jdbcType="VARCHAR" property="updateCode" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, menu_name, parent_id, order_num, permission_type, menu_path, component, is_frame, 
+    menu_type, is_enable, is_del, perms, icon, remark, create_time, create_code, update_time, 
+    update_code
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from menu
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from menu
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.net.yzl.pm.entity.Menu">
+    insert into menu (id, menu_name, parent_id, 
+      order_num, permission_type, menu_path, 
+      component, is_frame, menu_type, 
+      is_enable, is_del, perms, 
+      icon, remark, create_time, 
+      create_code, update_time, update_code
+      )
+    values (#{id,jdbcType=INTEGER}, #{menuName,jdbcType=VARCHAR}, #{parentId,jdbcType=INTEGER}, 
+      #{orderNum,jdbcType=INTEGER}, #{permissionType,jdbcType=INTEGER}, #{menuPath,jdbcType=VARCHAR}, 
+      #{component,jdbcType=VARCHAR}, #{isFrame,jdbcType=INTEGER}, #{menuType,jdbcType=VARCHAR}, 
+      #{isEnable,jdbcType=INTEGER}, #{isDel,jdbcType=INTEGER}, #{perms,jdbcType=VARCHAR}, 
+      #{icon,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{createCode,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, #{updateCode,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.net.yzl.pm.entity.Menu">
+    insert into menu
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="menuName != null">
+        menu_name,
+      </if>
+      <if test="parentId != null">
+        parent_id,
+      </if>
+      <if test="orderNum != null">
+        order_num,
+      </if>
+      <if test="permissionType != null">
+        permission_type,
+      </if>
+      <if test="menuPath != null">
+        menu_path,
+      </if>
+      <if test="component != null">
+        component,
+      </if>
+      <if test="isFrame != null">
+        is_frame,
+      </if>
+      <if test="menuType != null">
+        menu_type,
+      </if>
+      <if test="isEnable != null">
+        is_enable,
+      </if>
+      <if test="isDel != null">
+        is_del,
+      </if>
+      <if test="perms != null">
+        perms,
+      </if>
+      <if test="icon != null">
+        icon,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="createCode != null">
+        create_code,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="updateCode != null">
+        update_code,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="menuName != null">
+        #{menuName,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null">
+        #{parentId,jdbcType=INTEGER},
+      </if>
+      <if test="orderNum != null">
+        #{orderNum,jdbcType=INTEGER},
+      </if>
+      <if test="permissionType != null">
+        #{permissionType,jdbcType=INTEGER},
+      </if>
+      <if test="menuPath != null">
+        #{menuPath,jdbcType=VARCHAR},
+      </if>
+      <if test="component != null">
+        #{component,jdbcType=VARCHAR},
+      </if>
+      <if test="isFrame != null">
+        #{isFrame,jdbcType=INTEGER},
+      </if>
+      <if test="menuType != null">
+        #{menuType,jdbcType=VARCHAR},
+      </if>
+      <if test="isEnable != null">
+        #{isEnable,jdbcType=INTEGER},
+      </if>
+      <if test="isDel != null">
+        #{isDel,jdbcType=INTEGER},
+      </if>
+      <if test="perms != null">
+        #{perms,jdbcType=VARCHAR},
+      </if>
+      <if test="icon != null">
+        #{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createCode != null">
+        #{createCode,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateCode != null">
+        #{updateCode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.net.yzl.pm.entity.Menu">
+    update menu
+    <set>
+      <if test="menuName != null">
+        menu_name = #{menuName,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null">
+        parent_id = #{parentId,jdbcType=INTEGER},
+      </if>
+      <if test="orderNum != null">
+        order_num = #{orderNum,jdbcType=INTEGER},
+      </if>
+      <if test="permissionType != null">
+        permission_type = #{permissionType,jdbcType=INTEGER},
+      </if>
+      <if test="menuPath != null">
+        menu_path = #{menuPath,jdbcType=VARCHAR},
+      </if>
+      <if test="component != null">
+        component = #{component,jdbcType=VARCHAR},
+      </if>
+      <if test="isFrame != null">
+        is_frame = #{isFrame,jdbcType=INTEGER},
+      </if>
+      <if test="menuType != null">
+        menu_type = #{menuType,jdbcType=VARCHAR},
+      </if>
+      <if test="isEnable != null">
+        is_enable = #{isEnable,jdbcType=INTEGER},
+      </if>
+      <if test="isDel != null">
+        is_del = #{isDel,jdbcType=INTEGER},
+      </if>
+      <if test="perms != null">
+        perms = #{perms,jdbcType=VARCHAR},
+      </if>
+      <if test="icon != null">
+        icon = #{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createCode != null">
+        create_code = #{createCode,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateCode != null">
+        update_code = #{updateCode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.net.yzl.pm.entity.Menu">
+    update menu
+    set menu_name = #{menuName,jdbcType=VARCHAR},
+      parent_id = #{parentId,jdbcType=INTEGER},
+      order_num = #{orderNum,jdbcType=INTEGER},
+      permission_type = #{permissionType,jdbcType=INTEGER},
+      menu_path = #{menuPath,jdbcType=VARCHAR},
+      component = #{component,jdbcType=VARCHAR},
+      is_frame = #{isFrame,jdbcType=INTEGER},
+      menu_type = #{menuType,jdbcType=VARCHAR},
+      is_enable = #{isEnable,jdbcType=INTEGER},
+      is_del = #{isDel,jdbcType=INTEGER},
+      perms = #{perms,jdbcType=VARCHAR},
+      icon = #{icon,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      create_code = #{createCode,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      update_code = #{updateCode,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <!--根据菜单id查询对应的菜单信息-->
+  <select id="getMenuListByMenuId" resultType="cn.net.yzl.pm.model.vo.MenuVO">
+    SELECT
+    m.menu_name AS menuName,
+    m.parent_id AS parentId,
+    m.order_num AS orderNum,
+    m.permission_type AS permissionType,
+    m.menu_path AS menuPath,
+    m.open_way AS openWay,
+    m.component AS component,
+    m.is_frame AS isFrame,
+    m.menu_type as menuType,
+    m.is_enable AS isEnable,
+    m.perms AS perms,
+    m.icon AS icon
+    FROM
+    menu m
+    WHERE m.is_enable = 1 AND m.is_del =0 AND m.id IN
+    <foreach collection="menuIds" item="menuId" index="index" open="(" close=")" separator=",">
+      #{menuId,jdbcType=INTEGER}
+    </foreach>
+  </select>
+
+  <!--查询菜单列表-->
+  <select id="getMenuList" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    FROM menu
+  </select>
+
+  <cache />
+
+</mapper>
