@@ -32,12 +32,6 @@
             <artifactId>yzl-logger</artifactId>
             <version>1.0-RELEASE</version>
         </dependency>
-        <!--行为日志-->
-        <dependency>
-            <groupId>cn.net.yzl</groupId>
-            <artifactId>yzl-operatelogger</artifactId>
-            <version>1.0-RELEASE</version>
-        </dependency>
         <!--redis-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
