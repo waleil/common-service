@@ -104,10 +104,16 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
 
-  <select id="getStreetList" resultMap="BaseResultMap">
+  <select id="getStreetList" parameterType="java.util.Map"  resultMap="BaseResultMap">
     SELECT
     <include refid="Base_Column_List" />
     FROM street
+    <where>
+      <if test="areaId != null">
+        area_id = #{areaId,jdbcType=INTEGER}
+      </if>
+    </where>
+    ORDER BY id
   </select>
   <cache />
 

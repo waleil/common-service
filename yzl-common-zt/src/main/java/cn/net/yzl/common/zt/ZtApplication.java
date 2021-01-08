@@ -15,12 +15,11 @@ import org.springframework.web.filter.CorsFilter;
 public class ZtApplication {
 
 
-
     public static void main(String[] args) {
         SpringApplication.run(ZtApplication.class, args);
     }
 
-    private CorsConfiguration buildConfig() {
+/*    private CorsConfiguration buildConfig() {
         CorsConfiguration corsConfiguration = new CorsConfiguration();
         corsConfiguration.addAllowedOrigin("*");
         corsConfiguration.addAllowedHeader("*");
@@ -28,16 +27,16 @@ public class ZtApplication {
         return corsConfiguration;
     }
 
-    /**
+    *//**
      * 跨域过滤器
      *
      * @return CorsFilter
-     */
+     *//*
     @Bean
     public CorsFilter corsFilter() {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", buildConfig());
         return new CorsFilter(source);
-    }
+    }*/
 
 }

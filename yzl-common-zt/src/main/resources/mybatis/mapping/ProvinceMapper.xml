@@ -151,11 +151,19 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
 
-  <select id="getProvinceList" resultMap="BaseResultMap">
+  <select id="getProvinceList" parameterType="java.util.Map" resultMap="BaseResultMap">
     SELECT
-    <include refid="Base_Column_List" />
-    FROM province
+     p.*
+    FROM region_province rp
+    LEFT JOIN province p
+    ON p.id = rp.province_id
+    <where>
+    <if test="regionCode != null and regionCode != ''">
+      rp.region_code = #{regionCode,jdbcType=VARCHAR}
+    </if>
+    </where>
     ORDER BY id
+
   </select>
 
   <cache />

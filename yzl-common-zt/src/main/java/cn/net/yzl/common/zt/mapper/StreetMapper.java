@@ -4,6 +4,7 @@ package cn.net.yzl.common.zt.mapper;
 import cn.net.yzl.common.zt.entity.Street;
 
 import java.util.List;
+import java.util.Map;
 
 public interface StreetMapper {
     int deleteByPrimaryKey(Integer id);
@@ -22,6 +23,6 @@ public interface StreetMapper {
      * 查询街道列表
      * @return
      */
-    List<Street> getStreetList();
+    List<Street> getStreetList(Map<String, Object> map);
 
 }

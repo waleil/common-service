@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
 
 @Service("provinceService")
 public class ProvinceServiceImpl implements ProvinceService {
@@ -19,8 +20,8 @@ public class ProvinceServiceImpl implements ProvinceService {
      * @return
      */
     @Override
-    public List<Province> getProvinceList() {
-        return provinceMapper.getProvinceList();
+    public List<Province> getProvinceList(Map<String,Object> map) {
+        return provinceMapper.getProvinceList(map);
     }
 
     @Override

@@ -3,6 +3,9 @@ package cn.net.yzl.common.zt.mapper;
 
 import cn.net.yzl.common.zt.entity.Area;
 
+import java.util.List;
+import java.util.Map;
+
 public interface AreaMapper {
     int deleteByPrimaryKey(Integer id);
 
@@ -15,4 +18,11 @@ public interface AreaMapper {
     int updateByPrimaryKeySelective(Area record);
 
     int updateByPrimaryKey(Area record);
+
+    /**
+     * 查询地区列表
+     * @param map
+     * @return
+     */
+    List<Area> getAreaList(Map<String, Object> map);
 }
