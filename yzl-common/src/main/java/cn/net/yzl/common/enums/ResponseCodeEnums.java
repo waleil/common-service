@@ -64,6 +64,7 @@ public enum ResponseCodeEnums {
     DEPART_POST_EXIT_ERROR_CODE(21114,"部门下已存在对应岗位，请勿重复添加","部门下已存在对应岗位，请勿重复添加"),
     POST_EXIT_ERROR_CODE(21115,"存在同名岗位,勿重复添加","存在同名岗位,勿重复添加"),
     POST_LEVEL_EXIT_ERROR_CODE(21116,"同名岗位等级已存在,请勿重复添加","同名岗位等级已存在,请勿重复添加"),
+    RESUME_STEP_USED_CODE(21117,"面试轮次字典已被使用,不可删除","面试轮次字典已被使用,不可删除"),
     // 212 开头表示 顾客服务
     // 213 开头表示 商品服务
     // 214 开头表示 媒介服务
