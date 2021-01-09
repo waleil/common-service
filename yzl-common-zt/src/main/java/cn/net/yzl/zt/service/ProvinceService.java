@@ -10,9 +10,11 @@ public interface ProvinceService {
 
     /**
      * 查询省份列表
+     * @param countryId 国家id
+     * @param regionCode 大区编号
      * @return
      */
-    List<Province> getProvinceList(Map<String,Object> map);
+    List<Province> getProvinceList(Integer countryId,String regionCode);
 
     int createProvinceInfo(Province province);
 

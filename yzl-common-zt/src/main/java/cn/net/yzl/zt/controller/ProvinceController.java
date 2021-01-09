@@ -6,6 +6,7 @@ import cn.net.yzl.common.util.AssemblerResultUtil;
 import cn.net.yzl.zt.entity.Province;
 import cn.net.yzl.zt.service.ProvinceService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -25,11 +26,19 @@ public class ProvinceController {
      * @return
      */
     @RequestMapping(value = "/getProvinceList", method = RequestMethod.GET)
-    public ComResponse getProvinceList(@RequestParam(required = false) String regionCode){
+    public ComResponse getProvinceList( @RequestParam(required = false) Integer countryId,
+                                        @RequestParam(required = false) String regionCode){
 
-        Map<String, Object> map = new HashMap<String, Object>();
-        map.put("regionCode", regionCode);// 大区编号
-        List<Province> provinceList = provinceService.getProvinceList(map);
+//        Map<String, Object> map = new HashMap<String, Object>();
+//        if(StringUtils.hasText(regionCode)) {
+//            map.put("regionCode", regionCode);// 大区编号
+//        }
+//        if(countryId != null) {
+//            map.put("provinceId", countryId);// 省份id
+//        }
+     //   return ComResponse.fail(ComResponse.ERROR_STATUS, "参数错误");
+
+        List<Province> provinceList = provinceService.getProvinceList(countryId,regionCode);
         Page<Province> commonPageVO = AssemblerResultUtil.resultAssemblerSingleList(provinceList);
         return ComResponse.success(commonPageVO);
     }

@@ -4,8 +4,10 @@ import cn.net.yzl.zt.entity.Province;
 import cn.net.yzl.zt.mapper.ProvinceMapper;
 import cn.net.yzl.zt.service.ProvinceService;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -17,11 +19,20 @@ public class ProvinceServiceImpl implements ProvinceService {
 
     /**
      * 查询省份列表
+     * @param countryId 国家id
+     * @param regionCode 大区编号
      * @return
      */
     @Override
-    public List<Province> getProvinceList(Map<String,Object> map) {
-        return provinceMapper.getProvinceList(map);
+    public List<Province> getProvinceList(Integer countryId,String regionCode) {
+        List<Province> provinceList = new ArrayList<>();
+        if(countryId != null){
+            provinceList = provinceMapper.getProvinceListByCountryId(countryId);
+        }else if(StringUtils.hasText(regionCode)){
+            provinceList = provinceMapper.getProvinceListByRegionCode(regionCode);
+
+        }
+        return provinceList;
     }
 
     @Override

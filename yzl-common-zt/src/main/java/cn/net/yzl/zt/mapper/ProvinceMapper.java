@@ -20,9 +20,18 @@ public interface ProvinceMapper {
     int updateByPrimaryKey(Province record);
 
     /**
-     * 查询省份信息列表
+     * 根据大区编号查省份
+     * @param regionCode
      * @return
      */
-    List<Province> getProvinceList(Map<String,Object> map);
+    List<Province> getProvinceListByRegionCode(String regionCode);
+
+    /**
+     * 根据国家id查省份
+     * @param countryId
+     * @return
+     */
+    List<Province> getProvinceListByCountryId(Integer countryId);
+
 
 }

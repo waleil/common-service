@@ -151,20 +151,34 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
 
-  <select id="getProvinceList" parameterType="java.util.Map" resultMap="BaseResultMap">
+  <!--根据大区编号查省份-->
+  <select id="getProvinceListByRegionCode" parameterType="java.lang.String" resultMap="BaseResultMap">
     SELECT
      p.*
     FROM region_province rp
     LEFT JOIN province p
     ON p.id = rp.province_id
     <where>
-    <if test="regionCode != null and regionCode != ''">
-      rp.region_code = #{regionCode,jdbcType=VARCHAR}
-    </if>
+      <if test="regionCode != null and regionCode != ''">
+        rp.region_code = #{regionCode,jdbcType=VARCHAR}
+      </if>
     </where>
     ORDER BY id
-
   </select>
+
+  <!--根据国家id查省份-->
+    <select id="getProvinceListByCountryId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    SELECT
+      <include refid="Base_Column_List" />
+    FROM province
+    <where>
+      <if test="countryId != null">
+        rp.country_id = #{countryId,jdbcType=INTEGER}
+      </if>
+    </where>
+    ORDER BY id
+  </select>
+
 
   <cache />
 
