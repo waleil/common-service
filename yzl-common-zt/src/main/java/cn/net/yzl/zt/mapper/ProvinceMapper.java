@@ -2,6 +2,7 @@ package cn.net.yzl.zt.mapper;
 
 
 import cn.net.yzl.zt.entity.Province;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 import java.util.Map;
@@ -24,14 +25,14 @@ public interface ProvinceMapper {
      * @param regionCode
      * @return
      */
-    List<Province> getProvinceListByRegionCode(String regionCode);
+    List<Province> getProvinceListByRegionCode(@Param("regionCode") String regionCode);
 
     /**
      * 根据国家id查省份
      * @param countryId
      * @return
      */
-    List<Province> getProvinceListByCountryId(Integer countryId);
+    List<Province> getProvinceListByCountryId(@Param("countryId") Integer countryId);
 
 
 }
