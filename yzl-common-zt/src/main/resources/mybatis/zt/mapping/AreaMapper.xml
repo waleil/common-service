@@ -6,12 +6,13 @@
     <result column="city_id" jdbcType="INTEGER" property="cityId" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="en_abbr" jdbcType="VARCHAR" property="enAbbr" />
+    <result column="hub_code" jdbcType="VARCHAR" property="hubCode" />
     <result column="zip" jdbcType="VARCHAR" property="zip" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, city_id, name, en_abbr, zip, create_time, update_time
+    id, city_id, name, en_abbr,hub_code, zip, create_time, update_time
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -25,10 +26,10 @@
   </delete>
   <insert id="insert" parameterType="cn.net.yzl.zt.entity.Area">
     insert into area (id, city_id, name, 
-      en_abbr, zip, create_time, 
+      en_abbr,hub_code, zip, create_time,
       update_time)
     values (#{id,jdbcType=INTEGER}, #{cityId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
-      #{enAbbr,jdbcType=VARCHAR}, #{zip,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{enAbbr,jdbcType=VARCHAR}, #{hubCode,jdbcType=VARCHAR}, #{zip,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP},
       #{updateTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="cn.net.yzl.zt.entity.Area">
@@ -45,6 +46,9 @@
       </if>
       <if test="enAbbr != null">
         en_abbr,
+      </if>
+      <if test="hubCode != null">
+        hub_code,
       </if>
       <if test="zip != null">
         zip,
@@ -69,6 +73,9 @@
       <if test="enAbbr != null">
         #{enAbbr,jdbcType=VARCHAR},
       </if>
+      <if test="hubCode != null">
+        #{hubCode,jdbcType=VARCHAR},
+      </if>
       <if test="zip != null">
         #{zip,jdbcType=VARCHAR},
       </if>
@@ -92,6 +99,9 @@
       <if test="enAbbr != null">
         en_abbr = #{enAbbr,jdbcType=VARCHAR},
       </if>
+      <if test="hubCode != null">
+        hub_code = #{hubCode,jdbcType=VARCHAR},
+      </if>
       <if test="zip != null">
         zip = #{zip,jdbcType=VARCHAR},
       </if>
@@ -109,22 +119,19 @@
     set city_id = #{cityId,jdbcType=INTEGER},
       name = #{name,jdbcType=VARCHAR},
       en_abbr = #{enAbbr,jdbcType=VARCHAR},
+      hub_code = #{hubCode,jdbcType=VARCHAR},
       zip = #{zip,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       update_time = #{updateTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
 
-  <select id="getAreaList" parameterType="java.util.Map"  resultMap="BaseResultMap">
+  <select id="getAreaList" parameterType="java.lang.Integer"  resultMap="BaseResultMap">
     SELECT
      <include refid="Base_Column_List" />
     FROM area
-    <where>
-      <if test="cityId != null">
-        city_id = #{cityId,jdbcType=INTEGER}
-      </if>
-    </where>
-    ORDER BY id
+    WHERE cstatus = 0 AND city_id = #{cityId,jdbcType=INTEGER}
+    ORDER BY hub_code
   </select>
   <cache />
 

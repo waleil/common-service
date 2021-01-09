@@ -29,9 +29,10 @@ public class StreetController {
     //@OperateLog(operModule = "街道:查询街道列表", businessType = BusinessType.SELECT)
     @GetMapping("/getStreetList")
     public ComResponse getStreetList(@RequestParam Integer areaId){
-        Map<String, Object> map = new HashMap<String, Object>();
-        map.put("areaId", areaId);// 地区id
-        List<Street> streetList = streetService.getStreetList(map);
+        if(areaId == null){//地区id
+            return ComResponse.fail(ComResponse.ERROR_STATUS, "参数错误");
+        }
+        List<Street> streetList = streetService.getStreetList(areaId);
         Page<Street> commonPageVO = AssemblerResultUtil.resultAssemblerSingleList(streetList);
         return ComResponse.success(commonPageVO);
     }

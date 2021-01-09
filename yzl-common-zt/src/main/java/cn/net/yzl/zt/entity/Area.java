@@ -17,6 +17,8 @@ public class Area implements Serializable {
 
     private String enAbbr;//区域拼音简写
 
+    private String hubCode;//物流编码
+
     private String zip;//邮编
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
@@ -83,6 +85,14 @@ public class Area implements Serializable {
         this.updateTime = updateTime;
     }
 
+    public String getHubCode() {
+        return hubCode;
+    }
+
+    public void setHubCode(String hubCode) {
+        this.hubCode = hubCode;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -93,6 +103,7 @@ public class Area implements Serializable {
         sb.append(", cityId=").append(cityId);
         sb.append(", name=").append(name);
         sb.append(", enAbbr=").append(enAbbr);
+        sb.append(", hubCode=").append(hubCode);
         sb.append(", zip=").append(zip);
         sb.append(", createTime=").append(createTime);
         sb.append(", updateTime=").append(updateTime);

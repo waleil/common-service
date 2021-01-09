@@ -9,7 +9,6 @@ import org.springframework.util.StringUtils;
 import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 @Service("provinceService")
 public class ProvinceServiceImpl implements ProvinceService {
@@ -26,11 +25,10 @@ public class ProvinceServiceImpl implements ProvinceService {
     @Override
     public List<Province> getProvinceList(Integer countryId,String regionCode) {
         List<Province> provinceList = new ArrayList<>();
-        if(countryId != null){
-            provinceList = provinceMapper.getProvinceListByCountryId(countryId);
-        }else if(StringUtils.hasText(regionCode)){
+        if(StringUtils.hasText(regionCode)){
             provinceList = provinceMapper.getProvinceListByRegionCode(regionCode);
-
+        }else{
+            provinceList = provinceMapper.getProvinceListByCountryId(countryId);
         }
         return provinceList;
     }

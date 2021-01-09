@@ -30,10 +30,10 @@ public class AreaController {
     //@OperateLog(operModule = "地区:查询地区列表", businessType = BusinessType.SELECT)
     @GetMapping("/getAreaList")
     public ComResponse getAreaList(@RequestParam Integer cityId){
-
-        Map<String, Object> map = new HashMap<String, Object>();
-        map.put("cityId", cityId);// 城市id
-        List<Area> areaList = areaService.getAreaList(map);
+        if(cityId == null){//城市id
+            return ComResponse.fail(ComResponse.ERROR_STATUS, "参数错误");
+        }
+        List<Area> areaList = areaService.getAreaList(cityId);
         Page<Area> commonPageVO = AssemblerResultUtil.resultAssemblerSingleList(areaList);
         return ComResponse.success(commonPageVO);
     }

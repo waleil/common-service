@@ -17,10 +17,11 @@ public class AreaServiceImpl implements AreaService {
 
     /**
      * 查询地区列表
+     * @param cityId 城市id
      * @return
      */
     @Override
-    public List<Area> getAreaList(Map<String,Object> map) {
-        return areaMapper.getAreaList(map);
+    public List<Area> getAreaList(Integer cityId) {
+        return areaMapper.getAreaList(cityId);
     }
 }

@@ -163,7 +163,7 @@
         rp.region_code = #{regionCode,jdbcType=VARCHAR}
       </if>
     </where>
-    ORDER BY id
+    ORDER BY code
   </select>
 
   <!--根据国家id查省份-->
@@ -173,10 +173,10 @@
     FROM province
     <where>
       <if test="countryId != null">
-        rp.country_id = #{countryId,jdbcType=INTEGER}
+        country_id = #{countryId,jdbcType=INTEGER}
       </if>
     </where>
-    ORDER BY id
+    ORDER BY code
   </select>
 
 

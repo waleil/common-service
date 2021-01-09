@@ -21,8 +21,8 @@ public interface AreaMapper {
 
     /**
      * 查询地区列表
-     * @param map
+     * @param cityId 城市id
      * @return
      */
-    List<Area> getAreaList(Map<String, Object> map);
+    List<Area> getAreaList(Integer cityId);
 }

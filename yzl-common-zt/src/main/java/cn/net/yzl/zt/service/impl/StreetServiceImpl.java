@@ -17,10 +17,11 @@ public class StreetServiceImpl implements StreetService {
 
     /**
      * 查询街道列表
+     * @param areaId 地区id
      * @return
      */
     @Override
-    public List<Street> getStreetList(Map<String, Object> map) {
-        return streetMapper.getStreetList(map);
+    public List<Street> getStreetList(Integer areaId) {
+        return streetMapper.getStreetList(areaId);
     }
 }

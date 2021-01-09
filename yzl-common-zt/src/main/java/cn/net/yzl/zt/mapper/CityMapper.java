@@ -22,7 +22,8 @@ public interface CityMapper {
 
     /**
      * 获取城市列表
+     * @param provinceId 省份id
      * @return
      */
-    List<City> getCityList(Map<String,Object> map);
+    List<City> getCityList(Integer provinceId);
 }

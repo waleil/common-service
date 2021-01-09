@@ -10,8 +10,9 @@ public interface CityService {
 
     /**
      * 查询城市列表
+     * @param provinceId 省份id
      * @return
      */
-    List<City> getCityList(Map<String,Object> map);
+    List<City> getCityList(Integer provinceId);
 
 }

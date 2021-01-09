@@ -21,8 +21,9 @@ public interface StreetMapper {
 
     /**
      * 查询街道列表
+     * @param areaId 地区id
      * @return
      */
-    List<Street> getStreetList(Map<String, Object> map);
+    List<Street> getStreetList(Integer areaId);
 
 }

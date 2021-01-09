@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
-import java.util.Map;
 
 @Service("cityService")
 public class CityServiceImpl implements CityService {
@@ -17,10 +16,11 @@ public class CityServiceImpl implements CityService {
 
     /**
      * 查询城市列表
+     * @param provinceId 省份id
      * @return
      */
     @Override
-    public List<City> getCityList(Map<String,Object> map) {
-        return cityMapper.getCityList(map);
+    public List<City> getCityList(Integer provinceId) {
+        return cityMapper.getCityList(provinceId);
     }
 }

@@ -29,15 +29,6 @@ public class ProvinceController {
     public ComResponse getProvinceList( @RequestParam(required = false) Integer countryId,
                                         @RequestParam(required = false) String regionCode){
 
-//        Map<String, Object> map = new HashMap<String, Object>();
-//        if(StringUtils.hasText(regionCode)) {
-//            map.put("regionCode", regionCode);// 大区编号
-//        }
-//        if(countryId != null) {
-//            map.put("provinceId", countryId);// 省份id
-//        }
-     //   return ComResponse.fail(ComResponse.ERROR_STATUS, "参数错误");
-
         List<Province> provinceList = provinceService.getProvinceList(countryId,regionCode);
         Page<Province> commonPageVO = AssemblerResultUtil.resultAssemblerSingleList(provinceList);
         return ComResponse.success(commonPageVO);
