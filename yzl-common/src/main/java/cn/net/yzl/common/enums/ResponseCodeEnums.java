@@ -61,10 +61,11 @@ public enum ResponseCodeEnums {
     POST_LEVEL_NOT_EXIT_ERROR_CODE( 21111,"岗位等级不存在!","岗位等级不存在!"),
     RESUME_CONF_NOT_EXIT_ERROR_CODE( 21112,"面试流程配置不存在!","面试流程配置不存在!"),
     RESUME_CONF_HAS_EXIT_ERROR_CODE( 21113,"部门下此岗位的面试流程已存在，不可重复添加!","面试流程已存在!"),
-    DEPART_POST_EXIT_ERROR_CODE(21114,"部门下已存在对应岗位，请勿重复添加","部门下已存在对应岗位，请勿重复添加"),
-    POST_EXIT_ERROR_CODE(21115,"存在同名岗位,勿重复添加","存在同名岗位,勿重复添加"),
-    POST_LEVEL_EXIT_ERROR_CODE(21116,"同名岗位等级已存在,请勿重复添加","同名岗位等级已存在,请勿重复添加"),
-    RESUME_STEP_USED_CODE(21117,"面试轮次字典已被使用,不可删除","面试轮次字典已被使用,不可删除"),
+    TRAIN_CONF_HAS_EXIT_ERROR_CODE( 21114,"部门下此岗位的培训流程已存在，不可重复添加!","培训流程已存在!"),
+    DEPART_POST_EXIT_ERROR_CODE(21115,"部门下已存在对应岗位，请勿重复添加","部门下已存在对应岗位，请勿重复添加"),
+    POST_EXIT_ERROR_CODE(21116,"存在同名岗位,勿重复添加","存在同名岗位,勿重复添加"),
+    POST_LEVEL_EXIT_ERROR_CODE(21117,"同名岗位等级已存在,请勿重复添加","同名岗位等级已存在,请勿重复添加"),
+    RESUME_STEP_USED_CODE(21118,"面试轮次字典已被使用,不可删除","面试轮次字典已被使用,不可删除"),
     // 212 开头表示 顾客服务
     // 213 开头表示 商品服务
     // 214 开头表示 媒介服务
