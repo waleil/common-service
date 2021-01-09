@@ -85,6 +85,7 @@ public enum ResponseCodeEnums {
     DING_ERROR_CODE(31101, "钉钉的错误代码信息", "钉钉错误代码"),
     STAFF_SOCIAL_ERROR_CODE(31102, "该薪酬范围已关联员工,不能删除!", "该薪酬范围已关联员工,不能删除!"),
     NO_DATA(31103, "当前上一级部门没有数据,继承失败", "当前上一级部门没有数据,继承失败"),
+    REPEAT_DATA_ERROR_CODE(31104, "薪酬范围不能出现交叉数据", "薪酬范围不能出现交叉数据"),
 
 
     // 4开头表示 dmc
