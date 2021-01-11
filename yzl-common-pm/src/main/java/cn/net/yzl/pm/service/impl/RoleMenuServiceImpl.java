@@ -1,5 +1,6 @@
 package cn.net.yzl.pm.service.impl;
 
+import cn.net.yzl.pm.model.vo.RoleMenuPermissionVO;
 import cn.net.yzl.pm.service.RoleMenuService;
 import cn.net.yzl.pm.service.RoleService;
 import cn.net.yzl.pm.entity.Role;
@@ -65,7 +66,7 @@ public class RoleMenuServiceImpl implements RoleMenuService {
      * @return
      */
     @Override
-    public List<Integer> getRoleMenuListByRoleIds(List<Integer> roleIds) {
+    public List<RoleMenuPermissionVO> getRoleMenuListByRoleIds(List<Integer> roleIds) {
         return roleMenuMapper.getRoleMenuListByRoleIds(roleIds);
     }
 

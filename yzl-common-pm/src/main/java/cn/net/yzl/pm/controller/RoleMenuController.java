@@ -9,8 +9,6 @@ import cn.net.yzl.common.entity.ComResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-
-
 @RestController
 @RequestMapping("/roleMenu")
 public class RoleMenuController {

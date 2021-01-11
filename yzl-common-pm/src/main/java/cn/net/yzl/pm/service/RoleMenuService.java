@@ -1,6 +1,7 @@
 package cn.net.yzl.pm.service;
 
 import cn.net.yzl.pm.model.dto.RoleDTO;
+import cn.net.yzl.pm.model.vo.RoleMenuPermissionVO;
 import cn.net.yzl.pm.model.vo.RoleMenuVO;
 
 import java.util.List;
@@ -14,7 +15,7 @@ public interface RoleMenuService {
      */
     RoleMenuVO getRoleMenuListByRoleId(Integer roleId);
 
-    List<Integer> getRoleMenuListByRoleIds(List<Integer> roleIds);
+    List<RoleMenuPermissionVO> getRoleMenuListByRoleIds(List<Integer> roleIds);
 
 
     /**
