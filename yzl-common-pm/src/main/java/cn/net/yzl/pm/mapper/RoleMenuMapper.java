@@ -1,6 +1,7 @@
 package cn.net.yzl.pm.mapper;
 
 import cn.net.yzl.pm.entity.RoleMenu;
+import cn.net.yzl.pm.model.vo.RoleMenuPermissionVO;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -23,7 +24,7 @@ public interface RoleMenuMapper {
      * @param roleIds
      * @return
      */
-    List<Integer> getRoleMenuListByRoleIds(@Param("roleIds") List<Integer> roleIds);
+    List<RoleMenuPermissionVO> getRoleMenuListByRoleIds(@Param("roleIds") List<Integer> roleIds);
 
     /**
      * 批量创建角色和菜单关联信息绑定

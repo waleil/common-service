@@ -1,6 +1,7 @@
 package cn.net.yzl.pm.service.impl;
 
 import cn.net.yzl.pm.mapper.UserRoleMapper;
+import cn.net.yzl.pm.model.vo.RoleMenuPermissionVO;
 import cn.net.yzl.pm.service.MenuService;
 import cn.net.yzl.pm.entity.Menu;
 import cn.net.yzl.pm.mapper.MenuMapper;
@@ -11,6 +12,8 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service("menuService")
@@ -35,7 +38,19 @@ public class MenuServiceImpl implements MenuService {
     @Override
     public List<MenuVO> getMenuListByMenuId(String userCode) {
         List<Integer> roleIds = userRoleMapper.getUserRoleListByUserCode(userCode);
-        List<Integer> menuIds = roleMenuMapper.getRoleMenuListByRoleIds(roleIds);
-        return menuMapper.getMenuListByMenuId(menuIds);
+        List<RoleMenuPermissionVO> roleMenuPermissionListByRoleIds = roleMenuMapper.getRoleMenuListByRoleIds(roleIds);
+        List<Integer> menuIdList = roleMenuPermissionListByRoleIds.stream().map(RoleMenuPermissionVO::getMenuId).collect(Collectors.toList());
+        List<MenuVO> menuListByMenuId = menuMapper.getMenuListByMenuId(menuIdList);
+        menuListByMenuId.stream()
+                .map(menuVO -> roleMenuPermissionListByRoleIds.stream()
+                        .filter(roleMenuPermission -> menuVO.getMenuId().equals(roleMenuPermission.getMenuId()))
+                        .findFirst()
+                        .map(roleMenuPermission -> { menuVO.setIsEdit(roleMenuPermission.getIsEdit());
+                            menuVO.setIsLook(roleMenuPermission.getIsLook());
+                            return menuVO;
+                        })
+                ).collect(Collectors.toList());
+
+        return menuListByMenuId;
     }
 }

@@ -8,6 +8,8 @@ import java.io.Serializable;
 public class MenuVO implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    private Integer menuId;//菜单id
+
     private String menuName;//菜单名称
 
     private Integer parentId;//父菜单ID
@@ -27,6 +29,10 @@ public class MenuVO implements Serializable {
     private String perms;//权限标识
 
     private String icon;//菜单图标
+
+    private String isEdit;//是否可编辑（1:是 0:否）
+
+    private String isLook;//是否可查看（1:是 0:否）
 
 
 }

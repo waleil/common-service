@@ -180,9 +180,11 @@
 
 
   <!--根据角色id查询对应的菜单id信息-->
-  <select id="getRoleMenuListByRoleIds" resultType="java.lang.Integer">
+  <select id="getRoleMenuListByRoleIds" resultType="cn.net.yzl.pm.model.vo.RoleMenuPermissionVO">
     SELECT
-    DISTINCT menu_id AS menuIds
+      rm.menu_id AS menuId,
+      max(rm.is_edit) AS isEdit,
+      max(rm.is_look) AS isLook
     FROM
     role_menu rm
     LEFT JOIN role r ON r.id = rm.role_id
@@ -190,6 +192,7 @@
     <foreach collection="roleIds" item="roleId" index="index" open="(" close=")" separator=",">
       #{roleId,jdbcType=INTEGER}
     </foreach>
+    GROUP BY rm.menu_id
   </select>
 
   <!--根据角色id查询对应的菜单信息-->

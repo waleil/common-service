@@ -249,6 +249,7 @@
   <!--根据菜单id查询对应的菜单信息-->
   <select id="getMenuListByMenuId" resultType="cn.net.yzl.pm.model.vo.MenuVO">
     SELECT
+    m.id AS menuId,
     m.menu_name AS menuName,
     m.parent_id AS parentId,
     m.order_num AS orderNum,
