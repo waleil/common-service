@@ -18,7 +18,9 @@ public class MenuVO implements Serializable {
 
     private Integer permissionType;//权限类型(1:数据权限 2:报表权限3:功能权限)
 
-    private String settingPath;//配置地址URL
+    private String menuPath;//菜单配置地址URL
+
+    private Integer openWay;//打开方式(1:新窗口 2:内嵌)
 
     private String component;//组件路径
 
