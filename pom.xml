@@ -22,8 +22,8 @@
     </modules>
 
     <properties>
-      <!--  <project.verson>1.0-SNAPSHOT</project.verson>-->
         <project.verson>1.0-RELEASE</project.verson>
+<!--        <project.verson>1.0-RELEASE</project.verson>-->
     </properties>
     <dependencies>
         <dependency>
