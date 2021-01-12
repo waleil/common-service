@@ -4,7 +4,7 @@ spring:
   application:
     name: yzl-common-zt
   profiles:
-    active: dev
+    active: test
   main:
     allow-bean-definition-overriding: true
   cloud:
