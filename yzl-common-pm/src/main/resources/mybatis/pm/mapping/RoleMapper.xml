@@ -202,7 +202,7 @@
         update_code = #{updateCode,jdbcType=VARCHAR},
       </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{roleId,jdbcType=INTEGER}
     </update>
 
     <select id="getRoleList" resultMap="BaseResultMap">
