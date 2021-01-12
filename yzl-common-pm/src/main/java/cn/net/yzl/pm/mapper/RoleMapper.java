@@ -1,6 +1,7 @@
 package cn.net.yzl.pm.mapper;
 
 import cn.net.yzl.pm.entity.Role;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -35,4 +36,13 @@ public interface RoleMapper {
      * @return
      */
     Role getRoleInfoByRoleName(String roleName);
+
+    /**
+     * 开启/关闭角色信息
+     * @param roleId
+     * @param isEnable
+     * @param updateCode
+     * @return
+     */
+    int updateRoleInfo(@Param("roleId") Integer roleId,@Param("isEnable") Integer isEnable,@Param("updateCode") String updateCode);
 }

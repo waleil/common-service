@@ -1,5 +1,6 @@
 package cn.net.yzl.pm.entity;
 
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -11,6 +12,7 @@ public class RoleMenu implements Serializable {
 
     private Integer roleId;//角色ID
 
+    @NotNull(message = "menuId cant be null")
     private Integer menuId;//菜单ID
 
     private String menuName;//菜单名称

@@ -26,4 +26,10 @@ public interface RoleService {
      */
     Role getRoleInfoByRoleName(String roleName);
 
+    /**
+     * 开启/关闭角色信息
+     * @return
+     */
+    int updateRoleInfo(Integer roleId,Integer isEnable,String updateCode);
+
 }

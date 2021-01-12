@@ -2,6 +2,7 @@ package cn.net.yzl.pm.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -11,6 +12,7 @@ import java.util.Date;
 public class Role implements Serializable {
     private Integer id;//主键id
 
+    @NotNull(message = "roleName cant be null")
     private String roleName;//角色名称
 
     private String roleDesc;//角色描述

@@ -50,4 +50,13 @@ public class RoleServiceImpl implements RoleService {
         return roleMapper.getRoleInfoByRoleName(roleName);
     }
 
+    /**
+     * 开启/关闭角色信息
+     * @return
+     */
+    @Override
+    public int updateRoleInfo(Integer roleId,Integer isEnable,String updateCode) {
+        return roleMapper.updateRoleInfo(roleId,isEnable,updateCode);
+    }
+
 }

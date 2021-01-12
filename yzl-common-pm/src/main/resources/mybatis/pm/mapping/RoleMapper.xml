@@ -194,7 +194,18 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
 
-  <select id="getRoleList" resultMap="BaseResultMap">
+    <update id="updateRoleInfo">
+    update role
+      <set>
+        is_enable = #{isEnable,jdbcType=INTEGER},
+      <if test="updateCode != null">
+        update_code = #{updateCode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+    </update>
+
+    <select id="getRoleList" resultMap="BaseResultMap">
     SELECT
     <include refid="Base_Column_List" />
     FROM role
