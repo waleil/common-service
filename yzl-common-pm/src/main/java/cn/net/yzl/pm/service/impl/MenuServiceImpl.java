@@ -9,6 +9,7 @@ import cn.net.yzl.pm.mapper.RoleMenuMapper;
 import cn.net.yzl.pm.model.vo.MenuVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -37,20 +38,29 @@ public class MenuServiceImpl implements MenuService {
 
     @Override
     public List<MenuVO> getMenuListByMenuId(String userCode) {
+        List<MenuVO> menuVOList = null;
         List<Integer> roleIds = userRoleMapper.getUserRoleListByUserCode(userCode);
-        List<RoleMenuPermissionVO> roleMenuPermissionListByRoleIds = roleMenuMapper.getRoleMenuListByRoleIds(roleIds);
-        List<Integer> menuIdList = roleMenuPermissionListByRoleIds.stream().map(RoleMenuPermissionVO::getMenuId).collect(Collectors.toList());
-        List<MenuVO> menuListByMenuId = menuMapper.getMenuListByMenuId(menuIdList);
-        menuListByMenuId.stream()
-                .map(menuVO -> roleMenuPermissionListByRoleIds.stream()
-                        .filter(roleMenuPermission -> menuVO.getMenuId().equals(roleMenuPermission.getMenuId()))
-                        .findFirst()
-                        .map(roleMenuPermission -> { menuVO.setIsEdit(roleMenuPermission.getIsEdit());
-                            menuVO.setIsLook(roleMenuPermission.getIsLook());
-                            return menuVO;
-                        })
-                ).collect(Collectors.toList());
-
-        return menuListByMenuId;
+        if (!CollectionUtils.isEmpty(roleIds)) {
+            List<RoleMenuPermissionVO> roleMenuPermissionListByRoleIds = roleMenuMapper.getRoleMenuListByRoleIds(roleIds);
+            if (!CollectionUtils.isEmpty(roleMenuPermissionListByRoleIds)) {
+                List<Integer> menuIdList = roleMenuPermissionListByRoleIds.stream().map(RoleMenuPermissionVO::getMenuId).collect(Collectors.toList());
+                if (!CollectionUtils.isEmpty(menuIdList)) {
+                    menuVOList = menuMapper.getMenuListByMenuId(menuIdList);
+                    if (!CollectionUtils.isEmpty(menuVOList)) {
+                        menuVOList.stream()
+                                .map(menuVO -> roleMenuPermissionListByRoleIds.stream()
+                                        .filter(roleMenuPermission -> menuVO.getMenuId().equals(roleMenuPermission.getMenuId()))
+                                        .findFirst()
+                                        .map(roleMenuPermission -> {
+                                            menuVO.setIsEdit(roleMenuPermission.getIsEdit());
+                                            menuVO.setIsLook(roleMenuPermission.getIsLook());
+                                            return menuVO;
+                                        })
+                                ).collect(Collectors.toList());
+                    }
+                }
+            }
+        }
+        return menuVOList;
     }
 }
