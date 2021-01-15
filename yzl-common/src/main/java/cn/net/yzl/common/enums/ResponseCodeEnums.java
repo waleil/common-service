@@ -44,7 +44,7 @@ public enum ResponseCodeEnums {
     LOGIN_ERROR_CODE(11000, "访问接口参数不全", "访问接口参数不全"),
     APPID_CHECK_ERROR_CODE(11001, "appid 认证错误!", "appid 认证错误!"),
     APPID_NO_WRITE_ERROR_CODE(11002, "appid 没有可写权限!", "appid 没有可写权限!"),
-
+    NO_DATA_HAS_BEEN_UPDATE_CODE(11003,"没有数据可以被更新","没有数据可以被更新"),
 
     // 2开头表示 crm, 3:开头表示 ehr 4:开头表示dmc 5:开头:bi
     // 211 开头表示 员工服务
@@ -67,6 +67,7 @@ public enum ResponseCodeEnums {
     POST_LEVEL_EXIT_ERROR_CODE(21117,"同名岗位等级已存在,请勿重复添加","同名岗位等级已存在,请勿重复添加"),
     RESUME_STEP_USED_CODE(21118,"面试轮次字典已被使用,不可删除","面试轮次字典已被使用,不可删除"),
     POST_HAS_DEPARTPOST_ERROR_CODE(21119,"岗位已被使用,不可删除","岗位已被使用,不可删除"),
+
     // 212 开头表示 顾客服务
     // 213 开头表示 商品服务
     // 214 开头表示 媒介服务
