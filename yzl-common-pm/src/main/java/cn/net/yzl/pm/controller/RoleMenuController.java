@@ -9,6 +9,8 @@ import cn.net.yzl.common.entity.ComResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("/roleMenu")
 public class RoleMenuController {
@@ -24,7 +26,7 @@ public class RoleMenuController {
      * @return
      */
     @PostMapping("/createOrUpdateRoleMenuInfoList")
-    public ComResponse createOrUpdateRoleMenuInfoList(@RequestBody RoleDTO roleDTO) {
+    public ComResponse createOrUpdateRoleMenuInfoList(@RequestBody @Valid RoleDTO roleDTO) {
         String operationName = "";
         if(roleDTO != null) {
             //根据角色名称查询是否存在当前角色

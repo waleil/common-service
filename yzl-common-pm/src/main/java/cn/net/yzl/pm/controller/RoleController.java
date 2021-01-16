@@ -10,6 +10,8 @@ import cn.net.yzl.common.util.AssemblerResultUtil;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -42,7 +44,7 @@ public class RoleController {
      * @return
      */
     @PostMapping("/createRoleInfo")
-    public ComResponse createRoleInfo(@RequestBody Role role) {
+    public ComResponse createRoleInfo(@RequestBody @Valid Role role) {
         int i = roleService.createRoleInfo(role);
         if(i > 0){
             return ComResponse.success(i).setMessage("创建角色信息成功");

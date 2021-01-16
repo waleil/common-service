@@ -8,6 +8,7 @@ import cn.net.yzl.common.entity.ComResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -26,7 +27,7 @@ public class UserRoleController {
      * @return
      */
     @PostMapping("/createUserRoleInfoList")
-    public ComResponse createUserRoleInfoList(@RequestBody UserRoleDTO userRoleDTO) {
+    public ComResponse createUserRoleInfoList(@RequestBody @Valid UserRoleDTO userRoleDTO) {
         int i = userRoleService.createUserRoleInfoList(userRoleDTO.getUserRoleList());
         if(i > 0){
             return ComResponse.success(i).setMessage("创建用户角色绑定关系信息成功");
