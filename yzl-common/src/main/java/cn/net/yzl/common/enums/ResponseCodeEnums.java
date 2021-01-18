@@ -81,6 +81,9 @@ public enum ResponseCodeEnums {
     CG_ORDER_HAS_REVIEWED(22101,"采购单已审核不可编辑","采购单已审核不可编辑"),
     CG_PRICE_LESS_THAN_ZERO(22102,"采购单价不可小于0","采购单价不可小于0"),
     CG_NUM_THAN_ZERO(22103,"采购数量不可小于0","采购数量不可小于0"),
+    CG_REVIEW_EXCEPTION(22104,"采购订单未提交或者已审核","采购订单审核异常"),
+    CG_WARE_NUM_EXCEPTION(22105,"入库数量超出采购数量","采购订单入库异常"),
+    CG_WITHDRAW_EXCEPTION(22106,"采购订单已审核不可撤回","采购订单已审核不可撤回"),
     // 218 开头表示 营销活动
     // 220 开头表示 结算中心
 
