@@ -87,6 +87,7 @@ public enum ResponseCodeEnums {
     CG_WITHDRAW_EXCEPTION(22106,"采购订单已审核不可撤回","采购订单已审核不可撤回"),
     REPEAT_DATA_ERROR(22107,"当前数据已存在,请重新数据","当前数据已存在,请重新数据"),
     CG_RETURN_NUM_ERROR(22108,"退货数量超过可退数量","退货数量超过可退数量"),
+    STORE_LOCAL_REPART(22108,"库位重复,请重新选择","库位重复,请重新选择"),
     // 218 开头表示 营销活动
     // 220 开头表示 结算中心
 
