@@ -156,6 +156,7 @@
     SELECT
     <include refid="Base_Column_List" />
     FROM country
+    ORDER BY id DESC
   </select>
 
 
