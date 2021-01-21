@@ -31,9 +31,11 @@ public class ProvinceServiceImpl implements ProvinceService {
             provinceList = provinceMapper.getProvinceListByRegionCode(regionCode);
         }else{
             provinceList = provinceMapper.getProvinceListByCountryId(countryId);
-            Collections.swap(provinceList,0,17);//将河北省放到第一位
-
+            if(!CollectionUtils.isEmpty(provinceList)){
+                Collections.swap(provinceList,0,17);//将河北省放到第一位
+            }
         }
+
         return provinceList;
     }
 
