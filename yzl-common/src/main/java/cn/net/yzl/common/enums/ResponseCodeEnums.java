@@ -85,10 +85,12 @@ public enum ResponseCodeEnums {
     CG_REVIEW_EXCEPTION(22104,"采购订单未提交或者已审核","采购订单审核异常"),
     CG_WARE_NUM_EXCEPTION(22105,"入库数量超出采购数量","采购订单入库异常"),
     CG_WITHDRAW_EXCEPTION(22106,"采购订单已审核不可撤回","采购订单已审核不可撤回"),
-    REPEAT_SUPPLIER_DATA_ERROR(22107,"供应商名称或编码已存在,请重新输入","供应商名称或编码已存在,请重新输入"),
+    REPEAT_SUPPLIER_NAME_ERROR(22107,"供应商名称已存在,请重新输入","供应商名称已存在,请重新输入"),
     CG_RETURN_NUM_ERROR(22108,"退货数量超过可退数量","退货数量超过可退数量"),
     STORE_LOCAL_REPART(22109,"库位重复,请重新选择","库位重复,请重新选择"),
-    REPEAT_STORE_DATA_ERROR(22107,"仓库名称或编码已存在,请重新输入","仓库名称或编码已存在,请重新输入"),
+    REPEAT_SUPPLIER_CODE_ERROR(22110,"编码已存在,请重新输入","编码已存在,请重新输入"),
+    REPEAT_STORE_NAME_ERROR(22111,"仓库名称已存在,请重新输入","仓库名称已存在,请重新输入"),
+    REPEAT_STORE_CODE_ERROR(22112,"仓库编码已存在,请重新输入","仓库编码已存在,请重新输入"),
     // 218 开头表示 营销活动
     // 220 开头表示 结算中心
 
