@@ -1,6 +1,7 @@
 package cn.net.yzl.common.enums;
 
 import lombok.Getter;
+import lombok.Setter;
 
 /**
  * 响应码 对应的 信息
@@ -91,6 +92,8 @@ public enum ResponseCodeEnums {
     REPEAT_SUPPLIER_CODE_ERROR(22110,"编码已存在,请重新输入","编码已存在,请重新输入"),
     REPEAT_STORE_NAME_ERROR(22111,"仓库名称已存在,请重新输入","仓库名称已存在,请重新输入"),
     REPEAT_STORE_CODE_ERROR(22112,"仓库编码已存在,请重新输入","仓库编码已存在,请重新输入"),
+    STORE_NO_PRODUCT(22113,"仓库没有找到商品,请采购商品","仓库没有找到该商品,请采购商品"),
+    PRODUCT_STOCK_ERROR(22114,"仓库库存不足,请采购商品","仓库库存不足,请采购商品"),
     // 218 开头表示 营销活动
     // 220 开头表示 结算中心
 
@@ -103,8 +106,7 @@ public enum ResponseCodeEnums {
     NO_DATA(31103, "当前上一级部门没有数据,继承失败", "当前上一级部门没有数据,继承失败"),
     REPEAT_DATA_ERROR_CODE(31104, "薪酬范围不能出现交叉数据", "薪酬范围不能出现交叉数据"),
 
-
-    // 4开头表示 dmc
+// 4开头表示 dmc
     // 411  ......
 
     // 5开头表示 bi
@@ -112,6 +114,10 @@ public enum ResponseCodeEnums {
 
 
     ;
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
 
     private Integer code;
     private String message;
