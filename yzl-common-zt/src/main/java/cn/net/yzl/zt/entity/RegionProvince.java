@@ -14,6 +14,8 @@ public class RegionProvince implements Serializable {
 
     private String provinceCode;
 
+    private String provinceName;
+
     private Date createTime;
 
     private Date updateTime;
@@ -76,6 +78,14 @@ public class RegionProvince implements Serializable {
         this.updateTime = updateTime;
     }
 
+    public String getProvinceName() {
+        return provinceName;
+    }
+
+    public void setProvinceName(String provinceName) {
+        this.provinceName = provinceName;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -87,6 +97,7 @@ public class RegionProvince implements Serializable {
         sb.append(", regionCode=").append(regionCode);
         sb.append(", provinceId=").append(provinceId);
         sb.append(", provinceCode=").append(provinceCode);
+        sb.append(", provinceName=").append(provinceName);
         sb.append(", createTime=").append(createTime);
         sb.append(", updateTime=").append(updateTime);
         sb.append(", serialVersionUID=").append(serialVersionUID);

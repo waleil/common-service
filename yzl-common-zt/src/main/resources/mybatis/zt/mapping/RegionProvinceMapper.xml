@@ -3,9 +3,10 @@
 <mapper namespace="cn.net.yzl.zt.mapper.RegionProvinceMapper">
   <resultMap id="BaseResultMap" type="cn.net.yzl.zt.entity.RegionProvince">
     <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="region_name" jdbcType="VARCHAR" property="regionName" />
     <result column="region_code" jdbcType="VARCHAR" property="regionCode" />
+    <result column="region_name" jdbcType="VARCHAR" property="regionName" />
     <result column="province_id" jdbcType="INTEGER" property="provinceId" />
+    <result column="name" jdbcType="VARCHAR" property="provinceName" />
     <result column="province_code" jdbcType="VARCHAR" property="provinceCode" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
@@ -14,7 +15,7 @@
     id, region_name, region_code, province_id, province_code, create_time, update_time
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
+    select
     <include refid="Base_Column_List" />
     from region_province
     where id = #{id,jdbcType=INTEGER}
@@ -118,8 +119,11 @@
   <!--查询大区省列表-->
   <select id="getRegionProvinceList" resultMap="BaseResultMap">
     SELECT
-    <include refid="Base_Column_List" />
-    FROM region_province
+     rp.*,p.name
+    FROM region_province rp
+    LEFT JOIN province p
+    ON p.id = rp.province_id
+    ORDER BY region_code
   </select>
 
   <cache />
