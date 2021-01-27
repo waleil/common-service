@@ -80,6 +80,7 @@ public enum ResponseCodeEnums {
     // 219 开头表示 工单服务
     // 220 开头表示 质检服务
     // 221 开头表示 仓储中心
+    MEMBER_ACTION_EXIST_ERROR(21201,"顾客该综合行为已存在","顾客该综合行为已存在"),
     CG_ORDER_HAS_REVIEWED(22101,"采购单已审核不可编辑","采购单已审核不可编辑"),
     CG_PRICE_LESS_THAN_ZERO(22102,"采购单价不可小于0","采购单价不可小于0"),
     CG_NUM_THAN_ZERO(22103,"采购数量不可小于0","采购数量不可小于0"),
