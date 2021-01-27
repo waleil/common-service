@@ -94,7 +94,7 @@ public enum ResponseCodeEnums {
     REPEAT_SUPPLIER_CODE_ERROR(22110,"编码已存在,请重新输入","编码已存在,请重新输入"),
     REPEAT_STORE_NAME_ERROR(22111,"仓库名称已存在,请重新输入","仓库名称已存在,请重新输入"),
     REPEAT_STORE_CODE_ERROR(22112,"仓库编码已存在,请重新输入","仓库编码已存在,请重新输入"),
-    REPEAT_STORE_STATUS_ERROR(22112,"仓库状态不允许变更","仓库状态不允许变更"),
+    REPEAT_STORE_STATUS_ERROR(22113,"仓库状态不允许变更","仓库状态不允许变更"),
     STORE_NO_PRODUCT(22113,"仓库没有找到商品,请采购商品","仓库没有找到该商品,请采购商品"),
     PRODUCT_STOCK_ERROR(22114,"仓库库存不足,请采购商品","仓库库存不足,请采购商品"),
     // 218 开头表示 营销活动
