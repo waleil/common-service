@@ -69,7 +69,7 @@ public enum ResponseCodeEnums {
     POST_HAS_DEPARTPOST_ERROR_CODE(21119,"岗位已被使用,不可删除","岗位已被使用,不可删除"),
     STORE_NAME_REPEAT(21120,"仓库名称已经存在","仓库名称已经存在"),
     DEPART_POST_NOT_EXIT_ERROR_CODE(21121,"部门岗位不存在","部门岗位不存在"),
-    WRITE_DISEASE_INSERT_FAIL__ERROR_CODE(21122,"手动新增病症类型失败","手动新增病症类型失败"),
+
     // 212 开头表示 顾客服务
     // 213 开头表示 商品服务
     // 214 开头表示 媒介服务
@@ -80,9 +80,12 @@ public enum ResponseCodeEnums {
     // 219 开头表示 工单服务
     // 220 开头表示 质检服务
     // 221 开头表示 仓储中心
+
     MEMBER_ACTION_EXIST_ERROR(21201,"顾客该综合行为已存在","顾客该综合行为已存在"),
     MEMBER_ACTION_USED_DELETE_ERROR(21202,"已有顾客绑定相应的综合行为，不可删除","已有顾客绑定相应的综合行为，不可删除"),
     MEMBER_ACTION_NOT_EXIST_ERROR(21203,"该综合行为字典不存在","该综合行为字典不存在"),
+    WRITE_DISEASE_INSERT_FAIL__ERROR_CODE(21204,"手动新增病症类型失败","手动新增病症类型失败"),
+    MEMBER_DISEASE_EXIST_ERROR(21205,"顾客该病症属性已存在，请勿重复添加","顾客该病症属性已存在，请勿重复添加"),
     CG_ORDER_HAS_REVIEWED(22101,"采购单已审核不可编辑","采购单已审核不可编辑"),
     CG_PRICE_LESS_THAN_ZERO(22102,"采购单价不可小于0","采购单价不可小于0"),
     CG_NUM_THAN_ZERO(22103,"采购数量不可小于0","采购数量不可小于0"),
