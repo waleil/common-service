@@ -223,7 +223,7 @@
      r.role_sort AS roleSort
     FROM role r
     LEFT JOIN user_role ur ON ur.role_id = r.id
-    WHERE r.is_enable =1 AND r.is_del = 0 AND ur.is_del = 0
+    WHERE r.is_enable = 1 AND r.is_del = 0 AND ur.is_del = 0
     AND ur.user_code IN
     <foreach collection="userCodes" item="userCode" index="index" open="(" close=")" separator=",">
       #{userCode,jdbcType=VARCHAR}
