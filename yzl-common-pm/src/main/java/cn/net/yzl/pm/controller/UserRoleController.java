@@ -30,9 +30,9 @@ public class UserRoleController {
     public ComResponse createUserRoleInfoList(@RequestBody @Valid UserRoleDTO userRoleDTO) {
         int i = userRoleService.createUserRoleInfoList(userRoleDTO.getUserRoleList());
         if(i > 0){
-            return ComResponse.success(i).setMessage("创建用户角色绑定关系信息成功");
+            return ComResponse.success(i).setMessage("操作用户角色绑定关系信息成功");
         }
-        return ComResponse.fail(ComResponse.ERROR_STATUS, "创建用户角色绑定关系信息失败");
+        return ComResponse.fail(ComResponse.ERROR_STATUS, "操作用户角色绑定关系信息失败");
     }
 
     /**
