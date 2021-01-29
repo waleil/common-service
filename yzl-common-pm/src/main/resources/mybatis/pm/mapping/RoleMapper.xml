@@ -208,7 +208,7 @@
     <select id="getRoleList" resultMap="BaseResultMap">
     SELECT
     <include refid="Base_Column_List" />
-    FROM role
+    FROM role WHERE is_enable = 1 AND is_del = 0
     ORDER BY role_sort
   </select>
 
