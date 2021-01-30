@@ -210,6 +210,7 @@
     LEFT JOIN role_menu rm ON m.id = rm.menu_id
     AND rm.role_id = #{roleId,jdbcType=INTEGER}
     WHERE m.is_enable = 1 AND m.is_del = 0
+    ORDER BY m.id
   </select>
 
   <cache />
