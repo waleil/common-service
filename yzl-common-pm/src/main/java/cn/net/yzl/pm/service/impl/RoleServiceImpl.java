@@ -21,8 +21,8 @@ public class RoleServiceImpl implements RoleService {
      * @return
      */
     @Override
-    public List<Role> getRoleList() {
-        return roleMapper.getRoleList();
+    public List<Role> getRoleList(Integer isEnable) {
+        return roleMapper.getRoleList(isEnable);
     }
 
     /**

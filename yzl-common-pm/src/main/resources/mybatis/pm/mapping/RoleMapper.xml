@@ -205,10 +205,13 @@
     where id = #{roleId,jdbcType=INTEGER}
     </update>
 
-    <select id="getRoleList" resultMap="BaseResultMap">
+    <select id="getRoleList" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     SELECT
     <include refid="Base_Column_List" />
     FROM role WHERE is_del = 0
+      <if test="isEnable != null">
+        AND is_enable = #{isEnable,jdbcType=INTEGER}
+      </if>
     ORDER BY role_sort
   </select>
 
