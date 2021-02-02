@@ -26,13 +26,17 @@ public class RoleController {
      * 查询角色信息列表
      * @param pageNum
      * @param pageSize
+     * @param isEnable 是否开启（1:启用 0:禁用)
      * @return
      */
     @GetMapping("/getRoleList")
     public ComResponse getRoleList(@RequestParam(required = false, defaultValue = "1") Integer pageNum,
-                                   @RequestParam(required = false, defaultValue = "10") Integer pageSize) {
-        PageHelper.startPage(pageNum, pageSize);
-        List<Role> roleList = roleService.getRoleList();
+                                   @RequestParam(required = false, defaultValue = "10") Integer pageSize,
+                                   @RequestParam(required = false) Integer isEnable) {
+        if(isEnable == null) {
+            PageHelper.startPage(pageNum, pageSize);
+        }
+        List<Role> roleList = roleService.getRoleList(isEnable);
         Page<Role> commonPageVO = AssemblerResultUtil.resultAssembler(roleList);
         return ComResponse.success(commonPageVO);
     }

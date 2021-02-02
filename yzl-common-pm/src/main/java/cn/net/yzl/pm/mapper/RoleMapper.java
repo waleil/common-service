@@ -22,7 +22,7 @@ public interface RoleMapper {
      * 查询角色信息列表
      * @return
      */
-    List<Role> getRoleList();
+    List<Role> getRoleList(Integer isEnable);
 
     /**
      * 查询角色当前最大sort显示顺序
