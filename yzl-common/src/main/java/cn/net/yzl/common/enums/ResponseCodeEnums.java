@@ -69,7 +69,7 @@ public enum ResponseCodeEnums {
     POST_HAS_DEPARTPOST_ERROR_CODE(21119,"岗位已被使用,不可删除","岗位已被使用,不可删除"),
     STORE_NAME_REPEAT(21120,"仓库名称已经存在","仓库名称已经存在"),
     DEPART_POST_NOT_EXIT_ERROR_CODE(21121,"部门岗位不存在","部门岗位不存在"),
-
+    STAFF_WORKING_ERROR_CODE(21122,"员工已在职，不可重复入职","员工已在职，不可重复入职"),
     // 212 开头表示 顾客服务
     // 213 开头表示 商品服务
     // 214 开头表示 媒介服务
