@@ -115,6 +115,7 @@ public enum ResponseCodeEnums {
     OFFICE_DATA_ERROR_CODE(31105, "物品数量不为0,不能删除", "物品数量不为0,不能删除"),
     OFFICE_ERROR_CODE(31106,"编码重复，新增失败，请重新输入编码","编码重复，新增失败，请重新输入编码"),
     OFFICE_ENCRYPT_DATA_ERROR_CODE(31107,"有重复编码，不能修改,请重新输入","有重复编码，不能修改,请重新输入"),
+    RECRUIT_DATA_ERROR_CODE(31108,"有重复名称，不能修改,请重新输入","有重复名称，不能修改,请重新输入"),
 
 // 4开头表示 dmc
     // 411  ......
