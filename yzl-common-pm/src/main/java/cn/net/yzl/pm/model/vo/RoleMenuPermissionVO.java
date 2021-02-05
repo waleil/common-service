@@ -9,9 +9,9 @@ public class RoleMenuPermissionVO implements Serializable {
 
     private Integer menuId;//菜单id
 
-    private String isEdit;//是否可编辑（1:是 0:否）
+    private Integer isEdit;//是否可编辑（1:是 0:否）
 
-    private String isLook;//是否可查看（1:是 0:否）
+    private Integer isLook;//是否可查看（1:是 0:否）
 
 
 }
