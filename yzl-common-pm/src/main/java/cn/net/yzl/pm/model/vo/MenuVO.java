@@ -32,9 +32,9 @@ public class MenuVO implements Serializable {
 
     private String icon;//菜单图标
 
-    private String isEdit;//是否可编辑（1:是 0:否）
+    private Integer isEdit;//是否可编辑（1:是 0:否）
 
-    private String isLook;//是否可查看（1:是 0:否）
+    private Integer isLook;//是否可查看（1:是 0:否）
 
 
 }
