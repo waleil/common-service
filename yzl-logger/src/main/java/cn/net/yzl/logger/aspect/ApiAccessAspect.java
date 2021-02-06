@@ -57,9 +57,9 @@ public class ApiAccessAspect {
         try {
             //先初始化入参，为了处理上游业务传过来的uuid
             RequestAttributes requestAttributes = RequestContextHolder.getRequestAttributes();
-            //解决非web服务下收集日志报错的问题，例如：在MQ消费者中调用feign接口，此时MQ触发机制并非http请求，是无法获取请求参数的。
-            if (requestAttributes==null) {
-				return returnValue;
+			// 解决非web服务下收集日志报错的问题，例如：在MQ消费者中调用feign接口，此时MQ触发机制并非http请求，是无法获取请求参数的。
+			if (requestAttributes == null) {
+				return joinPoint.proceed();
 			}
             HttpServletRequest request = ((ServletRequestAttributes)requestAttributes).getRequest();
             Map<String, String> requestParams = getRequestParameters(request);
