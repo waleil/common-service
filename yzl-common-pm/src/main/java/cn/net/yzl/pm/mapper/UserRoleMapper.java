@@ -70,4 +70,11 @@ public interface UserRoleMapper {
      * @return
      */
     int deleteUserRoleInfoByUserCode(String userCode);
+
+    /**
+     * 根据角色id查询用户code
+     * @param roleIdList
+     * @return
+     */
+    List<String> getUserCodesByRoleIds(@Param("roleIdList") List<Integer> roleIdList);
 }

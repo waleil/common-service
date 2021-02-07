@@ -213,5 +213,14 @@
     ORDER BY m.id
   </select>
 
+  <select id="getRoleIdsByMenuId" resultType="java.lang.Integer" parameterType="java.lang.Integer">
+        SELECT
+         DISTINCT
+         role_id
+        FROM
+         role_menu
+        WHERE menu_id = #{menuId,jdbcType=INTEGER}
+    </select>
+
   <cache />
 </mapper>
