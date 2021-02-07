@@ -230,5 +230,19 @@
     </foreach>
   </select>
 
+  <select id="getUserCodesByRoleIds" parameterType="java.util.List" resultType="java.lang.String">
+    SELECT
+     DISTINCT
+     user_code
+    FROM
+    user_role
+    WHERE
+    role_id in
+    <foreach collection="roleIdList" item="roleId" open=" (" close=")" separator=",">
+      #{roleId,jdbcType=INTEGER}
+    </foreach>
+  </select>
+
+
   <cache />
 </mapper>

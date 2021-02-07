@@ -48,4 +48,11 @@ public interface RoleMenuMapper {
     List<RoleMenu> getRoleMenuListByRoleId(Integer roleId);
 
     int deleteRoleMenuInfoByRoleId(Integer roleId);
+
+    /**
+     * 根据菜单id查询角色id
+     * @param menuId
+     * @return
+     */
+    List<Integer> getRoleIdsByMenuId(Integer menuId);
 }
