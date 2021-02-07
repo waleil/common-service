@@ -69,7 +69,9 @@ public enum ResponseCodeEnums {
     POST_HAS_DEPARTPOST_ERROR_CODE(21119,"岗位已被使用,不可删除","岗位已被使用,不可删除"),
     STORE_NAME_REPEAT(21120,"仓库名称已经存在","仓库名称已经存在"),
     DEPART_POST_NOT_EXIT_ERROR_CODE(21121,"部门岗位不存在","部门岗位不存在"),
-
+    STAFF_WORKING_ERROR_CODE(21122,"员工已在职，不可重复入职","员工已在职，不可重复入职"),
+    ADJUST_FRONT_DEPART_POST_NOT_EXIST_ERROR(21123,"转出部门岗位不存在！","转出部门岗位不存在！"),
+    ADJUST_LATER_DEPART_POST_NOT_EXIST_ERROR(21124,"转入部门岗位不存在！","转入部门岗位不存在！"),
     // 212 开头表示 顾客服务
     // 213 开头表示 商品服务
     // 214 开头表示 媒介服务
@@ -113,8 +115,12 @@ public enum ResponseCodeEnums {
     NO_DATA(31103, "当前上一级部门没有数据,继承失败", "当前上一级部门没有数据,继承失败"),
     REPEAT_DATA_ERROR_CODE(31104, "薪酬范围不能出现交叉数据", "薪酬范围不能出现交叉数据"),
     OFFICE_DATA_ERROR_CODE(31105, "物品数量不为0,不能删除", "物品数量不为0,不能删除"),
-    OFFICE_DATA_EXIST_CODE(31106, "已存在,请重新输入", "已存在,请重新输入"),
-    PARKING_DATA_EXIST_CODE(31107,"该车牌号已有车位，申请失败","该车牌号已有车位，申请失败");
+    OFFICE_ERROR_CODE(31106,"编码重复，新增失败，请重新输入编码","编码重复，新增失败，请重新输入编码"),
+    OFFICE_ENCRYPT_DATA_ERROR_CODE(31107,"有重复编码，不能修改,请重新输入","有重复编码，不能修改,请重新输入"),
+    RECRUIT_DATA_ERROR_CODE(31108,"有重复名称，不能修改,请重新输入","有重复名称，不能修改,请重新输入"),
+    OFFICE_DATA_EXIST_CODE(31109, "已存在,请重新输入", "已存在,请重新输入"),
+    PARKING_DATA_EXIST_CODE(31110,"该车牌号已有车位，申请失败","该车牌号已有车位，申请失败");
+
 // 4开头表示 dmc
     // 411  ......
 
