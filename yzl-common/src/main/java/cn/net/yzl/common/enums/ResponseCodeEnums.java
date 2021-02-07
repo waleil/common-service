@@ -119,7 +119,8 @@ public enum ResponseCodeEnums {
     OFFICE_ENCRYPT_DATA_ERROR_CODE(31107,"有重复编码，不能修改,请重新输入","有重复编码，不能修改,请重新输入"),
     RECRUIT_DATA_ERROR_CODE(31108,"有重复名称，不能修改,请重新输入","有重复名称，不能修改,请重新输入"),
     OFFICE_DATA_EXIST_CODE(31109, "已存在,请重新输入", "已存在,请重新输入"),
-    PARKING_DATA_EXIST_CODE(31110,"该车牌号已有车位，申请失败","该车牌号已有车位，申请失败");
+    PARKING_DATA_EXIST_CODE(31110,"该车牌号已有车位，申请失败","该车牌号已有车位，申请失败"),
+    OFFICE_DATA_DELETE_CODE(31111, "存在该类型物品，删除失败", "存在该类型物品，删除失败");
 
 // 4开头表示 dmc
     // 411  ......
