@@ -113,7 +113,8 @@ public enum ResponseCodeEnums {
     NO_DATA(31103, "当前上一级部门没有数据,继承失败", "当前上一级部门没有数据,继承失败"),
     REPEAT_DATA_ERROR_CODE(31104, "薪酬范围不能出现交叉数据", "薪酬范围不能出现交叉数据"),
     OFFICE_DATA_ERROR_CODE(31105, "物品数量不为0,不能删除", "物品数量不为0,不能删除"),
-
+    OFFICE_DATA_EXIST_CODE(31106, "已存在,请重新输入", "已存在,请重新输入"),
+    PARKING_DATA_EXIST_CODE(31107,"该车牌号已有车位，申请失败","该车牌号已有车位，申请失败");
 // 4开头表示 dmc
     // 411  ......
 
