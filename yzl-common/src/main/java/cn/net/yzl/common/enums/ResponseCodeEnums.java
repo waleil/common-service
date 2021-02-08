@@ -72,6 +72,7 @@ public enum ResponseCodeEnums {
     STAFF_WORKING_ERROR_CODE(21122,"员工已在职，不可重复入职","员工已在职，不可重复入职"),
     ADJUST_FRONT_DEPART_POST_NOT_EXIST_ERROR(21123,"转出部门岗位不存在！","转出部门岗位不存在！"),
     ADJUST_LATER_DEPART_POST_NOT_EXIST_ERROR(21124,"转入部门岗位不存在！","转入部门岗位不存在！"),
+    STAFF_CHANGE_CODE_NOT_EXIST_ERROR(21125,"员工变动类型不存在！","员工变动类型不存在！"),
     // 212 开头表示 顾客服务
     // 213 开头表示 商品服务
     // 214 开头表示 媒介服务
