@@ -121,7 +121,9 @@ public enum ResponseCodeEnums {
     RECRUIT_DATA_ERROR_CODE(31108,"有重复名称，不能修改,请重新输入","有重复名称，不能修改,请重新输入"),
     OFFICE_DATA_EXIST_CODE(31109, "已存在,请重新输入", "已存在,请重新输入"),
     PARKING_DATA_EXIST_CODE(31110,"该车牌号已有车位，申请失败","该车牌号已有车位，申请失败"),
-    OFFICE_DATA_DELETE_CODE(31111, "存在该类型物品，删除失败", "存在该类型物品，删除失败");
+    OFFICE_DATA_DELETE_CODE(31111, "存在该类型物品，删除失败", "存在该类型物品，删除失败"),
+    REFERRAL_DATA_ERROR_CODE(31112,"该规则已关联介绍人，不能删除","该规则已关联介绍人，不能删除"),
+    COURSEWARE_DATA_ERROR_CODE(31112,"存在该类型课件,不能删除","存在该类型课件,不能删除");
 
 // 4开头表示 dmc
     // 411  ......
