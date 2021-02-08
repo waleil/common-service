@@ -44,7 +44,7 @@ public enum ResponseCodeEnums {
     LOGIN_ERROR_CODE(11000, "访问接口参数不全", "访问接口参数不全"),
     APPID_CHECK_ERROR_CODE(11001, "appid 认证错误!", "appid 认证错误!"),
     APPID_NO_WRITE_ERROR_CODE(11002, "appid 没有可写权限!", "appid 没有可写权限!"),
-
+    NO_DATA_HAS_BEEN_UPDATE_CODE(11003,"没有数据可以被更新","没有数据可以被更新"),
 
     // 2开头表示 crm, 3:开头表示 ehr 4:开头表示dmc 5:开头:bi
     // 211 开头表示 员工服务
@@ -67,6 +67,11 @@ public enum ResponseCodeEnums {
     POST_LEVEL_EXIT_ERROR_CODE(21117,"同名岗位等级已存在,请勿重复添加","同名岗位等级已存在,请勿重复添加"),
     RESUME_STEP_USED_CODE(21118,"面试轮次字典已被使用,不可删除","面试轮次字典已被使用,不可删除"),
     POST_HAS_DEPARTPOST_ERROR_CODE(21119,"岗位已被使用,不可删除","岗位已被使用,不可删除"),
+    STORE_NAME_REPEAT(21120,"仓库名称已经存在","仓库名称已经存在"),
+    DEPART_POST_NOT_EXIT_ERROR_CODE(21121,"部门岗位不存在","部门岗位不存在"),
+    STAFF_WORKING_ERROR_CODE(21122,"员工已在职，不可重复入职","员工已在职，不可重复入职"),
+    ADJUST_FRONT_DEPART_POST_NOT_EXIST_ERROR(21123,"转出部门岗位不存在！","转出部门岗位不存在！"),
+    ADJUST_LATER_DEPART_POST_NOT_EXIST_ERROR(21124,"转入部门岗位不存在！","转入部门岗位不存在！"),
     // 212 开头表示 顾客服务
     // 213 开头表示 商品服务
     // 214 开头表示 媒介服务
@@ -77,6 +82,27 @@ public enum ResponseCodeEnums {
     // 219 开头表示 工单服务
     // 220 开头表示 质检服务
     // 221 开头表示 仓储中心
+
+    MEMBER_ACTION_EXIST_ERROR(21201,"顾客该综合行为已存在","顾客该综合行为已存在"),
+    MEMBER_ACTION_USED_DELETE_ERROR(21202,"已有顾客绑定相应的综合行为，不可删除","已有顾客绑定相应的综合行为，不可删除"),
+    MEMBER_ACTION_NOT_EXIST_ERROR(21203,"该综合行为字典不存在","该综合行为字典不存在"),
+    WRITE_DISEASE_INSERT_FAIL__ERROR_CODE(21204,"手动新增病症类型失败","手动新增病症类型失败"),
+    MEMBER_DISEASE_EXIST_ERROR(21205,"顾客该病症属性已存在，请勿重复添加","顾客该病症属性已存在，请勿重复添加"),
+    CG_ORDER_HAS_REVIEWED(22101,"采购单已审核不可编辑","采购单已审核不可编辑"),
+    CG_PRICE_LESS_THAN_ZERO(22102,"采购单价不可小于0","采购单价不可小于0"),
+    CG_NUM_THAN_ZERO(22103,"采购数量不可小于0","采购数量不可小于0"),
+    CG_REVIEW_EXCEPTION(22104,"采购订单未提交或者已审核","采购订单审核异常"),
+    CG_WARE_NUM_EXCEPTION(22105,"入库数量超出采购数量","采购订单入库异常"),
+    CG_WITHDRAW_EXCEPTION(22106,"采购订单已审核不可撤回","采购订单已审核不可撤回"),
+    REPEAT_SUPPLIER_NAME_ERROR(22107,"供应商名称已存在,请重新输入","供应商名称已存在,请重新输入"),
+    CG_RETURN_NUM_ERROR(22108,"退货数量超过可退数量","退货数量超过可退数量"),
+    STORE_LOCAL_REPART(22109,"库位重复,请重新选择","库位重复,请重新选择"),
+    REPEAT_SUPPLIER_CODE_ERROR(22110,"编码已存在,请重新输入","编码已存在,请重新输入"),
+    REPEAT_STORE_NAME_ERROR(22111,"仓库名称已存在,请重新输入","仓库名称已存在,请重新输入"),
+    REPEAT_STORE_CODE_ERROR(22112,"仓库编码已存在,请重新输入","仓库编码已存在,请重新输入"),
+    REPEAT_STORE_STATUS_ERROR(22113,"仓库状态不允许变更","仓库状态不允许变更"),
+    STORE_NO_PRODUCT(22113,"仓库没有找到商品,请采购商品","仓库没有找到该商品,请采购商品"),
+    PRODUCT_STOCK_ERROR(22114,"仓库库存不足,请采购商品","仓库库存不足,请采购商品"),
     // 218 开头表示 营销活动
     // 220 开头表示 结算中心
 
@@ -88,9 +114,17 @@ public enum ResponseCodeEnums {
     STAFF_SOCIAL_ERROR_CODE(31102, "该薪酬范围已关联员工,不能删除!", "该薪酬范围已关联员工,不能删除!"),
     NO_DATA(31103, "当前上一级部门没有数据,继承失败", "当前上一级部门没有数据,继承失败"),
     REPEAT_DATA_ERROR_CODE(31104, "薪酬范围不能出现交叉数据", "薪酬范围不能出现交叉数据"),
+    OFFICE_DATA_ERROR_CODE(31105, "物品数量不为0,不能删除", "物品数量不为0,不能删除"),
+    OFFICE_ERROR_CODE(31106,"编码重复，新增失败，请重新输入编码","编码重复，新增失败，请重新输入编码"),
+    OFFICE_ENCRYPT_DATA_ERROR_CODE(31107,"有重复编码，不能修改,请重新输入","有重复编码，不能修改,请重新输入"),
+    RECRUIT_DATA_ERROR_CODE(31108,"有重复名称，不能修改,请重新输入","有重复名称，不能修改,请重新输入"),
+    OFFICE_DATA_EXIST_CODE(31109, "已存在,请重新输入", "已存在,请重新输入"),
+    PARKING_DATA_EXIST_CODE(31110,"该车牌号已有车位，申请失败","该车牌号已有车位，申请失败"),
+    OFFICE_DATA_DELETE_CODE(31111, "存在该类型物品，删除失败", "存在该类型物品，删除失败"),
+    REFERRAL_DATA_ERROR_CODE(31112,"该规则已关联介绍人，不能删除","该规则已关联介绍人，不能删除"),
+    COURSEWARE_DATA_ERROR_CODE(31112,"存在该类型课件,不能删除","存在该类型课件,不能删除");
 
-
-    // 4开头表示 dmc
+// 4开头表示 dmc
     // 411  ......
 
     // 5开头表示 bi
@@ -98,6 +132,10 @@ public enum ResponseCodeEnums {
 
 
     ;
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
 
     private Integer code;
     private String message;
