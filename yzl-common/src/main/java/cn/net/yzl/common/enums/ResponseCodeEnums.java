@@ -83,7 +83,7 @@ public enum ResponseCodeEnums {
     // 219 开头表示 工单服务
     // 220 开头表示 质检服务
     // 221 开头表示 仓储中心
-
+    EXCEL_HEAD_ERROR(22126,"",""),
     MEMBER_ACTION_EXIST_ERROR(21201,"顾客该综合行为已存在","顾客该综合行为已存在"),
     MEMBER_ACTION_USED_DELETE_ERROR(21202,"已有顾客绑定相应的综合行为，不可删除","已有顾客绑定相应的综合行为，不可删除"),
     MEMBER_ACTION_NOT_EXIST_ERROR(21203,"该综合行为字典不存在","该综合行为字典不存在"),
