@@ -122,8 +122,8 @@ public enum ResponseCodeEnums {
     PARKING_DATA_EXIST_CODE(31110,"该车牌号已有车位，申请失败","该车牌号已有车位，申请失败"),
     OFFICE_DATA_DELETE_CODE(31111, "存在该类型物品，删除失败", "存在该类型物品，删除失败"),
     REFERRAL_DATA_ERROR_CODE(31112,"该规则已关联介绍人，不能删除","该规则已关联介绍人，不能删除"),
-    COURSEWARE_DATA_ERROR_CODE(31112,"存在该类型课件,不能删除","存在该类型课件,不能删除");
-
+    COURSEWARE_DATA_ERROR_CODE(31112,"存在该类型课件,不能删除","存在该类型课件,不能删除"),
+    PARKING_DATA_ERROR_CODE(31113,"预留车位数大于可用车位数,不能设置","预留车位数大于可用车位数,不能设置");
 // 4开头表示 dmc
     // 411  ......
 
