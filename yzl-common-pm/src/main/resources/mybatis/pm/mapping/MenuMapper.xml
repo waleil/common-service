@@ -276,7 +276,7 @@
     <include refid="Base_Column_List" />
     FROM menu
     WHERE is_enable = 1 AND is_del = 0
-    ORDER BY id
+    ORDER BY order_num
   </select>
 
   <cache />
