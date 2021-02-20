@@ -72,6 +72,7 @@ public enum ResponseCodeEnums {
     STAFF_WORKING_ERROR_CODE(21122,"员工已在职，不可重复入职","员工已在职，不可重复入职"),
     ADJUST_FRONT_DEPART_POST_NOT_EXIST_ERROR(21123,"转出部门岗位不存在！","转出部门岗位不存在！"),
     ADJUST_LATER_DEPART_POST_NOT_EXIST_ERROR(21124,"转入部门岗位不存在！","转入部门岗位不存在！"),
+    STAFF_CHANGE_CODE_NOT_EXIST_ERROR(21125,"员工变动类型不存在！","员工变动类型不存在！"),
     // 212 开头表示 顾客服务
     // 213 开头表示 商品服务
     // 214 开头表示 媒介服务
@@ -82,7 +83,7 @@ public enum ResponseCodeEnums {
     // 219 开头表示 工单服务
     // 220 开头表示 质检服务
     // 221 开头表示 仓储中心
-
+    EXCEL_HEAD_ERROR(22126,"",""),
     MEMBER_ACTION_EXIST_ERROR(21201,"顾客该综合行为已存在","顾客该综合行为已存在"),
     MEMBER_ACTION_USED_DELETE_ERROR(21202,"已有顾客绑定相应的综合行为，不可删除","已有顾客绑定相应的综合行为，不可删除"),
     MEMBER_ACTION_NOT_EXIST_ERROR(21203,"该综合行为字典不存在","该综合行为字典不存在"),
@@ -101,8 +102,9 @@ public enum ResponseCodeEnums {
     REPEAT_STORE_NAME_ERROR(22111,"仓库名称已存在,请重新输入","仓库名称已存在,请重新输入"),
     REPEAT_STORE_CODE_ERROR(22112,"仓库编码已存在,请重新输入","仓库编码已存在,请重新输入"),
     REPEAT_STORE_STATUS_ERROR(22113,"仓库状态不允许变更","仓库状态不允许变更"),
-    STORE_NO_PRODUCT(22113,"仓库没有找到商品,请采购商品","仓库没有找到该商品,请采购商品"),
-    PRODUCT_STOCK_ERROR(22114,"仓库库存不足,请采购商品","仓库库存不足,请采购商品"),
+    STORE_NO_PRODUCT(22114,"仓库没有找到商品,请采购商品","仓库没有找到该商品,请采购商品"),
+    PRODUCT_STOCK_ERROR(22115,"仓库库存不足,请采购商品","仓库库存不足,请采购商品"),
+    INVENTORY_ACTUALNUM_ERROR(22116,"盘点实际数量不能为空","盘点实际数量不能为空"),
     // 218 开头表示 营销活动
     // 220 开头表示 结算中心
 
