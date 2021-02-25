@@ -228,5 +228,4 @@
     WHERE role_name = #{roleName,jdbcType=VARCHAR}
   </select>
 
-  <cache />
 </mapper>
