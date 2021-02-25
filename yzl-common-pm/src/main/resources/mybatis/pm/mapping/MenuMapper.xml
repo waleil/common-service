@@ -279,6 +279,4 @@
     ORDER BY order_num
   </select>
 
-  <cache />
-
 </mapper>

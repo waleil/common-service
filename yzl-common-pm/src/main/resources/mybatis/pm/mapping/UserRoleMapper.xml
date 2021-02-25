@@ -243,6 +243,4 @@
     </foreach>
   </select>
 
-
-  <cache />
 </mapper>

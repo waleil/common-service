@@ -114,5 +114,5 @@
       update_code = #{updateCode,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <cache />
+
 </mapper>

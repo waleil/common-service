@@ -222,5 +222,4 @@
         WHERE menu_id = #{menuId,jdbcType=INTEGER}
     </select>
 
-  <cache />
 </mapper>
