@@ -74,8 +74,8 @@ public enum ResponseCodeEnums {
     ADJUST_LATER_DEPART_POST_NOT_EXIST_ERROR(21124,"转入部门岗位不存在！","转入部门岗位不存在！"),
     STAFF_CHANGE_CODE_NOT_EXIST_ERROR(21125,"员工变动类型不存在！","员工变动类型不存在！"),
     STAFF_RECRUIT_NOT_EXIST_ERROR(21126,"招聘任务不存在！","招聘任务不存在！"),
-    STAFF_HAS_RESIGN_EXIST_ERROR(21127,"该员工已是离职状态,无需重复办理!","该员工已是离职状态,无需重复办理!"),
-    STAFF_HAS_POSITIVE_EXIST_ERROR(21128,"该员工已是正式员工,无需重复转正!","该员工已是正式员工,无需重复转正!"),
+    STAFF_HAS_RESIGN_ERROR_CODE(21127,"该员工已是离职状态,无需重复办理!","该员工已是离职状态,无需重复办理!"),
+    STAFF_HAS_POSITIVE_ERROR_CODE(21128,"该员工已是正式员工,无需重复转正!","该员工已是正式员工,无需重复转正!"),
 
     // 212 开头表示 顾客服务
     // 213 开头表示 商品服务
