@@ -76,7 +76,7 @@ public enum ResponseCodeEnums {
     STAFF_RECRUIT_NOT_EXIST_ERROR(21126,"招聘任务不存在！","招聘任务不存在！"),
     STAFF_HAS_RESIGN_ERROR_CODE(21127,"该员工已是离职状态,无需重复办理!","该员工已是离职状态,无需重复办理!"),
     STAFF_HAS_POSITIVE_ERROR_CODE(21128,"该员工已是正式员工,无需重复转正!","该员工已是正式员工,无需重复转正!"),
-
+    PROCESS_NOT_EXIST_ERROR_CODE(21129,"无对应流程信息","无对应流程信息"),
     // 212 开头表示 顾客服务
     // 213 开头表示 商品服务
     // 214 开头表示 媒介服务
