@@ -77,6 +77,8 @@ public enum ResponseCodeEnums {
     STAFF_HAS_RESIGN_ERROR_CODE(21127,"该员工已是离职状态,无需重复办理!","该员工已是离职状态,无需重复办理!"),
     STAFF_HAS_POSITIVE_ERROR_CODE(21128,"该员工已是正式员工,无需重复转正!","该员工已是正式员工,无需重复转正!"),
     PROCESS_NOT_EXIST_ERROR_CODE(21129,"无对应流程信息","无对应流程信息"),
+    ADJUST_FRONT_DEPART_POST_JOBNUM_ERROR(21130,"转出部门岗位在职人数错误！","转出部门岗位在职人数错误！"),
+    ADJUST_LATER_DEPART_POST_JOBNUM_ERROR(21131,"转入部门岗位在职人数错误！","转入部门岗位在职人数错误！"),
     // 212 开头表示 顾客服务
     // 213 开头表示 商品服务
     // 214 开头表示 媒介服务
