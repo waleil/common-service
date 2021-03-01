@@ -33,14 +33,12 @@ public class UserRoleController {
     @ApiOperation("单个/批量员工绑定角色")
     @PostMapping("/createUserRoleInfoList")
     public ComResponse createUserRoleInfoList(@RequestBody @Valid UserRoleDTO userRoleDTO) {
-        if (!CollectionUtils.isEmpty(userRoleDTO.getUserRoleList())) {
-            int i = userRoleService.createUserRoleInfoList(userRoleDTO.getUserRoleList());
-            if(i > 0){
-                return ComResponse.success(i).setMessage("操作用户角色绑定关系信息成功");
-            }
-            return ComResponse.fail(ComResponse.ERROR_STATUS, "操作用户角色绑定关系信息失败");
+        int i = userRoleService.createUserRoleInfoList(userRoleDTO);
+        if(i > 0){
+            return ComResponse.success(i).setMessage("操作用户角色绑定关系信息成功");
         }
-        return ComResponse.success();
+        return ComResponse.fail(ComResponse.ERROR_STATUS, "操作用户角色绑定关系信息失败");
+
     }
 
     /**

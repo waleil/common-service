@@ -18,5 +18,6 @@ public class UserRoleDTO implements Serializable {
     @NotNull
     private List<UserRole> userRoleList;
 
+    private List<String> userCode;
 
 }
