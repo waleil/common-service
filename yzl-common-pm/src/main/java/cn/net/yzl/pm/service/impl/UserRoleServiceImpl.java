@@ -73,7 +73,7 @@ public class UserRoleServiceImpl implements UserRoleService {
     @Override
     public int createUserRoleInfoList(UserRoleDTO userRoleDTO) {
         List<UserRole> userRoleDTOList = userRoleDTO.getUserRoleList();
-        List<String> userCodeList = userRoleDTO.getUserCodeList();
+        List<String> userCodeList = userRoleDTO.getUserCode();
         if(!CollectionUtils.isEmpty(userRoleDTOList)){
             //删除已绑定的
             for(UserRole userRole:userRoleDTOList) {
