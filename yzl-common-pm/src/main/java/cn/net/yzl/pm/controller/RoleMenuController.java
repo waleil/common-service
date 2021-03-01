@@ -6,11 +6,14 @@ import cn.net.yzl.pm.service.RoleService;
 import cn.net.yzl.pm.model.dto.RoleDTO;
 import cn.net.yzl.pm.model.vo.RoleMenuVO;
 import cn.net.yzl.common.entity.ComResponse;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
+@Api(tags = "角色权限-角色菜单管理")
 @RestController
 @RequestMapping("/roleMenu")
 public class RoleMenuController {
@@ -25,6 +28,7 @@ public class RoleMenuController {
      * Param biRole
      * @return
      */
+    @ApiOperation("创建/修改角色和菜单信息")
     @PostMapping("/createOrUpdateRoleMenuInfoList")
     public ComResponse createOrUpdateRoleMenuInfoList(@RequestBody @Valid RoleDTO roleDTO) {
         String operationName = "";
@@ -60,6 +64,7 @@ public class RoleMenuController {
      * @param roleId
      * @return
      */
+    @ApiOperation("根据角色编号查询对应的菜单信息")
     @RequestMapping(value = "/getRoleMenuListByRoleId", method = RequestMethod.GET)
     public ComResponse getRoleMenuListByRoleId(@RequestParam Integer roleId) {
         RoleMenuVO roleMenuVO = roleMenuService.getRoleMenuListByRoleId(roleId);

@@ -8,12 +8,15 @@ import cn.net.yzl.common.entity.ComResponse;
 import cn.net.yzl.common.entity.Page;
 import cn.net.yzl.common.util.AssemblerResultUtil;
 import com.github.pagehelper.PageHelper;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
 
+@Api(tags = "角色权限-角色管理")
 @RestController
 @RequestMapping("/role")
 public class RoleController {
@@ -29,6 +32,7 @@ public class RoleController {
      * @param isEnable 是否开启（1:启用 0:禁用)
      * @return
      */
+    @ApiOperation("查询角色列表")
     @GetMapping("/getRoleList")
     public ComResponse getRoleList(@RequestParam(required = false, defaultValue = "1") Integer pageNum,
                                    @RequestParam(required = false, defaultValue = "10") Integer pageSize,
@@ -47,6 +51,7 @@ public class RoleController {
      * Param biRole
      * @return
      */
+    @ApiOperation("角色新增")
     @PostMapping("/createRoleInfo")
     public ComResponse createRoleInfo(@RequestBody @Valid Role role) {
         int i = roleService.createRoleInfo(role);
@@ -62,6 +67,7 @@ public class RoleController {
      * @param isEnable 是否开启（1:启用 0:禁用)
      * @return
      */
+    @ApiOperation("开启/关闭角色")
     @GetMapping("/updateRoleInfo")
     public ComResponse updateRoleInfo(@RequestParam Integer roleId,
                                       @RequestParam Integer isEnable,

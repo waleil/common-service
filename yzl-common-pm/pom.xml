@@ -42,16 +42,16 @@
             <groupId>cn.net.yzl</groupId>
             <artifactId>yzl-common</artifactId>
             <version>1.0-RELEASE</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>io.springfox</groupId>
-                    <artifactId>springfox-swagger2</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>com.github.xiaoymin</groupId>
-                    <artifactId>swagger-bootstrap-ui</artifactId>
-                </exclusion>
-            </exclusions>
+<!--            <exclusions>-->
+<!--                <exclusion>-->
+<!--                    <groupId>io.springfox</groupId>-->
+<!--                    <artifactId>springfox-swagger2</artifactId>-->
+<!--                </exclusion>-->
+<!--                <exclusion>-->
+<!--                    <groupId>com.github.xiaoymin</groupId>-->
+<!--                    <artifactId>swagger-bootstrap-ui</artifactId>-->
+<!--                </exclusion>-->
+<!--            </exclusions>-->
         </dependency>
 
         <!--logger-->
