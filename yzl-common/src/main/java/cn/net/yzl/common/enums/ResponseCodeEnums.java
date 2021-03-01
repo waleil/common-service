@@ -82,6 +82,7 @@ public enum ResponseCodeEnums {
     STAFF_HAS_ENTER_POST_ERROR(21132,"员工是已入岗状态，无需重复入岗！","员工是已入岗状态，无需重复入岗！"),
     STAFF_CONTART_EXPIRED_ERROR(21133,"过期合同信息无法录入！","过期合同信息无法录入！"),
     STAFF_CONTART_TIME_CROSS_ERROR(21134,"新增合同时间区间错误!","新增合同时间区间错误!"),
+    STAFF_CONTART_INACTIVE_CROSS_ERROR(21135,"待用合同已存在,不可重复添加!","待用合同已存在,不可重复添加!"),
     // 212 开头表示 顾客服务
     // 213 开头表示 商品服务
     // 214 开头表示 媒介服务
