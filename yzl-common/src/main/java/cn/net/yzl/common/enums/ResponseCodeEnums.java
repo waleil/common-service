@@ -80,6 +80,7 @@ public enum ResponseCodeEnums {
     ADJUST_FRONT_DEPART_POST_JOBNUM_ERROR(21130,"转出部门岗位在职人数错误！","转出部门岗位在职人数错误！"),
     ADJUST_LATER_DEPART_POST_JOBNUM_ERROR(21131,"转入部门岗位在职人数错误！","转入部门岗位在职人数错误！"),
     STAFF_HAS_ENTER_POST_ERROR(21132,"员工是已入岗状态，无需重复入岗！","员工是已入岗状态，无需重复入岗！"),
+    STAFF_CONTART_EXPIRED_ERROR(21133,"过期合同信息无法录入！","过期合同信息无法录入！"),
     // 212 开头表示 顾客服务
     // 213 开头表示 商品服务
     // 214 开头表示 媒介服务
