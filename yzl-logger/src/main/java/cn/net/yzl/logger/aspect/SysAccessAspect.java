@@ -21,6 +21,7 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
@@ -40,6 +41,7 @@ import java.util.Objects;
 @Component
 @Order
 @Slf4j
+@RefreshScope
 public class SysAccessAspect {
     @Value("${logger.common.switch.logger.monitor:1}")
     private Integer monitorSwitch;
