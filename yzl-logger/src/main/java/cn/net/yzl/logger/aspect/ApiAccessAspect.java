@@ -19,6 +19,7 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.slf4j.MDC;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestAttributes;
@@ -38,6 +39,7 @@ import java.util.*;
 @Component
 @Order(value = 1)
 @Slf4j
+@RefreshScope
 public class ApiAccessAspect {
     @Value("${logger.common.switch.logger.monitor:1}")
     private Integer monitorSwitch;

@@ -1,57 +1,7 @@
-server:
-  port: 8077
 spring:
   application:
     name: yzl-common-zt
   profiles:
-    active: test
-  main:
-    allow-bean-definition-overriding: true
-  cloud:
-    nacos:
-      server-addr: http://nacostest.staff.yuzhilin.net.cn
-      discovery:
-        namespace: 71088b30-7c81-48cd-9f1e-481977d6157d
-        username: servergateway
-        password: servergateway
-        #        namespace: 1668ab9a-def9-4a51-9c04-6bbbdf40b162
-        #        username: ehr
-        #        password: ehr
-        service: ${spring.application.name}
-        enabled: true
-      config:
-        username: zt
-        password: zt
-        encode: UTF-8
-        enabled: true
-        file-extension: yaml
-        namespace: fe8d4572-a72d-4a8d-9fcb-c6a031240087
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    active: dev
+server:
+  port: 8077

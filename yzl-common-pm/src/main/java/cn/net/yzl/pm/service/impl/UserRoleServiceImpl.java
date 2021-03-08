@@ -2,11 +2,13 @@ package cn.net.yzl.pm.service.impl;
 
 import cn.net.yzl.pm.entity.UserRole;
 import cn.net.yzl.pm.mapper.UserRoleMapper;
+import cn.net.yzl.pm.model.dto.UserRoleDTO;
 import cn.net.yzl.pm.model.vo.UserRoleVO;
 import cn.net.yzl.pm.service.UserRoleService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.CollectionUtils;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -64,18 +66,26 @@ public class UserRoleServiceImpl implements UserRoleService {
 
     /**
      * 批量创建用户和角色关联信息绑定
-     * @param userRoleDTOList
+     * @param userRoleDTO
      * @return
      */
     @Transactional(rollbackFor = Exception.class)
     @Override
-    public int createUserRoleInfoList(List<UserRole> userRoleDTOList) {
-        //删除已绑定的
-        for(UserRole userRole:userRoleDTOList) {
-            userRoleMapper.deleteUserRoleInfoByUserCode(userRole.getUserCode());
+    public int createUserRoleInfoList(UserRoleDTO userRoleDTO) {
+        List<UserRole> userRoleDTOList = userRoleDTO.getUserRoleList();
+        List<String> userCodeList = userRoleDTO.getUserCode();
+        if(!CollectionUtils.isEmpty(userRoleDTOList)){
+            //删除已绑定的
+            for(UserRole userRole:userRoleDTOList) {
+                userRoleMapper.deleteUserRoleInfoByUserCode(userRole.getUserCode());
+            }
+            return userRoleMapper.createUserRoleInfoList(userRoleDTOList);
+        }else{
+            for(String userCode:userCodeList) {
+                userRoleMapper.deleteUserRoleInfoByUserCode(userCode);
+            }
+            return 1;
         }
-        return userRoleMapper.createUserRoleInfoList(userRoleDTOList);
-
     }
 
     /**

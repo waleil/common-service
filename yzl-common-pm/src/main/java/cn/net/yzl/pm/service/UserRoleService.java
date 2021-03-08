@@ -1,6 +1,7 @@
 package cn.net.yzl.pm.service;
 
 import cn.net.yzl.pm.entity.UserRole;
+import cn.net.yzl.pm.model.dto.UserRoleDTO;
 import cn.net.yzl.pm.model.vo.UserRoleVO;
 
 import java.util.List;
@@ -40,10 +41,10 @@ public interface UserRoleService {
 
     /**
      * 批量创建用户和角色关联信息绑定
-     * @param userRoleDTOList
+     * @param userRoleDTO
      * @return
      */
-    int createUserRoleInfoList(List<UserRole> userRoleDTOList);
+    int createUserRoleInfoList(UserRoleDTO userRoleDTO);
 
     /**
      * 单个创建用户和角色关联信息绑定

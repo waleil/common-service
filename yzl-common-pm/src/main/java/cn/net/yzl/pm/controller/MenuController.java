@@ -6,11 +6,14 @@ import cn.net.yzl.pm.service.MenuService;
 import cn.net.yzl.common.entity.ComResponse;
 import cn.net.yzl.common.entity.Page;
 import cn.net.yzl.common.util.AssemblerResultUtil;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 
+@Api(tags = "角色权限-菜单管理")
 @RestController
 @RequestMapping("/menu")
 public class MenuController {
@@ -23,6 +26,7 @@ public class MenuController {
      * 查询菜单列表
      * @return
      */
+    @ApiOperation("查询菜单列表")
     @RequestMapping(value = "/getMenuList", method = RequestMethod.GET)
     public ComResponse getMenuList() {
 
@@ -37,6 +41,7 @@ public class MenuController {
      * @param userCode
      * @return
      */
+    @ApiOperation("根据员工编号查询对应的菜单信息")
     @RequestMapping(value = "/getMenuListByUserCode", method = RequestMethod.GET)
     public ComResponse getMenuListByUserCode(@RequestParam String userCode) {
 
