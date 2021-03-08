@@ -2,6 +2,6 @@ spring:
   application:
     name: yzl-common-zt
   profiles:
-    active: test
+    active: dev
 server:
   port: 8077
