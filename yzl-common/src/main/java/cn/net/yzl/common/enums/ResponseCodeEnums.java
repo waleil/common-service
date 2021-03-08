@@ -73,6 +73,16 @@ public enum ResponseCodeEnums {
     ADJUST_FRONT_DEPART_POST_NOT_EXIST_ERROR(21123,"转出部门岗位不存在！","转出部门岗位不存在！"),
     ADJUST_LATER_DEPART_POST_NOT_EXIST_ERROR(21124,"转入部门岗位不存在！","转入部门岗位不存在！"),
     STAFF_CHANGE_CODE_NOT_EXIST_ERROR(21125,"员工变动类型不存在！","员工变动类型不存在！"),
+    STAFF_RECRUIT_NOT_EXIST_ERROR(21126,"招聘任务不存在！","招聘任务不存在！"),
+    STAFF_HAS_RESIGN_ERROR_CODE(21127,"该员工已是离职状态,无需重复办理!","该员工已是离职状态,无需重复办理!"),
+    STAFF_HAS_POSITIVE_ERROR_CODE(21128,"该员工已是正式员工,无需重复转正!","该员工已是正式员工,无需重复转正!"),
+    PROCESS_NOT_EXIST_ERROR_CODE(21129,"无对应流程信息","无对应流程信息"),
+    ADJUST_FRONT_DEPART_POST_JOBNUM_ERROR(21130,"转出部门岗位在职人数错误！","转出部门岗位在职人数错误！"),
+    ADJUST_LATER_DEPART_POST_JOBNUM_ERROR(21131,"转入部门岗位在职人数错误！","转入部门岗位在职人数错误！"),
+    STAFF_HAS_ENTER_POST_ERROR(21132,"员工是已入岗状态，无需重复入岗！","员工是已入岗状态，无需重复入岗！"),
+    STAFF_CONTART_EXPIRED_ERROR(21133,"过期合同信息无法录入！","过期合同信息无法录入！"),
+    STAFF_CONTART_TIME_CROSS_ERROR(21134,"新增合同时间区间错误!","新增合同时间区间错误!"),
+    STAFF_CONTART_INACTIVE_CROSS_ERROR(21135,"待用合同已存在,不可重复添加!","待用合同已存在,不可重复添加!"),
     // 212 开头表示 顾客服务
     // 213 开头表示 商品服务
     // 214 开头表示 媒介服务
@@ -83,7 +93,7 @@ public enum ResponseCodeEnums {
     // 219 开头表示 工单服务
     // 220 开头表示 质检服务
     // 221 开头表示 仓储中心
-
+    EXCEL_HEAD_ERROR(22126,"",""),
     MEMBER_ACTION_EXIST_ERROR(21201,"顾客该综合行为已存在","顾客该综合行为已存在"),
     MEMBER_ACTION_USED_DELETE_ERROR(21202,"已有顾客绑定相应的综合行为，不可删除","已有顾客绑定相应的综合行为，不可删除"),
     MEMBER_ACTION_NOT_EXIST_ERROR(21203,"该综合行为字典不存在","该综合行为字典不存在"),
@@ -97,13 +107,14 @@ public enum ResponseCodeEnums {
     CG_WITHDRAW_EXCEPTION(22106,"采购订单已审核不可撤回","采购订单已审核不可撤回"),
     REPEAT_SUPPLIER_NAME_ERROR(22107,"供应商名称已存在,请重新输入","供应商名称已存在,请重新输入"),
     CG_RETURN_NUM_ERROR(22108,"退货数量超过可退数量","退货数量超过可退数量"),
-    STORE_LOCAL_REPART(22109,"库位重复,请重新选择","库位重复,请重新选择"),
+    STORE_LOCAL_REPART(22109,"库位编码重复,请重新选择","库位编码重复,请重新选择"),
     REPEAT_SUPPLIER_CODE_ERROR(22110,"编码已存在,请重新输入","编码已存在,请重新输入"),
     REPEAT_STORE_NAME_ERROR(22111,"仓库名称已存在,请重新输入","仓库名称已存在,请重新输入"),
     REPEAT_STORE_CODE_ERROR(22112,"仓库编码已存在,请重新输入","仓库编码已存在,请重新输入"),
     REPEAT_STORE_STATUS_ERROR(22113,"仓库状态不允许变更","仓库状态不允许变更"),
-    STORE_NO_PRODUCT(22113,"仓库没有找到商品,请采购商品","仓库没有找到该商品,请采购商品"),
-    PRODUCT_STOCK_ERROR(22114,"仓库库存不足,请采购商品","仓库库存不足,请采购商品"),
+    STORE_NO_PRODUCT(22114,"仓库没有找到商品,请采购商品","仓库没有找到该商品,请采购商品"),
+    PRODUCT_STOCK_ERROR(22115,"仓库库存不足,请采购商品","仓库库存不足,请采购商品"),
+    INVENTORY_ACTUALNUM_ERROR(22116,"盘点实际数量不能为空","盘点实际数量不能为空"),
     // 218 开头表示 营销活动
     // 220 开头表示 结算中心
 
@@ -123,8 +134,9 @@ public enum ResponseCodeEnums {
     PARKING_DATA_EXIST_CODE(31110,"该车牌号已有车位，申请失败","该车牌号已有车位，申请失败"),
     OFFICE_DATA_DELETE_CODE(31111, "存在该类型物品，删除失败", "存在该类型物品，删除失败"),
     REFERRAL_DATA_ERROR_CODE(31112,"该规则已关联介绍人，不能删除","该规则已关联介绍人，不能删除"),
-    COURSEWARE_DATA_ERROR_CODE(31112,"存在该类型课件,不能删除","存在该类型课件,不能删除");
-
+    COURSEWARE_DATA_ERROR_CODE(31115,"存在该类型课件,不能删除","存在该类型课件,不能删除"),
+    PARKING_DATA_ERROR_CODE(31113,"预留车位数大于可用车位数,不能设置","预留车位数大于可用车位数,不能设置"),
+    OFFICE_DATA_UPDATE_CODE(31114,"存在该类型物品，不能修改","存在该类型物品，不能修改"),
 // 4开头表示 dmc
     // 411  ......
 
