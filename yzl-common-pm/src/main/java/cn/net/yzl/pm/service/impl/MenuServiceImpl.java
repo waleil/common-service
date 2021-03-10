@@ -12,8 +12,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -38,7 +38,7 @@ public class MenuServiceImpl implements MenuService {
 
     @Override
     public List<MenuVO> getMenuListByMenuId(String userCode) {
-        List<MenuVO> menuVOList = null;
+        List<MenuVO> menuVOList = new ArrayList<>();
         List<Integer> roleIds = userRoleMapper.getUserRoleListByUserCode(userCode);
         if (!CollectionUtils.isEmpty(roleIds)) {
             List<RoleMenuPermissionVO> roleMenuPermissionListByRoleIds = roleMenuMapper.getRoleMenuListByRoleIds(roleIds);
