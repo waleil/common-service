@@ -36,5 +36,7 @@ public class MenuVO implements Serializable {
 
     private Integer isLook;//是否可查看（1:是 0:否）
 
+    private Integer isAdmin;//是否最高权限（1:是 0:否）
+
 
 }

@@ -27,6 +27,8 @@ public class RoleMenu implements Serializable {
 
     private Integer isLook;//是否可查看（1:是 0:否）
 
+    private Integer isAdmin;//是否最高权限（1:是 0:否）
+
     private Date createTime;//创建时间
 
     private String createCode;//创建人编号
@@ -75,6 +77,14 @@ public class RoleMenu implements Serializable {
 
     public void setIsLook(Integer isLook) {
         this.isLook = isLook;
+    }
+
+    public Integer getIsAdmin() {
+        return isAdmin;
+    }
+
+    public void setIsAdmin(Integer isAdmin) {
+        this.isAdmin = isAdmin;
     }
 
     public Date getCreateTime() {
@@ -156,6 +166,7 @@ public class RoleMenu implements Serializable {
         sb.append(", orderNum=").append(orderNum);
         sb.append(", isEdit=").append(isEdit);
         sb.append(", isLook=").append(isLook);
+        sb.append(", isAdmin=").append(isAdmin);
         sb.append(", createTime=").append(createTime);
         sb.append(", createCode=").append(createCode);
         sb.append(", updateTime=").append(updateTime);

@@ -54,6 +54,7 @@ public class MenuServiceImpl implements MenuService {
                                         .map(roleMenuPermission -> {
                                             menuVO.setIsEdit(roleMenuPermission.getIsEdit());
                                             menuVO.setIsLook(roleMenuPermission.getIsLook());
+                                            menuVO.setIsAdmin(roleMenuPermission.getIsAdmin());
                                             return menuVO;
                                         })
                                 ).collect(Collectors.toList());
