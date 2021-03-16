@@ -11,7 +11,7 @@ public class NumTransfer {
     */
     public static void main(String[] args) {
         int num = 13;
-        String numStr = foematInteger(num);
+        String numStr = formatInteger(num);
         System.out.println("num= " + num + ", convert result: " + numStr);
         double decimal = 12312;
         System.out.println("============================================================");
@@ -19,7 +19,7 @@ public class NumTransfer {
         System.out.println("decimal= " + decimal + ", decStr: " + decStr);
     }
 
-    private static String foematInteger(int num) {
+    private static String formatInteger(int num) {
         char[] val = String.valueOf(num).toCharArray();
         int len = val.length;
         StringBuilder sb = new StringBuilder();
