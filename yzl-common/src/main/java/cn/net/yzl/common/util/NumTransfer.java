@@ -52,7 +52,7 @@ public class NumTransfer {
         int decIndex = decimals.indexOf(".");
         int integ = Integer.valueOf(decimals.substring(0, decIndex));
         int dec = Integer.valueOf(decimals.substring(decIndex + 1));
-        String result = foematInteger(integ) + "." + formatFractionalPart(dec);
+        String result = formatInteger(integ) + "." + formatFractionalPart(dec);
         return result;
         }
 
