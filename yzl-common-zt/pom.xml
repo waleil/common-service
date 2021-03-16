@@ -8,7 +8,7 @@
         <version>1.0-RELEASE</version>
     </parent>
     <artifactId>yzl-common-zt</artifactId>
-    <version>1.0-RELEASE</version>
+    <version>1.1-RELEASE</version>
     <name>yzl-common-zt</name>
     <description>YZL ZT</description>
 
