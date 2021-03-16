@@ -1,5 +1,7 @@
 package cn.net.yzl.common.util;
 
+import java.util.Arrays;
+
 public class NumTransfer {
 
     static String[] units = { "", "十", "百", "千", "万", "十万", "百万", "千万", "亿","十亿", "百亿", "千亿", "万亿" };
@@ -10,7 +12,7 @@ public class NumTransfer {
     * @param args
     */
     public static void main(String[] args) {
-        int num = 13;
+        int num = 0;
         String numStr = formatInteger(num);
         System.out.println("num= " + num + ", convert result: " + numStr);
         double decimal = 12312;
@@ -19,8 +21,11 @@ public class NumTransfer {
         System.out.println("decimal= " + decimal + ", decStr: " + decStr);
     }
 
-    private static String formatInteger(int num) {
+    public static String formatInteger(int num) {
         char[] val = String.valueOf(num).toCharArray();
+        if(num==0){
+            return String.valueOf(numArray[0]);
+        }
         int len = val.length;
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < len; i++) {
@@ -47,7 +52,7 @@ public class NumTransfer {
     * @param decimal
     * @return
     */
-        private static String formatDecimal(double decimal) {
+    public static String formatDecimal(double decimal) {
         String decimals = String.valueOf(decimal);
         int decIndex = decimals.indexOf(".");
         int integ = Integer.valueOf(decimals.substring(0, decIndex));
@@ -62,7 +67,7 @@ public class NumTransfer {
     * @param decimal
     * @return
     */
-    private static String formatFractionalPart(int decimal) {
+    public static String formatFractionalPart(int decimal) {
         char[] val = String.valueOf(decimal).toCharArray();
         int len = val.length;
         StringBuilder sb = new StringBuilder();
