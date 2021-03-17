@@ -39,12 +39,15 @@ public class MenuServiceImpl implements MenuService {
     @Override
     public List<MenuVO> getMenuListByMenuId(String userCode) {
         List<MenuVO> menuVOList = new ArrayList<>();
+        //查询用户角色
         List<Integer> roleIds = userRoleMapper.getUserRoleListByUserCode(userCode);
         if (!CollectionUtils.isEmpty(roleIds)) {
+            //根据角色查菜单
             List<RoleMenuPermissionVO> roleMenuPermissionListByRoleIds = roleMenuMapper.getRoleMenuListByRoleIds(roleIds);
             if (!CollectionUtils.isEmpty(roleMenuPermissionListByRoleIds)) {
                 List<Integer> menuIdList = roleMenuPermissionListByRoleIds.stream().map(RoleMenuPermissionVO::getMenuId).collect(Collectors.toList());
                 if (!CollectionUtils.isEmpty(menuIdList)) {
+                    //根据菜单id查询对应的菜单信息
                     menuVOList = menuMapper.getMenuListByMenuId(menuIdList);
                     if (!CollectionUtils.isEmpty(menuVOList)) {
                         menuVOList.stream()
