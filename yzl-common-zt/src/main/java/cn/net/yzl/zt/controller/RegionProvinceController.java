@@ -1,5 +1,6 @@
 package cn.net.yzl.zt.controller;
 
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -31,7 +32,7 @@ public class RegionProvinceController {
 
 		List<RegionProvince> regionProvinceList = regionProvinceService.getRegionProvinceList();
 		Map<String, List<RegionProvince>> regionProvinceListMap = regionProvinceList.stream()
-				.collect(Collectors.groupingBy(RegionProvince::getRegionName));
+				.collect(Collectors.groupingBy(RegionProvince::getRegionName, LinkedHashMap::new, Collectors.toList()));
 		// 设置排序
 		regionProvinceListMap.entrySet()
 				.forEach(entry -> entry.getValue().sort((o1, o2) -> o1.getProvinceId() - o2.getProvinceId()));
