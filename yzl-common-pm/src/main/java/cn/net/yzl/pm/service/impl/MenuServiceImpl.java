@@ -62,7 +62,7 @@ public class MenuServiceImpl implements MenuService {
                                         })
                                 ).collect(Collectors.toList());
                         if (!CollectionUtils.isEmpty(menuVOList)) {
-                            menuVOList.removeIf(e -> (e.getIsLook() == 0 && e.getIsEdit() == 0));
+                            menuVOList.removeIf(e -> (e.getIsLook() == 0 && e.getIsEdit() == 0 && e.getIsAdmin() == 0));
                         }
                     }
                 }

@@ -24,7 +24,7 @@
             <groupId>cn.net.yzl</groupId>
             <artifactId>yzl-common</artifactId>
             <version>1.0-RELEASE</version>
-            <scope>provided</scope>
+            <!--<scope>provided</scope>-->
         </dependency>
         <!--logger-->
         <dependency>

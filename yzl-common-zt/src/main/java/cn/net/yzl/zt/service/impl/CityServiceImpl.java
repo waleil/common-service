@@ -1,18 +1,28 @@
 package cn.net.yzl.zt.service.impl;
 
+import cn.net.yzl.common.util.JsonUtil;
+import cn.net.yzl.zt.config.redis.RedisUtil;
 import cn.net.yzl.zt.entity.City;
 import cn.net.yzl.zt.mapper.CityMapper;
 import cn.net.yzl.zt.service.CityService;
+import com.alibaba.fastjson.JSONObject;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 
+@Slf4j
 @Service("cityService")
 public class CityServiceImpl implements CityService {
 
     @Resource
     private CityMapper cityMapper;
+    @Autowired
+    private RedisUtil redisUtil;
 
     /**
      * 查询城市列表
@@ -21,6 +31,16 @@ public class CityServiceImpl implements CityService {
      */
     @Override
     public List<City> getCityList(Integer provinceId) {
-        return cityMapper.getCityList(provinceId);
+        List<City> cityList = new ArrayList<>();
+        String city = (String) redisUtil.hget("city",String.valueOf(provinceId));
+        if(StringUtils.hasText(city)){
+            cityList = JSONObject.parseArray(city, City.class);
+            log.info("查询缓存city:{}", JsonUtil.toJsonStr(cityList));
+        }else{
+            cityList = cityMapper.getCityList(provinceId);
+            String cit = JSONObject.toJSONString(cityList);
+            redisUtil.hset("city",String.valueOf(provinceId),cit,60*60*24);
+        }
+        return cityList;
     }
 }
