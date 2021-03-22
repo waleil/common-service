@@ -33,14 +33,13 @@ public class HealthCheckController {
     @GetMapping("/repairRedisInfo")
     public String repairRedisInfo(@RequestParam String key,@RequestParam(required = false) String item) {
         if(StringUtils.hasText(item)) {
-            String keys = (String) redisUtil.hget(key, item);
-            if (StringUtils.hasText(keys)) {
+            Object hgetObject = redisUtil.hget(key, item);
+            if (hgetObject != null) {
                 redisUtil.hdel(key,item);
             }
-        }
-        if(StringUtils.hasText(key)){
-            String keys = (String) redisUtil.get(key);
-            if(StringUtils.hasText(keys)) {
+        }else {
+            Object getObject = redisUtil.get(key);
+            if(getObject !=null) {
                 redisUtil.del(key);
             }
         }
