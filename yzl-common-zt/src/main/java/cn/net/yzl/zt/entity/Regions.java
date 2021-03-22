@@ -3,11 +3,11 @@ package cn.net.yzl.zt.entity;
 import java.io.Serializable;
 
 public class Regions implements Serializable {
-    private Integer id;
+    private Integer id;//主键id
 
-    private String regionCode;
+    private String regionCode;//大区编号
 
-    private String regionName;
+    private String regionName;//大区名称
 
     private static final long serialVersionUID = 1L;
 

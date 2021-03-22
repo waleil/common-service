@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class Street implements Serializable {
-    private Integer id;
+    private Integer id;//主键id
 
     private String name;//街道名称
 
@@ -19,10 +19,10 @@ public class Street implements Serializable {
     private Integer isDel;//删除状态(1:删除 0:正常)
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
-    private Date createTime;
+    private Date createTime;//创建时间
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
-    private Date updateTime;
+    private Date updateTime;//修改时间
 
     private static final long serialVersionUID = 1L;
 
