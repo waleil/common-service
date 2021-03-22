@@ -14,7 +14,6 @@ import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -36,25 +35,35 @@ public class ProvinceServiceImpl implements ProvinceService {
     @Override
     public List<Province> getProvinceList(Integer countryId,String regionCode) {
         log.info("查询省份列表countryId:{}，regionCode:{}", countryId,regionCode);
-
         List<Province> provinceList;
-        String province = (String) redisUtil.get(RedisConstant.PROVINCE_LIST);
-        if(StringUtils.hasText(province)){
-            provinceList = JSONObject.parseArray(province,Province.class);
-            log.info("查询缓存province:{}", JsonUtil.toJsonStr(provinceList));
-        }else{
-            if(StringUtils.hasText(regionCode)){
+        String province;
+        if(StringUtils.hasText(regionCode)){
+            province = (String) redisUtil.hget(RedisConstant.PROVINCE_LIST, regionCode);
+            if(StringUtils.hasText(province)){
+                provinceList = JSONObject.parseArray(province, Province.class);
+                log.info("查询缓存regionCodeProvince:{}", JsonUtil.toJsonStr(provinceList));
+            }else {
                 provinceList = provinceMapper.getProvinceListByRegionCode(regionCode);
-            }else{
-                provinceList = provinceMapper.getProvinceListByCountryId(countryId);
+                log.info("查询数据库regionCodeProvince:{}", JsonUtil.toJsonStr(provinceList));
                 if(!CollectionUtils.isEmpty(provinceList)){
-                    Collections.swap(provinceList,0,17);//将河北省放到第一位
+                    province = JSONObject.toJSONString(provinceList);
+                    redisUtil.hset(RedisConstant.PROVINCE_LIST, regionCode, province, RedisConstant.SECOND_SEVEN_EXPIRE_TIME);//7天缓存
                 }
             }
-            log.info("查询数据库province:{}", JsonUtil.toJsonStr(provinceList));
-            if(!CollectionUtils.isEmpty(provinceList)) {
-                String prov = JSONObject.toJSONString(provinceList);
-                redisUtil.set(RedisConstant.PROVINCE_LIST, prov, RedisConstant.SECOND_SEVEN_EXPIRE_TIME);//7天缓存
+        }else {
+            province = (String) redisUtil.hget(RedisConstant.PROVINCE_LIST, String.valueOf(countryId));
+            if (StringUtils.hasText(province)) {
+                provinceList = JSONObject.parseArray(province, Province.class);
+                log.info("查询缓存countryIdProvince:{}", JsonUtil.toJsonStr(provinceList));
+            } else {
+                provinceList = provinceMapper.getProvinceListByCountryId(countryId);
+                log.info("查询数据库countryIdProvince:{}", JsonUtil.toJsonStr(provinceList));
+                if (!CollectionUtils.isEmpty(provinceList)) {
+                    Collections.swap(provinceList, 0, 17);//将河北省放到第一位
+                    province = JSONObject.toJSONString(provinceList);
+                    redisUtil.hset(RedisConstant.PROVINCE_LIST, String.valueOf(countryId), province, RedisConstant.SECOND_SEVEN_EXPIRE_TIME);//7天缓存
+                }
+
             }
         }
         return provinceList;
