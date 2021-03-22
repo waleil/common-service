@@ -4,6 +4,7 @@ import cn.net.yzl.common.util.JsonUtil;
 import cn.net.yzl.zt.config.redis.RedisUtil;
 import cn.net.yzl.zt.entity.Province;
 import cn.net.yzl.zt.mapper.ProvinceMapper;
+import cn.net.yzl.zt.model.constant.RedisConstant;
 import cn.net.yzl.zt.service.ProvinceService;
 import com.alibaba.fastjson.JSONObject;
 import lombok.extern.slf4j.Slf4j;
@@ -34,8 +35,8 @@ public class ProvinceServiceImpl implements ProvinceService {
      */
     @Override
     public List<Province> getProvinceList(Integer countryId,String regionCode) {
-        List<Province> provinceList = new ArrayList<>();
-        String province = (String) redisUtil.get("province");
+        List<Province> provinceList;
+        String province = (String) redisUtil.get(RedisConstant.PROVINCE_LIST);
         if(StringUtils.hasText(province)){
             provinceList = JSONObject.parseArray(province,Province.class);
             log.info("查询缓存province:{}", JsonUtil.toJsonStr(provinceList));
@@ -48,8 +49,11 @@ public class ProvinceServiceImpl implements ProvinceService {
                     Collections.swap(provinceList,0,17);//将河北省放到第一位
                 }
             }
-            String prov = JSONObject.toJSONString(provinceList);
-            redisUtil.set("province",prov,60*60*24);
+            log.info("查询数据库province:{}", JsonUtil.toJsonStr(provinceList));
+            if(!CollectionUtils.isEmpty(provinceList)) {
+                String prov = JSONObject.toJSONString(provinceList);
+                redisUtil.set(RedisConstant.PROVINCE_LIST, prov, RedisConstant.SECOND_SEVEN_EXPIRE_TIME);//7天缓存
+            }
         }
         return provinceList;
     }
