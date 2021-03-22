@@ -39,7 +39,10 @@ public class HealthCheckController {
             }
         }
         if(StringUtils.hasText(key)){
-            redisUtil.del(key);
+            String keys = (String) redisUtil.get(key);
+            if(StringUtils.hasText(keys)) {
+                redisUtil.del(key);
+            }
         }
         return "OK";
     }
