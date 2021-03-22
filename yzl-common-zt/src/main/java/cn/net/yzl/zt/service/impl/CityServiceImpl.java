@@ -33,6 +33,7 @@ public class CityServiceImpl implements CityService {
      */
     @Override
     public List<City> getCityList(Integer provinceId) {
+        log.info("查询城市列表provinceId:{}", provinceId);
         List<City> cityList;
         String city = (String) redisUtil.hget(RedisConstant.CITY_LIST,String.valueOf(provinceId));
         if(StringUtils.hasText(city)){

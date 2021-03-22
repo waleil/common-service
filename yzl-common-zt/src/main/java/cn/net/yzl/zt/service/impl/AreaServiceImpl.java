@@ -33,6 +33,7 @@ public class AreaServiceImpl implements AreaService {
      */
     @Override
     public List<Area> getAreaList(Integer cityId) {
+        log.info("查询地区列表cityId:{}", cityId);
         List<Area> areaList;
         String area = (String) redisUtil.hget(RedisConstant.AREA_LIST,String.valueOf(cityId));
         if(StringUtils.hasText(area)){

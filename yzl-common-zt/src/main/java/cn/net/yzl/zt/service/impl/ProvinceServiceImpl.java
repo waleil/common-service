@@ -35,6 +35,8 @@ public class ProvinceServiceImpl implements ProvinceService {
      */
     @Override
     public List<Province> getProvinceList(Integer countryId,String regionCode) {
+        log.info("查询省份列表countryId:{}，regionCode:{}", countryId,regionCode);
+
         List<Province> provinceList;
         String province = (String) redisUtil.get(RedisConstant.PROVINCE_LIST);
         if(StringUtils.hasText(province)){
