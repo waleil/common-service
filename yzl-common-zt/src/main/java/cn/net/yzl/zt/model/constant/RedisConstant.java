@@ -13,9 +13,15 @@ public class RedisConstant {
      */
     public static final long EXPIRE_TIME = 12*60*60*1000;
 
+    public static final long SECOND_THREE_EXPIRE_TIME = 60*60*24*3;//三天过期时间
+
+    public static final long SECOND_SEVEN_EXPIRE_TIME = 60*60*24*7;//七天过期时间
+
     public static final long MINIUTE_EXPIRE_TIME = 60*1000;
 
     public static final long WEEK_EXPIRE_TIME = 7*24*60*60*1000;
+
+
 
     /**
      * 街道list
