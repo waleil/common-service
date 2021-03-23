@@ -1,5 +1,6 @@
 package cn.net.yzl.pm.service;
 
+import cn.net.yzl.pm.model.dto.MenuDTO;
 import cn.net.yzl.pm.model.dto.RoleDTO;
 import cn.net.yzl.pm.model.vo.RoleMenuPermissionVO;
 import cn.net.yzl.pm.model.vo.RoleMenuVO;
@@ -31,6 +32,6 @@ public interface RoleMenuService {
      * @param menuUrl
      * @return
      */
-    int getIsAdminByUserCodeAndMenuUrl(String userCode,String menuUrl);
+    MenuDTO getIsAdminByUserCodeAndMenuUrl(String userCode, String menuUrl);
 
 }

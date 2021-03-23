@@ -1,6 +1,7 @@
 package cn.net.yzl.pm.mapper;
 
 import cn.net.yzl.pm.entity.RoleMenu;
+import cn.net.yzl.pm.model.dto.MenuDTO;
 import cn.net.yzl.pm.model.vo.RoleMenuPermissionVO;
 import org.apache.ibatis.annotations.Param;
 
@@ -62,5 +63,5 @@ public interface RoleMenuMapper {
      * @param menuPath
      * @return
      */
-    List<Integer> getIsAdminByUserCodeAndMenuPath(@Param("userCode") String userCode,@Param("menuPath") String menuPath);
+    List<MenuDTO> getIsAdminByUserCodeAndMenuPath(@Param("userCode") String userCode, @Param("menuPath") String menuPath);
 }

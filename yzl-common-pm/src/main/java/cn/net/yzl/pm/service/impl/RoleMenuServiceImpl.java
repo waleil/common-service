@@ -1,5 +1,6 @@
 package cn.net.yzl.pm.service.impl;
 
+import cn.net.yzl.pm.model.dto.MenuDTO;
 import cn.net.yzl.pm.model.vo.RoleMenuPermissionVO;
 import cn.net.yzl.pm.service.RoleMenuService;
 import cn.net.yzl.pm.service.RoleService;
@@ -19,7 +20,9 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 
 import javax.annotation.Resource;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Slf4j
 @Service("roleMenuService")
@@ -112,16 +115,19 @@ public class RoleMenuServiceImpl implements RoleMenuService {
     }
 
     @Override
-    public int getIsAdminByUserCodeAndMenuUrl(String userCode,String menuUrl){
-        int isAdmin = 0;
-        List<Integer> list = roleMenuMapper.getIsAdminByUserCodeAndMenuPath(userCode,getMenuPath(menuUrl));
-        for (Integer i : list) {
-            if(i==1){
-                isAdmin = 1;
-                break;
-            }
+    public MenuDTO getIsAdminByUserCodeAndMenuUrl(String userCode, String menuUrl){
+        MenuDTO menuDTO = new MenuDTO();
+        List<MenuDTO> list = roleMenuMapper.getIsAdminByUserCodeAndMenuPath(userCode,getMenuPath(menuUrl));
+        menuDTO.setMenuName(list.get(0).getMenuName());
+        menuDTO.setIsAdmin(0);
+        Set<Integer> set = new HashSet<>();
+        for (MenuDTO dto : list) {
+            set.add(dto.getIsAdmin());
         }
-        return isAdmin;
+        if(set.contains(1)){
+            menuDTO.setIsAdmin(1);
+        }
+        return menuDTO;
     }
 
     private String getMenuPath(String menuUrl){

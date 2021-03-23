@@ -1,6 +1,7 @@
 package cn.net.yzl.pm.controller;
 
 import cn.net.yzl.pm.entity.Role;
+import cn.net.yzl.pm.model.dto.MenuDTO;
 import cn.net.yzl.pm.service.RoleMenuService;
 import cn.net.yzl.pm.service.RoleService;
 import cn.net.yzl.pm.model.dto.RoleDTO;
@@ -81,8 +82,8 @@ public class RoleMenuController {
     @ApiOperation("根据员工编号和菜单路由地址查询最高权限标识")
     @RequestMapping(value = "/getIsAdminByUserCodeAndMenuUrl", method = RequestMethod.GET)
     public ComResponse getIsAdminByUserCodeAndMenuUrl(@RequestParam String userCode,@RequestParam String menuUrl){
-        int isAdmin = roleMenuService.getIsAdminByUserCodeAndMenuUrl(userCode,menuUrl);
-        return ComResponse.success(isAdmin);
+        MenuDTO menuDTO = roleMenuService.getIsAdminByUserCodeAndMenuUrl(userCode,menuUrl);
+        return ComResponse.success(menuDTO);
     }
 
 }

@@ -238,8 +238,9 @@
       WHERE menu_id = #{menuId,jdbcType=INTEGER}
   </select>
 
-  <select id="getIsAdminByUserCodeAndMenuPath" resultType="java.lang.Integer">
-    select b.is_admin isAdmin from user_role a
+  <select id="getIsAdminByUserCodeAndMenuPath" resultType="cn.net.yzl.pm.model.dto.MenuDTO">
+    select c.menu_name menuName,b.is_admin isAdmin
+    from user_role a
     left join role_menu b on a.role_id = b.role_id
     left join menu c on b.menu_id = c.id
     where a.user_code = #{userCode,jdbcType=VARCHAR}
