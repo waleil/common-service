@@ -230,12 +230,20 @@
   </select>
 
   <select id="getRoleIdsByMenuId" resultType="java.lang.Integer" parameterType="java.lang.Integer">
-        SELECT
-         DISTINCT
-         role_id
-        FROM
-         role_menu
-        WHERE menu_id = #{menuId,jdbcType=INTEGER}
-    </select>
+      SELECT
+       DISTINCT
+       role_id
+      FROM
+       role_menu
+      WHERE menu_id = #{menuId,jdbcType=INTEGER}
+  </select>
+
+  <select id="getIsAdminByUserCodeAndMenuPath" resultType="java.lang.Integer">
+    select b.is_admin isAdmin from user_role a
+    left join role_menu b on a.role_id = b.role_id
+    left join menu c on b.menu_id = c.id
+    where a.user_code = #{userCode,jdbcType=VARCHAR}
+    and c.menu_path = #{menuPath,jdbcType=VARCHAR}
+  </select>
 
 </mapper>

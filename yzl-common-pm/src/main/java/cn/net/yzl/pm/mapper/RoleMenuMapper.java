@@ -55,4 +55,12 @@ public interface RoleMenuMapper {
      * @return
      */
     List<Integer> getRoleIdsByMenuId(Integer menuId);
+
+    /**
+     * 根据员工编号和菜单路由地址查询最高权限标识
+     * @param userCode
+     * @param menuPath
+     * @return
+     */
+    List<Integer> getIsAdminByUserCodeAndMenuPath(@Param("userCode") String userCode,@Param("menuPath") String menuPath);
 }

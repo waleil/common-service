@@ -72,4 +72,17 @@ public class RoleMenuController {
 
     }
 
+    /**
+     * 根据员工编号和菜单路由地址查询最高权限标识
+     * @param userCode
+     * @param menuUrl
+     * @return
+     */
+    @ApiOperation("根据员工编号和菜单路由地址查询最高权限标识")
+    @RequestMapping(value = "/getIsAdminByUserCodeAndMenuUrl", method = RequestMethod.GET)
+    public ComResponse getIsAdminByUserCodeAndMenuUrl(@RequestParam String userCode,@RequestParam String menuUrl){
+        int isAdmin = roleMenuService.getIsAdminByUserCodeAndMenuUrl(userCode,menuUrl);
+        return ComResponse.success(isAdmin);
+    }
+
 }

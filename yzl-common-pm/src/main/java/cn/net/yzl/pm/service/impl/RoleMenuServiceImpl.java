@@ -110,4 +110,25 @@ public class RoleMenuServiceImpl implements RoleMenuService {
         }
         return roleMenuMapper.batchCreateRoleMenuInfoList(roleDTO.getRoleMenuList());
     }
+
+    @Override
+    public int getIsAdminByUserCodeAndMenuUrl(String userCode,String menuUrl){
+        int isAdmin = 0;
+        List<Integer> list = roleMenuMapper.getIsAdminByUserCodeAndMenuPath(userCode,getMenuPath(menuUrl));
+        for (Integer i : list) {
+            if(i==1){
+                isAdmin = 1;
+                break;
+            }
+        }
+        return isAdmin;
+    }
+
+    private String getMenuPath(String menuUrl){
+        String url = menuUrl.replace("http://", "");
+        String url1= url.substring(0, url.indexOf("/"));
+        String menuPath= url.replace(url1,"");
+        return menuPath;
+    }
+
 }
