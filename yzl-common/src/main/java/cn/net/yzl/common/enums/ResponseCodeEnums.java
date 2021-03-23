@@ -13,6 +13,8 @@ public enum ResponseCodeEnums {
     LOG_ERROR(5001, "日志记录错误", "日志记录错误"),
     ASPECT_ERROR(5002, "切面运行错误", "日志记录错误"),
     BEAN_OPT_ERROR(5003, "java bean 操作错误", "java bean 操作错误"),
+    UPDATE_PW_ERROR(5004, "为了账号安全,请修改密码", "为了账号安全,请修改密码"),
+    REPEAT_PW_ERROR(5005, "重复密码", "重复密码"),
     // 用5位标识错误代码 12100 1:服务(例如:1所在位置表示crm,ehr,dmc,bi等项目,1现在表示公共响应码)
     // 						 12:表示模块
     //						 100:表示code
