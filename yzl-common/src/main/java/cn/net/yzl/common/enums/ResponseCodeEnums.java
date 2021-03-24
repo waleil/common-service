@@ -83,7 +83,7 @@ public enum ResponseCodeEnums {
     ADJUST_LATER_DEPART_POST_JOBNUM_ERROR(21131,"转入部门岗位在职人数错误！","转入部门岗位在职人数错误！"),
     STAFF_HAS_ENTER_POST_ERROR(21132,"员工是已入岗状态，无需重复入岗！","员工是已入岗状态，无需重复入岗！"),
     STAFF_CONTART_EXPIRED_ERROR(21133,"过期合同信息无法录入！","过期合同信息无法录入！"),
-    STAFF_CONTART_TIME_CROSS_ERROR(21134,"新增合同时间区间错误!","新增合同时间区间错误!"),
+    STAFF_CONTART_TIME_CROSS_ERROR(21134,"新增合同时间范围与其他合同有时间重叠，请更正!","新增合同时间范围与其他合同有时间重叠，请更正!"),
     STAFF_CONTART_INACTIVE_CROSS_ERROR(21135,"待用合同已存在,不可重复添加!","待用合同已存在,不可重复添加!"),
     STAFF_AUTO_ENTER_POST_ERROR(21136,"员工入岗出错！","员工入岗出错！"),
     STAFF_INFO_HAS_COMPLETE_ERROR(21137,"员工导入信息已完整,不可重复补全！","员工导入信息已完整！"),
