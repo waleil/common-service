@@ -118,23 +118,29 @@ public class RoleMenuServiceImpl implements RoleMenuService {
     public MenuDTO getIsAdminByUserCodeAndMenuUrl(String userCode, String menuUrl){
         MenuDTO menuDTO = new MenuDTO();
         List<MenuDTO> list = roleMenuMapper.getIsAdminByUserCodeAndMenuPath(userCode,getMenuPath(menuUrl));
-        menuDTO.setMenuName(list.get(0).getMenuName());
-        menuDTO.setIsAdmin(0);
-        Set<Integer> set = new HashSet<>();
-        for (MenuDTO dto : list) {
-            set.add(dto.getIsAdmin());
-        }
-        if(set.contains(1)){
-            menuDTO.setIsAdmin(1);
+        if(list.size()>0){
+            menuDTO.setMenuName(list.get(0).getMenuName());
+            menuDTO.setIsAdmin(0);
+            Set<Integer> set = new HashSet<>();
+            for (MenuDTO dto : list) {
+                set.add(dto.getIsAdmin());
+            }
+            if(set.contains(1)){
+                menuDTO.setIsAdmin(1);
+            }
         }
         return menuDTO;
     }
 
     private String getMenuPath(String menuUrl){
-        String url = menuUrl.replace("http://", "");
-        String url1= url.substring(0, url.indexOf("/"));
-        String menuPath= url.replace(url1,"");
-        return menuPath;
+        try {
+            String url = menuUrl.replace("http://", "");
+            String url1= url.substring(0, url.indexOf("/"));
+            String menuPath= url.replace(url1,"");
+            return menuPath;
+        }catch(Exception e){
+            throw new PmException("传入参数格式有误");
+        }
     }
 
 }
