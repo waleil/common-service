@@ -74,16 +74,15 @@ public class UserRoleServiceImpl implements UserRoleService {
     public int createUserRoleInfoList(UserRoleDTO userRoleDTO) {
         List<String> userCodeList = userRoleDTO.getUserCode();//用户编号集合
         List<UserRole> userRoleDTOList = userRoleDTO.getUserRoleList();//用户编号和角色集合
-        int i = 0;
         if(!CollectionUtils.isEmpty(userCodeList)){
             for(String userCode:userCodeList) {
-               i = userRoleMapper.deleteUserRoleInfoByUserCode(userCode);
+                userRoleMapper.deleteUserRoleInfoByUserCode(userCode);
             }
             if(!CollectionUtils.isEmpty(userRoleDTOList)) {
                 userRoleMapper.createUserRoleInfoList(userRoleDTOList);
             }
         }
-        return i;
+        return 1;
     }
 
     /**
