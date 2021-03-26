@@ -38,7 +38,7 @@ public class RoleMenuController {
             Role role = roleService.getRoleInfoByRoleName(roleDTO.getRole().getRoleName());
             if(roleDTO.getRole().getId() != null){
                 if(role != null) {
-                    if (role.getId() != roleDTO.getRole().getId()) {
+                    if (!role.getId().equals(roleDTO.getRole().getId())) {
                         return ComResponse.fail(ComResponse.ERROR_STATUS, "当前角色信息已存在");
                     }
                 }
