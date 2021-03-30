@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.net.yzl.msg.mapper.MsgItemToDoMapper">
+
+    <insert id="addMsgToDoInfo" parameterType="cn.net.yzl.msg.model.vo.MsgItemToDoVo">
+        insert into msg_todo_item(code,`type`,system_code,creator)
+        values(
+            #{code,jdbcType=VARCHAR},#{type,jdbcType=INTEGER},
+            #{systemCode,jdbcType=INTEGER},#{oprUser,jdbcType=VARCHAR}
+        )
+    </insert>
+
+    <update id="subMsgToDoInfo" parameterType="cn.net.yzl.msg.model.vo.MsgItemToDoVo">
+        update msg_todo_item
+        set
+        deal_status = 1,
+        updator = #{oprUser,jdbcType=VARCHAR}
+        where code = #{code,jdbcType=VARCHAR}
+        and `type` = #{type,jdbcType=INTEGER}
+        and system_code = #{systemCode,jdbcType=INTEGER}
+    </update>
+
+    <select id="getMsgToDoItemCount" parameterType="cn.net.yzl.msg.model.vo.MsgItemCountVo"
+            resultType="java.lang.Integer">
+        select count(*) count from msg_todo_item
+        where deal_status = 0
+        and `type` = #{type,jdbcType=INTEGER}
+        and system_code = #{systemCode,jdbcType=INTEGER}
+    </select>
+</mapper>

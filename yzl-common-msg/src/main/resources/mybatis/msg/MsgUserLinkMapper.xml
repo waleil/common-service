@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.net.yzl.msg.mapper.MsgUserLinkMapper">
+
+  <insert id="insertPersonMsgInfo" parameterType="cn.net.yzl.msg.model.vo.PersonMsgInfoInsertVo">
+    insert into msg_user_link (msg_code, user_code, creator) values
+    <foreach collection="list" item="item" separator=",">
+      (
+      #{item.msgCode,jdbcType=VARCHAR},
+      #{item.userCode,jdbcType=VARCHAR},
+      #{item.creator,jdbcType=VARCHAR}
+      )
+    </foreach>
+  </insert>
+
+  <update id="deletePersonMsgInfo" parameterType="cn.net.yzl.msg.model.vo.PersonMsgInfoEditVo">
+    update msg_user_link set is_del = 1 where user_code=#{userCode,jdbcType=VARCHAR} and msg_code in
+    <foreach collection="msgCodeList" index="index" item="item" open="(" separator="," close=")">
+      #{item}
+    </foreach>
+  </update>
+
+  <update id="updatePersonMsgInfo" parameterType="java.util.List">
+    update msg_user_link set is_read = 1 where user_code=#{userCode,jdbcType=VARCHAR} and msg_code in
+    <foreach collection="msgCodeList" index="index" item="item" open="(" separator="," close=")">
+      #{item}
+    </foreach>
+  </update>
+
+<!--  <select id="selectStaffList" resultType="String">-->
+<!--    select no from staff where work_status = 1-->
+<!--  </select>-->
+
+</mapper>
