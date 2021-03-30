@@ -194,10 +194,13 @@ public class MsgTypeServiceImpl implements MsgTypeService {
      */
     @Override
     public ComResponse delMsgType(String msgCode) {
+        int count = msgTypeMapper.selectCount(msgCode);
+        if(count>0)
+            return ComResponse.fail(23004,"该类型已被使用，无法删除！");
         int num = msgTypeMapper.delMsgType(msgCode);
         log.info("【删除消息类型入参参数以及返回值结果】:{}",String.format("入参msgCode:%s,删除结果num:%d",msgCode,num));
         if(num > 0)
             return ComResponse.success();
-        return ComResponse.fail(23004,"删除失败");
+        return ComResponse.fail(23005,"删除失败");
     }
 }

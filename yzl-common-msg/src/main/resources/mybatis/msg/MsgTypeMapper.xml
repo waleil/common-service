@@ -107,5 +107,8 @@
         where code = #{msgCode}
     </update>
 
+    <select id="selectCount" resultType="java.lang.Integer">
+        select count(1) count from msg_info where type_code = #{msgCode}
+    </select>
 
 </mapper>

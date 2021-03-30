@@ -27,9 +27,9 @@ public class MsgInfoPageVo {
     @ApiModelProperty("当前用户编号")
     private String userNo;
     @ApiModelProperty("开始时间")
-    @JsonFormat(locale="zh", timezone="GMT+8", pattern="yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(locale="zh", timezone="GMT+8", pattern="yyyy-MM-dd")
     private Date beginTime;
     @ApiModelProperty("结束时间")
-    @JsonFormat(locale="zh", timezone="GMT+8", pattern="yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(locale="zh", timezone="GMT+8", pattern="yyyy-MM-dd")
     private Date endTime;
 }

@@ -31,10 +31,10 @@ public interface MsgTypeMapper {
     //查询消息类型中最大的编号
     String selectMaxCode();
 
-
     //2020-2-07
     //删除消息类型
     int delMsgType(String msgCode);
 
+    int selectCount(String msgCode);
 
 }
