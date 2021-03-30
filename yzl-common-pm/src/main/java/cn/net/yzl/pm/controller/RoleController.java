@@ -39,7 +39,7 @@ public class RoleController {
                                    @RequestParam(required = false) Integer isEnable,
                                    @RequestParam(required = false, defaultValue = "role_sort") String sortField,
                                    @RequestParam(required = false, defaultValue = "3") Integer sortType) {
-        if(isEnable == null) {
+        if(isEnable == null) {//是否开启（1:启用 0:禁用)
             PageHelper.startPage(pageNum, pageSize);
         }
         List<Role> roleList = roleService.getRoleList(isEnable,sortField,sortType);
