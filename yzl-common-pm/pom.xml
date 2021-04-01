@@ -8,8 +8,10 @@
         <version>1.0-RELEASE</version>
     </parent>
     <artifactId>yzl-common-pm</artifactId>
+    <name>yzl-common-pm</name>
     <version>1.0.0-RELEASE</version>
     <packaging>jar</packaging>
+    <description>YZL PM</description>
 
 
     <build>
