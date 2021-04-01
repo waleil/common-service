@@ -137,6 +137,9 @@ public class RoleMenuServiceImpl implements RoleMenuService {
             String url = menuUrl.replace("http://", "");
             String url1= url.substring(0, url.indexOf("/"));
             String menuPath= url.replace(url1,"");
+            if(menuPath.indexOf("?") != -1){
+                menuPath = menuPath.substring(0, menuPath.indexOf("?"));
+            }
             return menuPath;
         }catch(Exception e){
             throw new PmException("传入参数格式有误");

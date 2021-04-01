@@ -9,7 +9,7 @@
     </parent>
     <artifactId>yzl-common-msg</artifactId>
     <packaging>jar</packaging>
-    <version>1.3-SNAPSHOT</version>
+    <version>1.0.0-RELEASE</version>
 
     <dependencies>
         <!--common-->
@@ -48,7 +48,7 @@
         <dependency>
             <groupId>cn.net.yzl</groupId>
             <artifactId>yzl-staff-model</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
+            <version>1.0.0-RELEASE</version>
         </dependency>
 
         <dependency>
