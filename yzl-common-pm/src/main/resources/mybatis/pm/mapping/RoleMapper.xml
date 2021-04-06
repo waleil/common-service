@@ -205,14 +205,25 @@
     where id = #{roleId,jdbcType=INTEGER}
     </update>
 
-    <select id="getRoleList" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <select id="getRoleList" resultMap="BaseResultMap">
     SELECT
-    <include refid="Base_Column_List" />
-    FROM role WHERE is_del = 0
+      <include refid="Base_Column_List" />
+    FROM role
+    WHERE is_del = 0
       <if test="isEnable != null">
         AND is_enable = #{isEnable,jdbcType=INTEGER}
       </if>
-    ORDER BY role_sort
+      <choose>
+        <when test="sortType == 1">
+          ORDER BY ${sortField} ASC
+        </when>
+        <when test="sortType == 2">
+          ORDER BY ${sortField} DESC
+        </when>
+        <otherwise>
+          ORDER BY role_sort
+        </otherwise>
+      </choose>
   </select>
 
   <select id="getRoleMaxSort" resultType="java.lang.Integer">
@@ -220,6 +231,7 @@
       MAX(role_sort)
     FROM role
   </select>
+
   <!--根据角色名称查询是否存在当前角色-->
   <select id="getRoleInfoByRoleName" resultMap="BaseResultMap">
     SELECT

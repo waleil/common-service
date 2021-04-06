@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.net.yzl.msg.mapper.MsgTemplateMapper">
+    <sql id="Base_field">
+        id,code,system_code,`type`,content,is_del as isDel,creator,updator,create_time as createTime,update_time as updateTime
+    </sql>
+    <select id="selectMsgTemplate" resultType="cn.net.yzl.msg.model.pojo.MsgTemplatePo">
+        select <include refid="Base_field"/>
+        from msg_template
+        where `code` = #{code}
+    </select>
+
+    <insert id="addMsgMsgTemplate">
+        insert into msg_template(code,`type`,system_code,content,creator)
+        values(
+            #{code,jdbcType=VARCHAR},#{type,jdbcType=INTEGER},
+            #{systemCode,jdbcType=INTEGER},#{content,jdbcType=VARCHAR},
+            #{creator,jdbcType=VARCHAR}
+        )
+    </insert>
+
+
+</mapper>

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.net.yzl.msg.mapper.YMsgInfoMapper">
+    <select id="selectMsgInfoPageList" resultType="cn.net.yzl.msg.model.pojo.MsgInfoPo">
+        select mi.id,mi.`code`,mi.title,mi.type_code as typeCode,mt.`name`,mi.send_user as sendUser,
+        mi.send_time as sendTime,mi.msg_status as msgStatus,mi.send_status as sendStatus,mi.target,
+        mi.target_list as targetList,mi.notice_mode as noticeMode,
+        mi.is_del as isDel,mi.file_url as fileUrl,mi.system_code as systemCode,mi.send_name as sendName
+        from msg_info mi
+        left join msg_type mt on mi.type_code = mt.`code`
+        <where>
+            mi.notice_mode = 0
+            <if test="typeCode !=null and typeCode !=''">
+                and type_code = #{typeCode}
+            </if>
+            <if test="title !=null and title !=''">
+                and (title  LIKE CONCAT(CONCAT('%', #{title}), '%'))
+            </if>
+            <if test="beginTime!=null and endTime!=null">
+                and mi.send_time between  #{beginTime} and date_add(#{endTime}, interval 1 day)
+            </if>
+            <if test="userNo!=null and userNo!=''">
+                and mi.send_user = #{userNo}
+            </if>
+        </where>
+        order by mi.create_time desc
+    </select>
+
+    <update id="rollback">
+        update msg_info
+        set
+        is_del = 1
+        where  `code` = #{code}
+    </update>
+    <update id="stopSending">
+        update msg_info
+        set
+        send_status = 2,
+        is_del = 1
+        where  `code` = #{code} and  send_status = 0
+    </update>
+
+    <select id="selectMsgCount" resultType="java.lang.Integer">
+        select count(*) from msg_user_link where msg_code = #{msgCode}
+    </select>
+    <select id="selectMsgCountIsRead" resultType="java.lang.Integer">
+        select count(*) from msg_user_link where msg_code = #{msgCode} and is_read = 1
+    </select>
+    <select id="selectMsgItem" resultType="cn.net.yzl.msg.model.dto.MsgInfoDto">
+        select code,title,content,file_url,system_code,target_list
+        from msg_info
+        where code = #{code}
+    </select>
+
+
+    <update id="updateMsgStatus">
+        update msg_info
+        <set>
+            <if test="msgStatus != null">
+                msg_status = #{msgStatus},
+            </if>
+            <if test="sendStatus != null">
+                send_status = #{sendStatus}
+            </if>
+        </set>
+        where `code` = #{code}
+    </update>
+
+    <sql id="Base_MsgInfo_list">
+        id,`code`,title,system_code,content,file_url,notice_mode,send_mode,msg_status,
+        send_status,target,target_list,send_user,send_time,is_del,creator,updator,
+        create_time,update_time,send_name
+    </sql>
+    <select id="selectMsgOne" resultType="cn.net.yzl.msg.model.pojo.MsgInfoPo">
+        select <include refid="Base_MsgInfo_list"/>
+        from msg_info
+        where `code` = #{code}
+    </select>
+
+    <select id="selectMsgUserIsNotRead" resultType="java.lang.Integer">
+        select id from msg_user_link where msg_code = #{code} and is_read = 0
+    </select>
+
+
+    <update id="deleteMsgUserPartNotRead">
+        update msg_user_link
+        set
+        is_del = 1
+        where
+        id in
+        <foreach collection="notReadList" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </update>
+
+    <insert id="addMsg">
+        insert into msg_info(code,system_code,content,creator,send_user,title,send_time,type_code,notice_mode,send_name)
+        values(
+            #{code,jdbcType=VARCHAR},
+            #{systemCode,jdbcType=INTEGER},
+            #{content,jdbcType=VARCHAR},
+            #{creator,jdbcType=VARCHAR},
+            #{sendUser,jdbcType=VARCHAR},
+            #{title,jdbcType=VARCHAR},
+            now(),
+            #{type,jdbcType=VARCHAR},
+            #{noticeMode,jdbcType=INTEGER},
+            #{sendName,jdbcType=VARCHAR}
+        )
+    </insert>
+
+</mapper>

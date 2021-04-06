@@ -1,6 +1,7 @@
 package cn.net.yzl.pm.controller;
 
 import cn.net.yzl.pm.entity.Role;
+import cn.net.yzl.pm.model.dto.MenuDTO;
 import cn.net.yzl.pm.service.RoleMenuService;
 import cn.net.yzl.pm.service.RoleService;
 import cn.net.yzl.pm.model.dto.RoleDTO;
@@ -37,7 +38,7 @@ public class RoleMenuController {
             Role role = roleService.getRoleInfoByRoleName(roleDTO.getRole().getRoleName());
             if(roleDTO.getRole().getId() != null){
                 if(role != null) {
-                    if (role.getId() != roleDTO.getRole().getId()) {
+                    if (!role.getId().equals(roleDTO.getRole().getId())) {
                         return ComResponse.fail(ComResponse.ERROR_STATUS, "当前角色信息已存在");
                     }
                 }
@@ -70,6 +71,19 @@ public class RoleMenuController {
         RoleMenuVO roleMenuVO = roleMenuService.getRoleMenuListByRoleId(roleId);
         return ComResponse.success(roleMenuVO);
 
+    }
+
+    /**
+     * 根据员工编号和菜单路由地址查询最高权限标识
+     * @param userCode
+     * @param menuUrl
+     * @return
+     */
+    @ApiOperation("根据员工编号和菜单路由地址查询最高权限标识")
+    @RequestMapping(value = "/getIsAdminByUserCodeAndMenuUrl", method = RequestMethod.GET)
+    public ComResponse getIsAdminByUserCodeAndMenuUrl(@RequestParam String userCode,@RequestParam String menuUrl){
+        MenuDTO menuDTO = roleMenuService.getIsAdminByUserCodeAndMenuUrl(userCode,menuUrl);
+        return ComResponse.success(menuDTO);
     }
 
 }

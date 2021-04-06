@@ -4,21 +4,21 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class RegionProvince implements Serializable {
-    private Integer id;
+    private Integer id;//主键id
 
-    private String regionName;
+    private String regionName;//大区域名称
 
-    private String regionCode;
+    private String regionCode;//大区域编码
 
-    private Integer provinceId;
+    private Integer provinceId;//省id
 
-    private String provinceCode;
+    private String provinceCode;//省code
 
-    private String provinceName;
+    private String provinceName;//省名称
 
-    private Date createTime;
+    private Date createTime;//创建时间
 
-    private Date updateTime;
+    private Date updateTime;//修改时间
 
     private static final long serialVersionUID = 1L;
 

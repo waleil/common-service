@@ -36,11 +36,13 @@ public class RoleController {
     @GetMapping("/getRoleList")
     public ComResponse getRoleList(@RequestParam(required = false, defaultValue = "1") Integer pageNum,
                                    @RequestParam(required = false, defaultValue = "10") Integer pageSize,
-                                   @RequestParam(required = false) Integer isEnable) {
-        if(isEnable == null) {
+                                   @RequestParam(required = false) Integer isEnable,
+                                   @RequestParam(required = false, defaultValue = "role_sort") String sortField,
+                                   @RequestParam(required = false, defaultValue = "3") Integer sortType) {
+        if(isEnable == null) {//是否开启（1:启用 0:禁用)
             PageHelper.startPage(pageNum, pageSize);
         }
-        List<Role> roleList = roleService.getRoleList(isEnable);
+        List<Role> roleList = roleService.getRoleList(isEnable,sortField,sortType);
         Page<Role> commonPageVO = AssemblerResultUtil.resultAssembler(roleList);
         return ComResponse.success(commonPageVO);
     }

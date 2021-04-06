@@ -10,7 +10,7 @@ public interface RoleService {
      * 查询角色信息列表
      * @return
      */
-    List<Role> getRoleList(Integer isEnable);
+    List<Role> getRoleList(Integer isEnable,String sortField,Integer sortType);
 
     /**
      * 新增角色信息

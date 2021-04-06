@@ -119,11 +119,20 @@
   <!--查询大区省列表-->
   <select id="getRegionProvinceList" resultMap="BaseResultMap">
     SELECT
-     rp.*,p.name
-    FROM region_province rp
-    LEFT JOIN province p
-    ON p.id = rp.province_id
-    ORDER BY region_code
+		rp.id,
+		rp.region_name,
+		rp.region_code,
+		rp.province_id,
+		rp.province_code,
+		rp.create_time,
+		rp.update_time,
+		p.NAME 
+	FROM
+		region_province rp
+		LEFT JOIN province p ON p.id = rp.province_id 
+	ORDER BY
+		rp.region_code,
+		rp.province_id
   </select>
 
   <cache />

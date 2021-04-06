@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.net.yzl.msg.mapper.MsgInfoMapper">
+
+  <insert id="insertMsgInfo" parameterType="cn.net.yzl.msg.model.vo.MsgInfoInsertVo">
+    insert into msg_info (code, title, content, file_url, notice_mode, send_mode, type_code,
+    target, target_list, send_status, send_user, send_name, send_time, creator)
+    values (#{code,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, #{content,jdbcType=LONGVARCHAR},
+    #{fileUrl,jdbcType=VARCHAR}, #{noticeMode,jdbcType=BIT}, #{sendMode,jdbcType=BIT},
+    #{typeCode,jdbcType=VARCHAR}, #{target,jdbcType=BIT}, #{targetList,jdbcType=VARCHAR},
+    #{sendStatus,jdbcType=BIT}, #{sendUser,jdbcType=VARCHAR}, #{sendName,jdbcType=VARCHAR},
+    #{sendTime,jdbcType=TIMESTAMP}, #{sendUser,jdbcType=VARCHAR})
+  </insert>
+
+  <select id="selectPersonMsgInfoList" parameterType="cn.net.yzl.msg.model.vo.PersonMsgInfoSelectVo"
+          resultType="cn.net.yzl.msg.model.dto.PersonMsgInfoSelectDto">
+    select a.code msgCode, a.title, a.file_url fileUrl, b.name typeName, a.send_user sendUser,
+    a.send_name sendName, a.send_time sendTime, a.content, c.is_read isRead
+    from msg_info a
+    left join msg_type b on a.type_code = b.code
+    left join msg_user_link c on a.code = c.msg_code
+    where c.is_del = 0 and c.user_code = #{userCode,jdbcType=VARCHAR}
+    <if test="title != null and title != ''">
+      and a.title like CONCAT(CONCAT('%',#{title,jdbcType=VARCHAR}),'%')
+    </if>
+    <if test="startTime != null">
+      <if test="endTime != null">
+        and a.send_time between #{startTime} and date_add(#{endTime}, interval 1 day)
+      </if>
+    </if>
+    <if test="isRead != null">
+      and c.is_read = #{isRead,jdbcType=INTEGER}
+    </if>
+    order by c.create_time desc
+  </select>
+
+  <select id="selectPersonMsgInfoDetail" parameterType="String"
+          resultType="cn.net.yzl.msg.model.dto.PersonMsgInfoSelectDto">
+    select a.code msgCode, a.title, a.file_url fileUrl, a.content
+    from msg_info a
+    where a.code = #{msgCode,jdbcType=VARCHAR}
+  </select>
+
+  <select id="selectMsgInfoTimeList" resultType="cn.net.yzl.msg.model.pojo.MsgInfoPo">
+    select id, code, title, content, file_url fileUrl, notice_mode, noticeMode, send_mode sendMode,
+    type_code typeCode, msg_status msgStatus, send_status sendStatus, target, send_user sendUser,
+    send_name sendName, send_time sendTime, target_list targetList, is_del isDel
+    from msg_info
+    where send_mode = 2 and send_status = 0 and is_del = 0
+  </select>
+
+</mapper>

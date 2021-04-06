@@ -12,8 +12,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -38,13 +38,16 @@ public class MenuServiceImpl implements MenuService {
 
     @Override
     public List<MenuVO> getMenuListByMenuId(String userCode) {
-        List<MenuVO> menuVOList = null;
+        List<MenuVO> menuVOList = new ArrayList<>();
+        //查询用户角色
         List<Integer> roleIds = userRoleMapper.getUserRoleListByUserCode(userCode);
         if (!CollectionUtils.isEmpty(roleIds)) {
+            //根据角色查菜单
             List<RoleMenuPermissionVO> roleMenuPermissionListByRoleIds = roleMenuMapper.getRoleMenuListByRoleIds(roleIds);
             if (!CollectionUtils.isEmpty(roleMenuPermissionListByRoleIds)) {
                 List<Integer> menuIdList = roleMenuPermissionListByRoleIds.stream().map(RoleMenuPermissionVO::getMenuId).collect(Collectors.toList());
                 if (!CollectionUtils.isEmpty(menuIdList)) {
+                    //根据菜单id查询对应的菜单信息
                     menuVOList = menuMapper.getMenuListByMenuId(menuIdList);
                     if (!CollectionUtils.isEmpty(menuVOList)) {
                         menuVOList.stream()
@@ -54,11 +57,12 @@ public class MenuServiceImpl implements MenuService {
                                         .map(roleMenuPermission -> {
                                             menuVO.setIsEdit(roleMenuPermission.getIsEdit());
                                             menuVO.setIsLook(roleMenuPermission.getIsLook());
+                                            menuVO.setIsAdmin(roleMenuPermission.getIsAdmin());
                                             return menuVO;
                                         })
                                 ).collect(Collectors.toList());
                         if (!CollectionUtils.isEmpty(menuVOList)) {
-                            menuVOList.removeIf(e -> (e.getIsLook() == 0 && e.getIsEdit() == 0));
+                            menuVOList.removeIf(e -> (e.getIsLook() == 0 && e.getIsEdit() == 0 && e.getIsAdmin() == 0));
                         }
                     }
                 }

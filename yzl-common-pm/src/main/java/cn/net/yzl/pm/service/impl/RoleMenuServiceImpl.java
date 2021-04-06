@@ -1,5 +1,6 @@
 package cn.net.yzl.pm.service.impl;
 
+import cn.net.yzl.pm.model.dto.MenuDTO;
 import cn.net.yzl.pm.model.vo.RoleMenuPermissionVO;
 import cn.net.yzl.pm.service.RoleMenuService;
 import cn.net.yzl.pm.service.RoleService;
@@ -19,7 +20,9 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 
 import javax.annotation.Resource;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Slf4j
 @Service("roleMenuService")
@@ -110,4 +113,37 @@ public class RoleMenuServiceImpl implements RoleMenuService {
         }
         return roleMenuMapper.batchCreateRoleMenuInfoList(roleDTO.getRoleMenuList());
     }
+
+    @Override
+    public MenuDTO getIsAdminByUserCodeAndMenuUrl(String userCode, String menuUrl){
+        MenuDTO menuDTO = new MenuDTO();
+        List<MenuDTO> list = roleMenuMapper.getIsAdminByUserCodeAndMenuPath(userCode,getMenuPath(menuUrl));
+        if(list.size()>0){
+            menuDTO.setMenuName(list.get(0).getMenuName());
+            menuDTO.setIsAdmin(0);
+            Set<Integer> set = new HashSet<>();
+            for (MenuDTO dto : list) {
+                set.add(dto.getIsAdmin());
+            }
+            if(set.contains(1)){
+                menuDTO.setIsAdmin(1);
+            }
+        }
+        return menuDTO;
+    }
+
+    private String getMenuPath(String menuUrl){
+        try {
+            String url = menuUrl.replace("http://", "");
+            String url1= url.substring(0, url.indexOf("/"));
+            String menuPath= url.replace(url1,"");
+            if(menuPath.indexOf("?") != -1){
+                menuPath = menuPath.substring(0, menuPath.indexOf("?"));
+            }
+            return menuPath;
+        }catch(Exception e){
+            throw new PmException("传入参数格式有误");
+        }
+    }
+
 }

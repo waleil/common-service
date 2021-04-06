@@ -19,6 +19,7 @@
         <module>yzl-logger</module>
         <module>yzl-operatelogger</module>
         <module>yzl-common-pm</module>
+        <module>yzl-common-msg</module>
     </modules>
 
     <properties>

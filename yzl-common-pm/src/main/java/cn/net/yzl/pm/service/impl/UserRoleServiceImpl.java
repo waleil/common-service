@@ -72,20 +72,17 @@ public class UserRoleServiceImpl implements UserRoleService {
     @Transactional(rollbackFor = Exception.class)
     @Override
     public int createUserRoleInfoList(UserRoleDTO userRoleDTO) {
-        List<UserRole> userRoleDTOList = userRoleDTO.getUserRoleList();
-        List<String> userCodeList = userRoleDTO.getUserCode();
-        if(!CollectionUtils.isEmpty(userRoleDTOList)){
-            //删除已绑定的
-            for(UserRole userRole:userRoleDTOList) {
-                userRoleMapper.deleteUserRoleInfoByUserCode(userRole.getUserCode());
-            }
-            return userRoleMapper.createUserRoleInfoList(userRoleDTOList);
-        }else{
+        List<String> userCodeList = userRoleDTO.getUserCode();//用户编号集合
+        List<UserRole> userRoleDTOList = userRoleDTO.getUserRoleList();//用户编号和角色集合
+        if(!CollectionUtils.isEmpty(userCodeList)){
             for(String userCode:userCodeList) {
                 userRoleMapper.deleteUserRoleInfoByUserCode(userCode);
             }
-            return 1;
+            if(!CollectionUtils.isEmpty(userRoleDTOList)) {
+                userRoleMapper.createUserRoleInfoList(userRoleDTOList);
+            }
         }
+        return 1;
     }
 
     /**

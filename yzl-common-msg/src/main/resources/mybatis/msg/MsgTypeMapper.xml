@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.net.yzl.msg.mapper.MsgTypeMapper">
+
+    <insert id="insertMsgType">
+        insert into msg_type (`name`,code,creator,system_code)
+        values (#{name,jdbcType=VARCHAR},#{code,jdbcType=VARCHAR},#{creator,jdbcType=VARCHAR},#{systemCode,jdbcType=INTEGER})
+    </insert>
+
+
+    <update id="updateMsgType">
+        update msg_type
+        <set>
+            <if test="name !=null and name != ''">
+                `name` = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="code !=null and code != ''">
+                code = #{code,jdbcType=VARCHAR}
+            </if>
+            <if test="isDel !=null">
+                is_del = #{isDel,jdbcType=VARCHAR}
+            </if>
+            <if test="updateUser !=null and updateUser!=''">
+                updator = #{updator,jdbcType=VARCHAR}
+            </if>
+            <if test="updateTime !=null">
+                update_time = #{updateTime,jdbcType=VARCHAR}
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+
+
+    <select id="selectMsgType" resultType="cn.net.yzl.msg.model.pojo.MsgTypePo">
+        select id,`name`,code,system_code from msg_type
+        where `name` =  #{name,jdbcType=VARCHAR}
+    </select>
+
+
+    <select id="selectAllMsgType" resultType="cn.net.yzl.msg.model.pojo.MsgTypePo">
+        select id,`name`,code,system_code as systemCode
+        from msg_type
+        where is_del = 0
+    </select>
+
+    <insert id="insertMsgTypeList">
+        insert into msg_type(`name`,code,creator,system_code)
+        values
+        <foreach collection="list" item="item" separator=",">
+            (
+            #{item.name,jdbcType=VARCHAR},
+            #{item.code,jdbcType=VARCHAR},
+            #{item.creator,jdbcType=VARCHAR},
+            #{item.systemCode,jdbcType=VARCHAR}
+            )
+        </foreach>
+    </insert>
+
+    <update id="updateMsgTypeList">
+        update msg_type
+        <trim prefix="set" suffixOverrides=",">
+            <trim prefix="name =case" suffix="end,">
+                <foreach collection="list" item="s">
+                    when id = #{s.id}
+                    then #{s.name}
+                </foreach>
+            </trim>
+            <trim prefix="system_code =case" suffix="end,">
+                <foreach collection="list" item="s">
+                    when id = #{s.id}
+                    then #{s.systemCode}
+                </foreach>
+            </trim>
+            <trim prefix="updator=case" suffix="end,">
+                <foreach collection="list" item="s">
+                    when id = #{s.id}
+                    then #{s.updator}
+                </foreach>
+            </trim>
+            <trim prefix="update_time =case" suffix="end,">
+                <foreach collection="list" item="s">
+                    when id = #{s.id}
+                    then #{s.updateTime}
+                </foreach>
+            </trim>
+        </trim>
+        <where>
+            (id) in
+            <foreach collection="list" separator="," item="s" open="(" close=")">
+                (#{s.id})
+            </foreach>
+        </where>
+    </update>
+
+
+    <select id="selectMaxCode" resultType="java.lang.String">
+        select max(code) as maxCode from msg_type
+    </select>
+
+
+    <update id="delMsgType" parameterType="String">
+        update msg_type
+        set
+        is_del = 1
+        where code = #{msgCode}
+    </update>
+
+    <select id="selectCount" resultType="java.lang.Integer">
+        select count(1) count from msg_info where type_code = #{msgCode}
+    </select>
+
+</mapper>

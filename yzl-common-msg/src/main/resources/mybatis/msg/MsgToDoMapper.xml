@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.net.yzl.msg.mapper.MsgToDoMapper">
+
+  <insert id="insertMsgToDo" parameterType="cn.net.yzl.msg.model.vo.MsgToDoInsertVo">
+    insert into msg_to_do (code, remind_time, detail, creator)
+    values (#{code,jdbcType=VARCHAR}, #{remindTime,jdbcType=TIMESTAMP},
+    #{detail,jdbcType=VARCHAR}, #{createUser,jdbcType=VARCHAR})
+  </insert>
+
+  <select id="selectMsgToDoList" parameterType="cn.net.yzl.msg.model.vo.MsgToDoSelectVo"
+          resultType="cn.net.yzl.msg.model.dto.MsgToDoDto">
+    select code, left(remind_time,19) remind_time, detail, is_remind
+    from msg_to_do
+    where is_del = 0
+    <if test="date != null and date != ''">
+      and left(remind_time,7) = #{date,jdbcType=VARCHAR}
+    </if>
+    <if test="userCode != null and userCode != ''">
+      and creator = #{userCode,jdbcType=VARCHAR}
+    </if>
+    order by remind_time desc
+  </select>
+
+  <select id="selectMsgToDoDetail" parameterType="String" resultType="cn.net.yzl.msg.model.dto.MsgToDoDto">
+    select code, remind_time, detail, is_remind
+    from msg_to_do
+    where code = #{code,jdbcType=VARCHAR}
+  </select>
+
+  <update id="updateMsgToDoStatus" parameterType="String">
+    update msg_to_do
+    set is_remind = 1
+    where code = #{code,jdbcType=VARCHAR}
+  </update>
+
+  <update id="updateMsgToDo" parameterType="cn.net.yzl.msg.model.vo.MsgToDoUpdateVo">
+    update msg_to_do
+    set remind_time = #{remindTime,jdbcType=VARCHAR},
+    detail = #{detail,jdbcType=VARCHAR},
+    updator = #{updator,jdbcType=VARCHAR}
+    where code = #{code,jdbcType=VARCHAR}
+  </update>
+
+  <update id="deleteMsgToDo" parameterType="String">
+    update msg_to_do
+    set is_del = 1
+    where code = #{code,jdbcType=VARCHAR}
+  </update>
+</mapper>
