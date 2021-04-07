@@ -34,7 +34,7 @@ public interface YMsgInfoService {
 
     ComResponse updateMsgStatus(String code, Integer msgStatus, Integer sendStatus);
 
-    ComResponse<Page<PartStaff>> selectDepartStaff(Integer pageNo, Integer pageSize, String code);
+    ComResponse<List<PartStaff>> selectDepartStaff(Integer pageNo, Integer pageSize, String code);
 
     ComResponse<String> addMsg(MsgTemplatePo msgTemplatePo);
 

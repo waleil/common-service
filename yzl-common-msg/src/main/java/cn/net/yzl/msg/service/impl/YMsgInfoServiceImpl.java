@@ -1,5 +1,6 @@
 package cn.net.yzl.msg.service.impl;
 
+import cn.hutool.core.collection.ListUtil;
 import cn.hutool.core.util.IdUtil;
 import cn.net.yzl.common.entity.ComResponse;
 import cn.net.yzl.common.entity.Page;
@@ -262,7 +263,7 @@ public class YMsgInfoServiceImpl implements YMsgInfoService {
     }
 
     @Override
-    public ComResponse<Page<PartStaff>> selectDepartStaff(Integer pageNo, Integer pageSize, String code) {
+    public ComResponse<List<PartStaff>> selectDepartStaff(Integer pageNo, Integer pageSize, String code) {
         MsgInfoPo msgInfoPo = msgInfoMapper.selectMsgOne(code);
         String targetList = msgInfoPo.getTargetList();
         String[] targetArray = targetList.substring(1,targetList.length()-1).replace("\"","").split("\\,");
@@ -279,9 +280,8 @@ public class YMsgInfoServiceImpl implements YMsgInfoService {
             partStaff.setPName(dto.getPDepartName());
             psList.add(partStaff);
         }
-        PageHelper.startPage(pageNo,pageSize);
-        Page<PartStaff> pageDto = AssemblerResultUtil.resultAssembler(psList);
-        return ComResponse.success(pageDto);
+        List<PartStaff> pageList = ListUtil.page(pageNo-1,pageSize,psList);
+        return ComResponse.success(pageList);
     }
 
     /**

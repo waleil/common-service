@@ -9,14 +9,14 @@
     </parent>
     <artifactId>yzl-common-msg</artifactId>
     <packaging>jar</packaging>
-    <version>1.0.0-RELEASE</version>
+    <version>1.0.1-RELEASE</version>
 
     <dependencies>
         <!--common-->
         <dependency>
             <groupId>cn.net.yzl</groupId>
             <artifactId>yzl-common</artifactId>
-            <version>1.0-RELEASE</version>
+            <version>1.0.0-RELEASE</version>
             <exclusions>
                 <exclusion>
                     <groupId>com.github.pagehelper</groupId>

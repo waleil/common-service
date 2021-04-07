@@ -95,7 +95,7 @@ public class YMsgInfoController {
 
     @ApiOperation(value = "发送方式-部分员工", notes = "发送方式-部分员工")
     @GetMapping("/v1/selectDepartStaff")
-    public ComResponse<Page<PartStaff>> selectDepartStaff(@RequestParam(value = "pageNo")Integer pageNo, @RequestParam(value = "pageSize")Integer pageSize, @RequestParam(value = "code")String code){
+    public ComResponse<List<PartStaff>> selectDepartStaff(@RequestParam(value = "pageNo")Integer pageNo, @RequestParam(value = "pageSize")Integer pageSize, @RequestParam(value = "code")String code){
         log.info("type：{},apiName：{}，url:{},request:{},response:{},functionName:{},params:{},post:{}","INFO","GET","msg/v1/selectDepartStaff",null,null,"【消息管理--发送方式-部分员工】", String.format("pageNo:{},pageSize:{}code:{}",pageNo,pageSize,code),"controller");
         return ymsgInfoService.selectDepartStaff(pageNo,pageSize,code);
     }
