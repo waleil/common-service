@@ -275,7 +275,7 @@ public class YMsgInfoServiceImpl implements YMsgInfoService {
             PartStaff partStaff = new PartStaff();
             partStaff.setStaffNo(dto.getStaffNo());
             partStaff.setStaffName(dto.getName());
-            partStaff.setDepartNo(dto.getDepartId().toString());
+            partStaff.setDepartNo(dto.getDepartId());
             partStaff.setDepartName(dto.getDepartName());
             partStaff.setPName(dto.getPDepartName());
             psList.add(partStaff);

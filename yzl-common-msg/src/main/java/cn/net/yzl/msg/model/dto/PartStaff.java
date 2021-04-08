@@ -15,7 +15,7 @@ public class PartStaff {
 
     private String staffName;
 
-    private String departNo;
+    private Integer departNo;
 
     private String departName;
 
