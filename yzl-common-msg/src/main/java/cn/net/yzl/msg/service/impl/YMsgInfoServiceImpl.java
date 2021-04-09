@@ -286,7 +286,7 @@ public class YMsgInfoServiceImpl implements YMsgInfoService {
         pageParam.setPageSize(pageSize);
         pageParam.setPageTotal((int) Math.ceil(Double.valueOf(psList.size())/pageSize));
         pageParam.setTotalCount(psList.size());
-        pageInfo.setItem(pageList);
+        pageInfo.setItems(pageList);
         pageInfo.setPageParam(pageParam);
         return ComResponse.success(pageInfo);
     }

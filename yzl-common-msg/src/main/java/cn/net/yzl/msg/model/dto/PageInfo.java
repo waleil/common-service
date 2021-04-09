@@ -14,7 +14,7 @@ import java.util.List;
 @Data
 public class PageInfo {
 
-    private List<PartStaff> item;
+    private List<PartStaff> items;
     private PageParam pageParam;
 
 }
