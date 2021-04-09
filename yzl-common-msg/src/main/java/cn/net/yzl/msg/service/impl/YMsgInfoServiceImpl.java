@@ -10,9 +10,7 @@ import cn.net.yzl.common.util.JsonUtil;
 import cn.net.yzl.msg.feign.EhrFeignClientService;
 import cn.net.yzl.msg.mapper.MsgUserLinkMapper;
 import cn.net.yzl.msg.mapper.YMsgInfoMapper;
-import cn.net.yzl.msg.model.dto.FileInfoDto;
-import cn.net.yzl.msg.model.dto.MsgInfoDto;
-import cn.net.yzl.msg.model.dto.PartStaff;
+import cn.net.yzl.msg.model.dto.*;
 import cn.net.yzl.msg.model.pojo.MsgInfoPo;
 import cn.net.yzl.msg.model.pojo.MsgTemplatePo;
 import cn.net.yzl.msg.model.vo.MsgInfoPageVo;
@@ -263,7 +261,7 @@ public class YMsgInfoServiceImpl implements YMsgInfoService {
     }
 
     @Override
-    public ComResponse<List<PartStaff>> selectDepartStaff(Integer pageNo, Integer pageSize, String code) {
+    public ComResponse<PageInfo> selectDepartStaff(Integer pageNo, Integer pageSize, String code) {
         MsgInfoPo msgInfoPo = msgInfoMapper.selectMsgOne(code);
         String targetList = msgInfoPo.getTargetList();
         String[] targetArray = targetList.substring(1,targetList.length()-1).replace("\"","").split("\\,");
@@ -281,7 +279,16 @@ public class YMsgInfoServiceImpl implements YMsgInfoService {
             psList.add(partStaff);
         }
         List<PartStaff> pageList = ListUtil.page(pageNo-1,pageSize,psList);
-        return ComResponse.success(pageList);
+        PageInfo pageInfo = new PageInfo();
+        PageParam pageParam = new PageParam();
+        pageParam.setNextPage(pageNo+1);
+        pageParam.setPageNo(pageNo);
+        pageParam.setPageSize(pageSize);
+        pageParam.setPageTotal((int) Math.ceil(Double.valueOf(psList.size())/pageSize));
+        pageParam.setTotalCount(psList.size());
+        pageInfo.setItem(pageList);
+        pageInfo.setPageParam(pageParam);
+        return ComResponse.success(pageInfo);
     }
 
     /**

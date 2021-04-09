@@ -3,6 +3,7 @@ package cn.net.yzl.msg.service;
 import cn.net.yzl.common.entity.ComResponse;
 import cn.net.yzl.common.entity.Page;
 import cn.net.yzl.msg.model.dto.MsgInfoDto;
+import cn.net.yzl.msg.model.dto.PageInfo;
 import cn.net.yzl.msg.model.dto.PartStaff;
 import cn.net.yzl.msg.model.pojo.MsgTemplatePo;
 import cn.net.yzl.msg.model.vo.MsgInfoPageVo;
@@ -34,7 +35,7 @@ public interface YMsgInfoService {
 
     ComResponse updateMsgStatus(String code, Integer msgStatus, Integer sendStatus);
 
-    ComResponse<List<PartStaff>> selectDepartStaff(Integer pageNo, Integer pageSize, String code);
+    ComResponse<PageInfo> selectDepartStaff(Integer pageNo, Integer pageSize, String code);
 
     ComResponse<String> addMsg(MsgTemplatePo msgTemplatePo);
 
